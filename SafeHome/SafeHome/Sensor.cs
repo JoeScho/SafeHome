@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace SafeHome
 {
-    class Sensor
+    public class Sensor
     {
         string type;
         string[] types = new string[5] {"Door / Window Contact", "Movement", "Fire", "Breaking Glass", "Vibration"};
 
-        
+        public string returnAString ()
+        {
+            return "Hello World!";
+        }
     }
 }
