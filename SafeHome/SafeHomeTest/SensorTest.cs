@@ -8,11 +8,10 @@ namespace SafeHomeTest
     public class SensorTest
     {
         [TestMethod]
-        public void checkCrapMethodWorks()
+        public void sensorAlarmReturnsTrue()
         {
             Sensor s = new Sensor();
-            string ss = s.returnAString();
-            Assert.AreEqual("Hello World!", ss);
+            Assert.AreEqual(true, s.alert());
         }
     }
 }

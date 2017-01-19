@@ -1,0 +1,34 @@
+CREATE TABLE Customer (
+  CustomerID Int NOT NULL PRIMARY KEY,
+  Username Varchar(255) NOT NULL,
+  Password Varchar(255) NOT NULL
+);
+
+CREATE TABLE House (
+  HouseID Int NOT NULL PRIMARY KEY,
+  CustomerID Int NOT NULL FOREIGN KEY REFERENCES Customer(CustomerID) 
+);
+
+CREATE TABLE Room (
+  RoomID Int NOT NULL PRIMARY KEY,
+  RoomName Varchar(255) NOT NULL,
+  HouseID Int NOT NULL FOREIGN KEY REFERENCES House(HouseID),
+  RoomIDNorth Int FOREIGN KEY REFERENCES Room(RoomID),
+  RoomIDEast Int FOREIGN KEY REFERENCES Room(RoomID),
+  RoomIDSouth Int FOREIGN KEY REFERENCES Room(RoomID),
+  RoomIDWest Int FOREIGN KEY REFERENCES Room(RoomID)
+);
+
+CREATE TABLE SensorType (
+  SensorTypeID Int NOT NULL PRIMARY KEY,
+  SensorName Varchar(255) NOT NULL
+);
+
+CREATE TABLE Sensor (
+  SensorID Int NOT NULL PRIMARY KEY,
+  SensorTypeID Int NOT NULL FOREIGN KEY REFERENCES SensorType(SensorTypeID),
+  RoomID Int NOT NULL FOREIGN KEY REFERENCES Room(RoomID),
+  LocationInRoom Int NOT NULL,
+  CHECK (LocationInRoom<10),
+  CHECK (0<LocationInRoom)
+);

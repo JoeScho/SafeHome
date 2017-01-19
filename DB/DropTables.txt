@@ -1,0 +1,5 @@
+DROP TABLE Sensor;
+DROP TABLE SensorType;
+DROP TABLE Room;
+DROP TABLE House;
+DROP TABLE Customer;

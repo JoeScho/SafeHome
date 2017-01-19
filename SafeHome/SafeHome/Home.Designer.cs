@@ -53,10 +53,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pnlViewRooms = new System.Windows.Forms.Panel();
             this.pnlAddRoom = new System.Windows.Forms.Panel();
+            this.lblLoginErr = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.pnlLogin.SuspendLayout();
             this.gbRegister.SuspendLayout();
             this.gbLogin.SuspendLayout();
             this.pnlHome.SuspendLayout();
+            this.pnlViewRooms.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblSafeHome
@@ -105,6 +108,7 @@
             // pnlLogin
             // 
             this.pnlLogin.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnlLogin.Controls.Add(this.label5);
             this.pnlLogin.Controls.Add(this.gbRegister);
             this.pnlLogin.Controls.Add(this.gbLogin);
             this.pnlLogin.Location = new System.Drawing.Point(132, 61);
@@ -205,6 +209,7 @@
             // 
             // gbLogin
             // 
+            this.gbLogin.Controls.Add(this.lblLoginErr);
             this.gbLogin.Controls.Add(this.btnSignIn);
             this.gbLogin.Controls.Add(this.lblLoginPwd);
             this.gbLogin.Controls.Add(this.lblLoginUsername);
@@ -213,14 +218,14 @@
             this.gbLogin.Font = new System.Drawing.Font("American Typewriter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbLogin.Location = new System.Drawing.Point(13, 4);
             this.gbLogin.Name = "gbLogin";
-            this.gbLogin.Size = new System.Drawing.Size(245, 181);
+            this.gbLogin.Size = new System.Drawing.Size(245, 198);
             this.gbLogin.TabIndex = 2;
             this.gbLogin.TabStop = false;
             this.gbLogin.Text = "Log in";
             // 
             // btnSignIn
             // 
-            this.btnSignIn.Location = new System.Drawing.Point(73, 132);
+            this.btnSignIn.Location = new System.Drawing.Point(76, 145);
             this.btnSignIn.Name = "btnSignIn";
             this.btnSignIn.Size = new System.Drawing.Size(87, 36);
             this.btnSignIn.TabIndex = 4;
@@ -282,17 +287,36 @@
             // 
             // pnlViewRooms
             // 
-            this.pnlViewRooms.Location = new System.Drawing.Point(132, 61);
+            this.pnlViewRooms.Controls.Add(this.pnlAddRoom);
+            this.pnlViewRooms.Location = new System.Drawing.Point(475, 23);
             this.pnlViewRooms.Name = "pnlViewRooms";
             this.pnlViewRooms.Size = new System.Drawing.Size(540, 288);
             this.pnlViewRooms.TabIndex = 7;
             // 
             // pnlAddRoom
             // 
-            this.pnlAddRoom.Location = new System.Drawing.Point(132, 61);
+            this.pnlAddRoom.Location = new System.Drawing.Point(80, 4);
             this.pnlAddRoom.Name = "pnlAddRoom";
             this.pnlAddRoom.Size = new System.Drawing.Size(540, 288);
             this.pnlAddRoom.TabIndex = 8;
+            // 
+            // lblLoginErr
+            // 
+            this.lblLoginErr.AutoSize = true;
+            this.lblLoginErr.Font = new System.Drawing.Font("American Typewriter", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoginErr.Location = new System.Drawing.Point(7, 125);
+            this.lblLoginErr.Name = "lblLoginErr";
+            this.lblLoginErr.Size = new System.Drawing.Size(0, 14);
+            this.lblLoginErr.TabIndex = 5;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(23, 236);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "label5";
             // 
             // Home
             // 
@@ -300,7 +324,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(684, 361);
-            this.Controls.Add(this.pnlAddRoom);
             this.Controls.Add(this.pnlViewRooms);
             this.Controls.Add(this.pnlLogin);
             this.Controls.Add(this.btnLogout);
@@ -313,12 +336,14 @@
             this.Text = "SafeHome";
             this.Load += new System.EventHandler(this.Home_Load);
             this.pnlLogin.ResumeLayout(false);
+            this.pnlLogin.PerformLayout();
             this.gbRegister.ResumeLayout(false);
             this.gbRegister.PerformLayout();
             this.gbLogin.ResumeLayout(false);
             this.gbLogin.PerformLayout();
             this.pnlHome.ResumeLayout(false);
             this.pnlHome.PerformLayout();
+            this.pnlViewRooms.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -350,5 +375,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlViewRooms;
         private System.Windows.Forms.Panel pnlAddRoom;
+        private System.Windows.Forms.Label lblLoginErr;
+        private System.Windows.Forms.Label label5;
     }
 }

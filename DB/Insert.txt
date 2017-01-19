@@ -1,0 +1,68 @@
+INSERT INTO Customer(CustomerID, Username, Password)
+VALUES (1,'JoeScho','password'),
+(2,'Mims','password'),
+(3,'Jam','password'),
+(4,'Ryan','password');
+
+INSERT INTO House(HouseID, CustomerID)
+VALUES (1,1),
+(2,1),
+(3,2),
+(4,3),
+(5,4),
+(6,4);
+
+INSERT INTO Room(RoomID, RoomName, HouseID)
+VALUES (1,'Kitchen',1),
+(2,'Living Room',1),
+(3,'Bedroom',1),
+(4,'Kitchen',2),
+(5,'Living Room',2),
+(6,'Kitchen',3),
+(7,'Bedroom',3),
+(8,'Living Room',3),
+(9,'Bedroom',4),
+(10,'Kitchen',4),
+(11,'Bedroom',5),
+(12,'Kitchen',6),
+(13,'Bedroom',6);
+
+INSERT INTO SensorType(SensorTypeID,SensorName)
+VALUES (1, 'Door / Window Contact'),
+(2, 'Movement'),
+(3, 'Fire'),
+(4, 'Breaking Glass'),
+(5, 'Vibration');
+
+INSERT INTO Sensor(SensorID, SensorTypeID, RoomID, LocationInRoom)
+VALUES (1,1,1,1),
+(2,2,1,9),
+(3,1,2,1),
+(4,3,3,1),
+(5,4,3,2),
+(6,5,4,1),
+(7,3,6,1),
+(8,4,7,1),
+(9,2,8,1),
+(10,4,9,1),
+(11,5,10,1),
+(12,1,11,1),
+(13,1,12,1),
+(14,1,13,1),
+(15,4,5,1);
+
+// House 1 Kitchen is north of House 1 Living Room- must update both
+UPDATE Room
+SET RoomIDNorth=2
+WHERE RoomID=1;
+UPDATE Room
+SET RoomIDSouth=1
+WHERE RoomID=2;
+
+// House 1 Bedroom is east of House 1 Kitchen
+UPDATE Room
+SET RoomIDEast=3
+WHERE RoomID=1;
+UPDATE Room
+SET RoomIDWest=1
+WHERE RoomID=3;

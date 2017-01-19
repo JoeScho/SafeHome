@@ -8,12 +8,11 @@ namespace SafeHome
 {
     public class Sensor
     {
-        string type;
         string[] types = new string[5] {"Door / Window Contact", "Movement", "Fire", "Breaking Glass", "Vibration"};
 
-        public string returnAString ()
+        public bool alert ()
         {
-            return "Hello World!";
+            return true;
         }
     }
 }
