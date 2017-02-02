@@ -1,22 +1,28 @@
 CREATE TABLE Customer (
-  CustomerID Int NOT NULL PRIMARY KEY,
+  CustomerID Int NOT NULL AUTO INCREMENT PRIMARY KEY,
   Username Varchar(255) NOT NULL,
   Password Varchar(255) NOT NULL
 );
 
-CREATE TABLE House (
-  HouseID Int NOT NULL PRIMARY KEY,
-  CustomerID Int NOT NULL FOREIGN KEY REFERENCES Customer(CustomerID) 
+CREATE TABLE Room (
+  RoomID Int NOT NULL AUTO INCREMENT PRIMARY KEY,
+  RoomName Varchar(255) NOT NULL,
+  CustomerID Int NOT NULL FOREIGN KEY REFERENCES Customer(CustomerID),
+  FloorNumber Int NOT NULL FOREIGN KEY REFERENCES Floor(FloorNumber),
+  RoomIDNorth Int FOREIGN KEY REFERENCES Room(RoomID),
+  DoorNorth Boolean,
+  RoomIDEast Int FOREIGN KEY REFERENCES Room(RoomID),
+  DoorEast Boolean,
+  RoomIDSouth Int FOREIGN KEY REFERENCES Room(RoomID),
+  DoorSouth Boolean,
+  RoomIDWest Int FOREIGN KEY REFERENCES Room(RoomID),
+  DoorWest Boolean
 );
 
-CREATE TABLE Room (
-  RoomID Int NOT NULL PRIMARY KEY,
-  RoomName Varchar(255) NOT NULL,
-  HouseID Int NOT NULL FOREIGN KEY REFERENCES House(HouseID),
-  RoomIDNorth Int FOREIGN KEY REFERENCES Room(RoomID),
-  RoomIDEast Int FOREIGN KEY REFERENCES Room(RoomID),
-  RoomIDSouth Int FOREIGN KEY REFERENCES Room(RoomID),
-  RoomIDWest Int FOREIGN KEY REFERENCES Room(RoomID)
+CREATE TABLE Floor (
+  FloorID Int NOT NULL AUTO INCREMENT PRIMARY KEY,
+  CustomerID Int NOT NULL FOREIGN KEY REFERENCES Customer(CustomerID),
+  FloorNumber Int NOT NULL
 );
 
 CREATE TABLE SensorType (
@@ -25,10 +31,7 @@ CREATE TABLE SensorType (
 );
 
 CREATE TABLE Sensor (
-  SensorID Int NOT NULL PRIMARY KEY,
+  SensorID Int NOT NULL AUTO INCREMENT PRIMARY KEY,
   SensorTypeID Int NOT NULL FOREIGN KEY REFERENCES SensorType(SensorTypeID),
-  RoomID Int NOT NULL FOREIGN KEY REFERENCES Room(RoomID),
-  LocationInRoom Int NOT NULL,
-  CHECK (LocationInRoom<10),
-  CHECK (0<LocationInRoom)
+  RoomID Int NOT NULL FOREIGN KEY REFERENCES Room(RoomID)
 );

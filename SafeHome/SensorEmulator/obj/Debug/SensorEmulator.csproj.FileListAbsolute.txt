@@ -1,0 +1,8 @@
+C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SensorEmulator\bin\Debug\SensorEmulator.exe.config
+C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SensorEmulator\bin\Debug\SensorEmulator.exe
+C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SensorEmulator\bin\Debug\SensorEmulator.pdb
+C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SensorEmulator\obj\Debug\SensorEmulator.Form1.resources
+C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SensorEmulator\obj\Debug\SensorEmulator.Properties.Resources.resources
+C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SensorEmulator\obj\Debug\SensorEmulator.csproj.GenerateResource.Cache
+C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SensorEmulator\obj\Debug\SensorEmulator.exe
+C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SensorEmulator\obj\Debug\SensorEmulator.pdb

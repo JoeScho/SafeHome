@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using SensorEmulator;
 
 namespace SafeHome
 {
@@ -20,6 +21,7 @@ namespace SafeHome
                                    "Trusted_Connection=yes;" +
                                    "database=database; " +
                                    "connection timeout=30");
+        string[] typeOfSensor = new string[5] { "Door / Window Contact", "Movement", "Fire", "Breaking Glass", "Vibration" };
 
         public Home()
         {
@@ -28,12 +30,10 @@ namespace SafeHome
 
         private void Home_Load(object sender, EventArgs e)
         {
-            listPanels.Add(pnlHome);
             listPanels.Add(pnlLogin);
             listPanels.Add(pnlViewRooms);
             listPanels.Add(pnlAddRoom);
             setAllPanelsInvisible();
-            disableButtons();
             pnlLogin.Visible = true;
         }
 
@@ -89,24 +89,22 @@ namespace SafeHome
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            c = db_getCustomerDetails(txtLoginName.Text, txtLoginPwd.Text);
-            if (c.UserName1 != "")
-            {
+            //c = db_getCustomerDetails(txtLoginName.Text, txtLoginPwd.Text);
+            //if (c.UserName1 != "")
+            //{
                 setAllPanelsInvisible();
-                pnlHome.Visible = true;
-                enableButtons();
-            }
-            else
-            {
-                lblLoginErr.Text = "Error logging in.";
-            }
+                pnlViewRooms.Visible = true;
+            //}
+            //else
+            //{
+            //    lblLoginErr.Text = "Error logging in.";
+            //}
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
             setAllPanelsInvisible();
             pnlLogin.Visible = true;
-            disableButtons();
         }
 
         public void setAllPanelsInvisible()
@@ -117,30 +115,76 @@ namespace SafeHome
             }
         }
 
-        public void enableButtons()
-        {
-            btnHome.Enabled = true;
-            btnViewRooms.Enabled = true;
-            btnLogout.Enabled = true;
-        }
-
-        public void disableButtons()
-        {
-            btnHome.Enabled = false;
-            btnViewRooms.Enabled = false;
-            btnLogout.Enabled = false;
-        }
-
         private void btnViewRooms_Click(object sender, EventArgs e)
         {
             setAllPanelsInvisible();
             pnlViewRooms.Visible = true;
         }
 
-        private void btnHome_Click(object sender, EventArgs e)
+        private void btnAddRoom_Click(object sender, EventArgs e)
         {
             setAllPanelsInvisible();
-            pnlHome.Visible = true;
+            pnlAddRoom.Visible = true;
+            comboAddSensor.DataSource = typeOfSensor;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Room r = new Room();
+            r.RoomName1 = txtRoomName.Text;
+            r.CustomerID1 = c.CustomerID1;
+            if (comboRoomN.SelectedText != "None")
+            {
+                r.RoomIDNorth1 = Room.getRoomByName(comboRoomN.SelectedText);
+                if (checkDoorN.Checked)
+                {
+                    r.DoorNorth1 = true;
+                }
+            }
+            if (comboRoomE.SelectedText != "None")
+            {
+                r.RoomIDEast1 = Room.getRoomByName(comboRoomE.SelectedText);
+                if (checkDoorE.Checked)
+                {
+                    r.DoorEast1 = true;
+                }
+            }
+            if (comboRoomS.SelectedText != "None")
+            {
+                r.RoomIDSouth1 = Room.getRoomByName(comboRoomS.SelectedText);
+                if (checkDoorS.Checked)
+                {
+                    r.DoorSouth1 = true;
+                }
+            }
+            if (comboRoomW.SelectedText != "None")
+            {
+                r.RoomIDWest1 = Room.getRoomByName(comboRoomW.SelectedText);
+                if (checkDoorW.Checked)
+                {
+                    r.DoorWest1 = true;
+                }
+            }
+            // INSERT INTO Room VALUES ( all values entered )
+            setAllPanelsInvisible();
+            pnlViewRooms.Visible = true;
+        }
+
+        private void btnAddSensor_Click(object sender, EventArgs e)
+        {
+            string s = comboAddSensor.Text;
+            lbSensors.Items.Add(s);
+        }
+
+        private void btnDeleteSensor_Click(object sender, EventArgs e)
+        {
+            lbSensors.Items.Remove(lbSensors.SelectedItem);
+        }
+
+        private void btnLaunchEmulator_Click(object sender, EventArgs e)
+        {
+            Form1 f = new Form1();
+            f.Show();
         }
     }
 }

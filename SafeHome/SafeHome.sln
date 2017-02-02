@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeHome", "SafeHome\SafeHo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeHomeTest", "SafeHomeTest\SafeHomeTest.csproj", "{0EF5C985-D388-4555-AB75-9DC87541AA95}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensorEmulator", "SensorEmulator\SensorEmulator.csproj", "{47608B47-FE4A-4745-BE3A-10C2AFA1E12A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0EF5C985-D388-4555-AB75-9DC87541AA95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EF5C985-D388-4555-AB75-9DC87541AA95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EF5C985-D388-4555-AB75-9DC87541AA95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47608B47-FE4A-4745-BE3A-10C2AFA1E12A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47608B47-FE4A-4745-BE3A-10C2AFA1E12A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47608B47-FE4A-4745-BE3A-10C2AFA1E12A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47608B47-FE4A-4745-BE3A-10C2AFA1E12A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
