@@ -8,7 +8,7 @@ CREATE TABLE Room (
   RoomID Int NOT NULL AUTO INCREMENT PRIMARY KEY,
   RoomName Varchar(255) NOT NULL,
   CustomerID Int NOT NULL FOREIGN KEY REFERENCES Customer(CustomerID),
-  FloorNumber Int NOT NULL FOREIGN KEY REFERENCES Floor(FloorNumber),
+  FloorNumber Int,
   RoomIDNorth Int FOREIGN KEY REFERENCES Room(RoomID),
   DoorNorth Boolean,
   RoomIDEast Int FOREIGN KEY REFERENCES Room(RoomID),
@@ -19,14 +19,8 @@ CREATE TABLE Room (
   DoorWest Boolean
 );
 
-CREATE TABLE Floor (
-  FloorID Int NOT NULL AUTO INCREMENT PRIMARY KEY,
-  CustomerID Int NOT NULL FOREIGN KEY REFERENCES Customer(CustomerID),
-  FloorNumber Int NOT NULL
-);
-
 CREATE TABLE SensorType (
-  SensorTypeID Int NOT NULL PRIMARY KEY,
+  SensorTypeID Int NOT NULL AUTO INCREMENT PRIMARY KEY,
   SensorName Varchar(255) NOT NULL
 );
 
