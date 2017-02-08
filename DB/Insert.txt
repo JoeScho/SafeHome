@@ -1,41 +1,41 @@
-INSERT INTO Customer(CustomerID, Username, Password)
-VALUES (1,'JoeScho','password'),
-(2,'Mims','password'),
-(3,'Jam','password'),
-(4,'Ryan','password');
+INSERT INTO Customer(Username, Password)
+VALUES ('JoeScho','password'),
+('Mims','password'),
+('Jam','password'),
+('Ryan','password');
 
-INSERT INTO Room(RoomID, RoomName, CustomerID)
-VALUES (1,'Kitchen',1),
-(2,'Living Room',1),
-(3,'Bedroom',1),
-(4,'Kitchen',2),
-(5,'Living Room',2),
-(6,'Kitchen',3),
-(7,'Bedroom',3),
-(8,'Living Room',3),
-(9,'Bedroom',4),
-(10,'Kitchen',4);
+INSERT INTO Room(RoomName, CustomerID)
+VALUES ('Kitchen',1),
+('Living Room',1),
+('Bedroom',1),
+('Kitchen',2),
+('Living Room',2),
+('Kitchen',3),
+('Bedroom',3),
+('Living Room',3),
+('Bedroom',4),
+(,'Kitchen',4);
 
-INSERT INTO SensorType(SensorTypeID,SensorName)
-VALUES (1, 'Door / Window Contact'),
-(2, 'Movement'),
-(3, 'Fire'),
-(4, 'Breaking Glass'),
-(5, 'Vibration');
+INSERT INTO SensorType(SensorName)
+VALUES ('Door / Window Contact'),
+('Movement'),
+('Fire'),
+('Breaking Glass'),
+('Vibration');
 
-INSERT INTO Sensor(SensorID, SensorTypeID, RoomID, LocationInRoom)
-VALUES (1,1,1),
-(2,2,1),
-(3,1,2),
-(4,3,3),
-(5,4,3),
-(6,5,4),
-(7,3,6),
-(8,4,7),
-(9,2,8),
-(10,4,9),
-(11,5,10)
-(15,4,5);
+INSERT INTO Sensor(SensorTypeID, RoomID)
+VALUES (1,1),
+(2,1),
+(1,2),
+(3,3),
+(4,3),
+(5,4),
+(3,6),
+(4,7),
+(2,8),
+(4,9),
+(5,10)
+(4,5);
 
 // Kitchen is north of Living Room (Customer 1)
 UPDATE Room
