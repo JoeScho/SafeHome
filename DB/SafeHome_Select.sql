@@ -1,0 +1,4 @@
+SELECT * FROM PDC_Customer;
+SELECT * FROM PDC_Room;
+SELECT * FROM PDC_Sensor;
+SELECT * FROM PDC_SensorType;

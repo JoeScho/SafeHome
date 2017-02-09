@@ -8,8 +8,10 @@ namespace SafeHome
 {
     class Room
     {
+        int RoomID;
         string RoomName;
         int CustomerID;
+        int Floor;
         int RoomIDNorth;
         bool DoorNorth;
         int RoomIDEast;
@@ -18,6 +20,37 @@ namespace SafeHome
         bool DoorSouth;
         int RoomIDWest;
         bool DoorWest;
+
+        public Room(int id, string name, int cID, int floor, int roomN, bool doorN, int roomE, bool doorE, int roomS, bool doorS, int roomW, bool doorW)
+        {
+            this.RoomID1 = id;
+            this.RoomName1 = name;
+            this.CustomerID1 = cID;
+            this.Floor1 = floor;
+            this.RoomIDNorth1 = roomN;
+            this.DoorNorth1 = doorN;
+            this.RoomIDEast1 = roomE;
+            this.DoorEast1 = doorE;
+            this.RoomIDSouth1 = roomS;
+            this.DoorSouth1 = doorS;
+            this.RoomIDWest1 = roomW;
+            this.DoorWest1 = doorW;
+        }
+
+        public Room(string name, int cID, int floor, int roomN, bool doorN, int roomE, bool doorE, int roomS, bool doorS, int roomW, bool doorW)
+        {
+            this.RoomName1 = name;
+            this.CustomerID1 = cID;
+            this.Floor1 = floor;
+            this.RoomIDNorth1 = roomN;
+            this.DoorNorth1 = doorN;
+            this.RoomIDEast1 = roomE;
+            this.DoorEast1 = doorE;
+            this.RoomIDSouth1 = roomS;
+            this.DoorSouth1 = doorS;
+            this.RoomIDWest1 = roomW;
+            this.DoorWest1 = doorW;
+        }
 
         public string RoomName1
         {
@@ -149,10 +182,42 @@ namespace SafeHome
             }
         }
 
-        public static int getRoomByName(string roomName)
+        public int Floor1
         {
-            int roomID = 1;//query db - "SELECT RoomID FROM Room WHERE RoomName = '" + roomName + "'";
-            return roomID;
+            get
+            {
+                return Floor;
+            }
+
+            set
+            {
+                Floor = value;
+            }
+        }
+
+        public int RoomID1
+        {
+            get
+            {
+                return RoomID;
+            }
+
+            set
+            {
+                RoomID = value;
+            }
+        }
+
+        public static Room getRoomByName(string name, List<Room> rooms)
+        {
+            foreach (Room r in rooms)
+            {
+                if (r.RoomName1 == name)
+                {
+                    return r;
+                }
+            }
+            return null;
         }
     }
 }

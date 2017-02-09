@@ -13,16 +13,12 @@ using SensorEmulator;
 namespace SafeHome
 {
     public partial class Home : Form
-    {
+    {        
         List<Panel> listPanels = new List<Panel>();
+        List<Room> customerRooms = new List<Room>();
         Customer c = new Customer();
-        SqlConnection myConnection = new SqlConnection("user id=Joe;" +
-                                   "password=;server=localhost;" +
-                                   "Trusted_Connection=yes;" +
-                                   "database=database; " +
-                                   "connection timeout=30");
-        string[] typeOfSensor = new string[5] { "Door / Window Contact", "Movement", "Fire", "Breaking Glass", "Vibration" };
-
+        int floor;
+        
         public Home()
         {
             InitializeComponent();
@@ -30,84 +26,40 @@ namespace SafeHome
 
         private void Home_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'safeHomeDataSet.PDC_Room' table. You can move, or remove it, as needed.
+            this.pDC_RoomTableAdapter.Fill(this.safeHomeDataSet.PDC_Room);
+            List<string> sensorTypes = DBConnection.getSensorTypes();
+            foreach (string s in sensorTypes)
+            {
+                comboAddSensor.Items.Add(s);
+            }
             listPanels.Add(pnlLogin);
             listPanels.Add(pnlViewRooms);
             listPanels.Add(pnlAddRoom);
-            setAllPanelsInvisible();
-            pnlLogin.Visible = true;
-        }
-
-        public Customer db_getCustomerDetails(string username, string password)
-        {
-            Customer selectedCustomer = new Customer();
-            try
-            {
-                myConnection.Open();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
-
-            SqlDataReader myReader = null;
-
-            // Parameterise input to avoid SQL Injection
-            SqlParameter paramUsername = new SqlParameter("@ParamUsername", SqlDbType.VarChar);
-            paramUsername.Value = username;
-            SqlParameter paramPwd = new SqlParameter("@ParamPwd", SqlDbType.VarChar);
-            paramPwd.Value = password;
-
-            SqlCommand myCommand = new SqlCommand(
-                "SELECT * FROM Customer WHERE Username = @ParamUsername AND Password = @ParamPwd", myConnection);
-            myCommand.Parameters.Add(paramUsername);
-            myCommand.Parameters.Add(paramPwd);
-
-            try
-            {
-                myReader = myCommand.ExecuteReader();
-                while (myReader.Read())
-                {
-                    selectedCustomer.CustomerID1 = (int)myReader["Column1"];
-                    selectedCustomer.UserName1 = myReader["Column2"].ToString();
-                }
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
-            try
-            {
-                myConnection.Close();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
-            return selectedCustomer;
+            loadLoginPage();
         }
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            //c = db_getCustomerDetails(txtLoginName.Text, txtLoginPwd.Text);
-            //if (c.UserName1 != "")
-            //{
-                setAllPanelsInvisible();
-                pnlViewRooms.Visible = true;
-            //}
-            //else
-            //{
-            //    lblLoginErr.Text = "Error logging in.";
-            //}
+            c = DBConnection.db_Login(txtLoginName.Text, txtLoginPwd.Text);
+            if (c.UserName1 != "")
+            {
+                customerRooms = DBConnection.db_GetRooms(c.CustomerID1);
+                loadViewPage();                
+            }
+            else
+            {
+                lblLoginErr.Text = "Error logging in.";
+            }
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            setAllPanelsInvisible();
-            pnlLogin.Visible = true;
+            loadLoginPage();
+            c = new Customer();
         }
 
-        public void setAllPanelsInvisible()
+        private void setAllPanelsInvisible()
         {
             foreach (Panel p in listPanels)
             {
@@ -115,59 +67,42 @@ namespace SafeHome
             }
         }
 
-        private void btnViewRooms_Click(object sender, EventArgs e)
-        {
-            setAllPanelsInvisible();
-            pnlViewRooms.Visible = true;
-        }
-
         private void btnAddRoom_Click(object sender, EventArgs e)
-        {
-            setAllPanelsInvisible();
-            pnlAddRoom.Visible = true;
-            comboAddSensor.DataSource = typeOfSensor;
+        {                
+            try
+            {
+                floor = int.Parse(txtFloor.Text);
+                loadAddPage();
+            }     
+            catch(Exception)
+            {
+                lblAddError.Text = "Please enter Floor no.";
+            }                            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Room r = new Room();
-            r.RoomName1 = txtRoomName.Text;
-            r.CustomerID1 = c.CustomerID1;
-            if (comboRoomN.SelectedText != "None")
-            {
-                r.RoomIDNorth1 = Room.getRoomByName(comboRoomN.SelectedText);
-                if (checkDoorN.Checked)
-                {
-                    r.DoorNorth1 = true;
-                }
+            if (Room.getRoomByName(txtRoomName.Text, customerRooms) != null) {
+                Room r = new Room(
+                txtRoomName.Text,
+                c.CustomerID1,
+                floor,
+                int.Parse(comboRoomN.SelectedValue.ToString()),
+                checkDoorN.Checked,
+                int.Parse(comboRoomE.SelectedValue.ToString()),
+                checkDoorE.Checked,
+                int.Parse(comboRoomS.SelectedValue.ToString()),
+                checkDoorS.Checked,
+                int.Parse(comboRoomW.SelectedValue.ToString()),
+                checkDoorW.Checked
+                );
+                DBConnection.db_AddRoom(r);
+                loadViewPage();
             }
-            if (comboRoomE.SelectedText != "None")
+            else
             {
-                r.RoomIDEast1 = Room.getRoomByName(comboRoomE.SelectedText);
-                if (checkDoorE.Checked)
-                {
-                    r.DoorEast1 = true;
-                }
+                lblRegisterError.Text = "Error adding room.";
             }
-            if (comboRoomS.SelectedText != "None")
-            {
-                r.RoomIDSouth1 = Room.getRoomByName(comboRoomS.SelectedText);
-                if (checkDoorS.Checked)
-                {
-                    r.DoorSouth1 = true;
-                }
-            }
-            if (comboRoomW.SelectedText != "None")
-            {
-                r.RoomIDWest1 = Room.getRoomByName(comboRoomW.SelectedText);
-                if (checkDoorW.Checked)
-                {
-                    r.DoorWest1 = true;
-                }
-            }
-            // INSERT INTO Room VALUES ( all values entered )
-            setAllPanelsInvisible();
-            pnlViewRooms.Visible = true;
         }
 
         private void btnAddSensor_Click(object sender, EventArgs e)
@@ -185,6 +120,64 @@ namespace SafeHome
         {
             Form1 f = new Form1();
             f.Show();
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            if(DBConnection.db_Register(txtRegisterName.Text, txtRegisterPwd.Text))
+            {
+                txtRegisterName.Text = "";
+                txtRegisterPwd.Text = "";
+                lblRegisterError.Text = "Successfully registered.";
+            }
+            else
+            {
+                lblRegisterError.Text = "Error during registration.";
+            }
+        }
+
+        public void loadLoginPage()
+        {
+            lblLoginErr.Text = "";
+            lblRegisterError.Text = "";
+            txtLoginName.Text = "";
+            txtLoginPwd.Text = "";
+            txtRegisterName.Text = "";
+            txtRegisterPwd.Text = "";
+            setAllPanelsInvisible();
+            pnlLogin.Visible = true;
+        }
+
+        public void loadViewPage()
+        {
+            listboxRooms.Items.Clear();
+            foreach (Room r in customerRooms)
+            {
+                listboxRooms.Items.Add(r.RoomName1);
+            }
+            lblAddError.Text = "";
+            txtFloor.Text = "";
+            setAllPanelsInvisible();
+            pnlViewRooms.Visible = true;
+        }
+
+        public void loadAddPage()
+        {
+            txtRoomName.Text = "";
+            checkDoorN.Checked = false;
+            checkDoorE.Checked = false;
+            checkDoorS.Checked = false;
+            checkDoorW.Checked = false;
+            // Add rooms to drop down lists            
+            setAllPanelsInvisible();
+            pnlAddRoom.Visible = true;            
+        }
+
+        private void btnViewRoom_Click(object sender, EventArgs e)
+        {
+            Room r = Room.getRoomByName(listboxRooms.SelectedItem.ToString(), customerRooms);
+            txtRoomName.Text = r.RoomName1;
+            loadAddPage();
         }
     }
 }

@@ -24,31 +24,27 @@ namespace SafeHome {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class SafeHomeDataSet : global::System.Data.DataSet {
         
-        private CustomerDataTable tableCustomer;
+        private PDC_CustomerDataTable tablePDC_Customer;
         
-        private HouseDataTable tableHouse;
+        private PDC_RoomDataTable tablePDC_Room;
         
-        private RoomDataTable tableRoom;
+        private PDC_SensorDataTable tablePDC_Sensor;
         
-        private SensorDataTable tableSensor;
+        private PDC_SensorTypeDataTable tablePDC_SensorType;
         
-        private SensorTypeDataTable tableSensorType;
+        private global::System.Data.DataRelation relationFK__PDC_Room__Custom__0E6E26BF;
         
-        private global::System.Data.DataRelation relationFK__House__CustomerI__4E88ABD4;
+        private global::System.Data.DataRelation relationFK__PDC_Room__RoomID__0F624AF8;
         
-        private global::System.Data.DataRelation relationFK__Room__HouseID__5165187F;
+        private global::System.Data.DataRelation relationFK__PDC_Room__RoomID__10566F31;
         
-        private global::System.Data.DataRelation relationFK__Room__RoomIDEast__534D60F1;
+        private global::System.Data.DataRelation relationFK__PDC_Room__RoomID__114A936A;
         
-        private global::System.Data.DataRelation relationFK__Room__RoomIDNort__52593CB8;
+        private global::System.Data.DataRelation relationFK__PDC_Room__RoomID__123EB7A3;
         
-        private global::System.Data.DataRelation relationFK__Room__RoomIDSout__5441852A;
+        private global::System.Data.DataRelation relationFK__PDC_Senso__RoomI__17F790F9;
         
-        private global::System.Data.DataRelation relationFK__Room__RoomIDWest__5535A963;
-        
-        private global::System.Data.DataRelation relationFK__Sensor__RoomID__5AEE82B9;
-        
-        private global::System.Data.DataRelation relationFK__Sensor__SensorTy__59FA5E80;
+        private global::System.Data.DataRelation relationFK__PDC_Senso__Senso__17036CC0;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -78,20 +74,17 @@ namespace SafeHome {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Customer"] != null)) {
-                    base.Tables.Add(new CustomerDataTable(ds.Tables["Customer"]));
+                if ((ds.Tables["PDC_Customer"] != null)) {
+                    base.Tables.Add(new PDC_CustomerDataTable(ds.Tables["PDC_Customer"]));
                 }
-                if ((ds.Tables["House"] != null)) {
-                    base.Tables.Add(new HouseDataTable(ds.Tables["House"]));
+                if ((ds.Tables["PDC_Room"] != null)) {
+                    base.Tables.Add(new PDC_RoomDataTable(ds.Tables["PDC_Room"]));
                 }
-                if ((ds.Tables["Room"] != null)) {
-                    base.Tables.Add(new RoomDataTable(ds.Tables["Room"]));
+                if ((ds.Tables["PDC_Sensor"] != null)) {
+                    base.Tables.Add(new PDC_SensorDataTable(ds.Tables["PDC_Sensor"]));
                 }
-                if ((ds.Tables["Sensor"] != null)) {
-                    base.Tables.Add(new SensorDataTable(ds.Tables["Sensor"]));
-                }
-                if ((ds.Tables["SensorType"] != null)) {
-                    base.Tables.Add(new SensorTypeDataTable(ds.Tables["SensorType"]));
+                if ((ds.Tables["PDC_SensorType"] != null)) {
+                    base.Tables.Add(new PDC_SensorTypeDataTable(ds.Tables["PDC_SensorType"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -115,9 +108,9 @@ namespace SafeHome {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public CustomerDataTable Customer {
+        public PDC_CustomerDataTable PDC_Customer {
             get {
-                return this.tableCustomer;
+                return this.tablePDC_Customer;
             }
         }
         
@@ -125,9 +118,9 @@ namespace SafeHome {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public HouseDataTable House {
+        public PDC_RoomDataTable PDC_Room {
             get {
-                return this.tableHouse;
+                return this.tablePDC_Room;
             }
         }
         
@@ -135,9 +128,9 @@ namespace SafeHome {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public RoomDataTable Room {
+        public PDC_SensorDataTable PDC_Sensor {
             get {
-                return this.tableRoom;
+                return this.tablePDC_Sensor;
             }
         }
         
@@ -145,19 +138,9 @@ namespace SafeHome {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public SensorDataTable Sensor {
+        public PDC_SensorTypeDataTable PDC_SensorType {
             get {
-                return this.tableSensor;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public SensorTypeDataTable SensorType {
-            get {
-                return this.tableSensorType;
+                return this.tablePDC_SensorType;
             }
         }
         
@@ -228,20 +211,17 @@ namespace SafeHome {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Customer"] != null)) {
-                    base.Tables.Add(new CustomerDataTable(ds.Tables["Customer"]));
+                if ((ds.Tables["PDC_Customer"] != null)) {
+                    base.Tables.Add(new PDC_CustomerDataTable(ds.Tables["PDC_Customer"]));
                 }
-                if ((ds.Tables["House"] != null)) {
-                    base.Tables.Add(new HouseDataTable(ds.Tables["House"]));
+                if ((ds.Tables["PDC_Room"] != null)) {
+                    base.Tables.Add(new PDC_RoomDataTable(ds.Tables["PDC_Room"]));
                 }
-                if ((ds.Tables["Room"] != null)) {
-                    base.Tables.Add(new RoomDataTable(ds.Tables["Room"]));
+                if ((ds.Tables["PDC_Sensor"] != null)) {
+                    base.Tables.Add(new PDC_SensorDataTable(ds.Tables["PDC_Sensor"]));
                 }
-                if ((ds.Tables["Sensor"] != null)) {
-                    base.Tables.Add(new SensorDataTable(ds.Tables["Sensor"]));
-                }
-                if ((ds.Tables["SensorType"] != null)) {
-                    base.Tables.Add(new SensorTypeDataTable(ds.Tables["SensorType"]));
+                if ((ds.Tables["PDC_SensorType"] != null)) {
+                    base.Tables.Add(new PDC_SensorTypeDataTable(ds.Tables["PDC_SensorType"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -276,44 +256,37 @@ namespace SafeHome {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableCustomer = ((CustomerDataTable)(base.Tables["Customer"]));
+            this.tablePDC_Customer = ((PDC_CustomerDataTable)(base.Tables["PDC_Customer"]));
             if ((initTable == true)) {
-                if ((this.tableCustomer != null)) {
-                    this.tableCustomer.InitVars();
+                if ((this.tablePDC_Customer != null)) {
+                    this.tablePDC_Customer.InitVars();
                 }
             }
-            this.tableHouse = ((HouseDataTable)(base.Tables["House"]));
+            this.tablePDC_Room = ((PDC_RoomDataTable)(base.Tables["PDC_Room"]));
             if ((initTable == true)) {
-                if ((this.tableHouse != null)) {
-                    this.tableHouse.InitVars();
+                if ((this.tablePDC_Room != null)) {
+                    this.tablePDC_Room.InitVars();
                 }
             }
-            this.tableRoom = ((RoomDataTable)(base.Tables["Room"]));
+            this.tablePDC_Sensor = ((PDC_SensorDataTable)(base.Tables["PDC_Sensor"]));
             if ((initTable == true)) {
-                if ((this.tableRoom != null)) {
-                    this.tableRoom.InitVars();
+                if ((this.tablePDC_Sensor != null)) {
+                    this.tablePDC_Sensor.InitVars();
                 }
             }
-            this.tableSensor = ((SensorDataTable)(base.Tables["Sensor"]));
+            this.tablePDC_SensorType = ((PDC_SensorTypeDataTable)(base.Tables["PDC_SensorType"]));
             if ((initTable == true)) {
-                if ((this.tableSensor != null)) {
-                    this.tableSensor.InitVars();
+                if ((this.tablePDC_SensorType != null)) {
+                    this.tablePDC_SensorType.InitVars();
                 }
             }
-            this.tableSensorType = ((SensorTypeDataTable)(base.Tables["SensorType"]));
-            if ((initTable == true)) {
-                if ((this.tableSensorType != null)) {
-                    this.tableSensorType.InitVars();
-                }
-            }
-            this.relationFK__House__CustomerI__4E88ABD4 = this.Relations["FK__House__CustomerI__4E88ABD4"];
-            this.relationFK__Room__HouseID__5165187F = this.Relations["FK__Room__HouseID__5165187F"];
-            this.relationFK__Room__RoomIDEast__534D60F1 = this.Relations["FK__Room__RoomIDEast__534D60F1"];
-            this.relationFK__Room__RoomIDNort__52593CB8 = this.Relations["FK__Room__RoomIDNort__52593CB8"];
-            this.relationFK__Room__RoomIDSout__5441852A = this.Relations["FK__Room__RoomIDSout__5441852A"];
-            this.relationFK__Room__RoomIDWest__5535A963 = this.Relations["FK__Room__RoomIDWest__5535A963"];
-            this.relationFK__Sensor__RoomID__5AEE82B9 = this.Relations["FK__Sensor__RoomID__5AEE82B9"];
-            this.relationFK__Sensor__SensorTy__59FA5E80 = this.Relations["FK__Sensor__SensorTy__59FA5E80"];
+            this.relationFK__PDC_Room__Custom__0E6E26BF = this.Relations["FK__PDC_Room__Custom__0E6E26BF"];
+            this.relationFK__PDC_Room__RoomID__0F624AF8 = this.Relations["FK__PDC_Room__RoomID__0F624AF8"];
+            this.relationFK__PDC_Room__RoomID__10566F31 = this.Relations["FK__PDC_Room__RoomID__10566F31"];
+            this.relationFK__PDC_Room__RoomID__114A936A = this.Relations["FK__PDC_Room__RoomID__114A936A"];
+            this.relationFK__PDC_Room__RoomID__123EB7A3 = this.Relations["FK__PDC_Room__RoomID__123EB7A3"];
+            this.relationFK__PDC_Senso__RoomI__17F790F9 = this.Relations["FK__PDC_Senso__RoomI__17F790F9"];
+            this.relationFK__PDC_Senso__Senso__17036CC0 = this.Relations["FK__PDC_Senso__Senso__17036CC0"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -324,77 +297,65 @@ namespace SafeHome {
             this.Namespace = "http://tempuri.org/SafeHomeDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableCustomer = new CustomerDataTable();
-            base.Tables.Add(this.tableCustomer);
-            this.tableHouse = new HouseDataTable();
-            base.Tables.Add(this.tableHouse);
-            this.tableRoom = new RoomDataTable();
-            base.Tables.Add(this.tableRoom);
-            this.tableSensor = new SensorDataTable();
-            base.Tables.Add(this.tableSensor);
-            this.tableSensorType = new SensorTypeDataTable();
-            base.Tables.Add(this.tableSensorType);
-            this.relationFK__House__CustomerI__4E88ABD4 = new global::System.Data.DataRelation("FK__House__CustomerI__4E88ABD4", new global::System.Data.DataColumn[] {
-                        this.tableCustomer.CustomerIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableHouse.CustomerIDColumn}, false);
-            this.Relations.Add(this.relationFK__House__CustomerI__4E88ABD4);
-            this.relationFK__Room__HouseID__5165187F = new global::System.Data.DataRelation("FK__Room__HouseID__5165187F", new global::System.Data.DataColumn[] {
-                        this.tableHouse.HouseIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableRoom.HouseIDColumn}, false);
-            this.Relations.Add(this.relationFK__Room__HouseID__5165187F);
-            this.relationFK__Room__RoomIDEast__534D60F1 = new global::System.Data.DataRelation("FK__Room__RoomIDEast__534D60F1", new global::System.Data.DataColumn[] {
-                        this.tableRoom.RoomIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableRoom.RoomIDEastColumn}, false);
-            this.Relations.Add(this.relationFK__Room__RoomIDEast__534D60F1);
-            this.relationFK__Room__RoomIDNort__52593CB8 = new global::System.Data.DataRelation("FK__Room__RoomIDNort__52593CB8", new global::System.Data.DataColumn[] {
-                        this.tableRoom.RoomIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableRoom.RoomIDNorthColumn}, false);
-            this.Relations.Add(this.relationFK__Room__RoomIDNort__52593CB8);
-            this.relationFK__Room__RoomIDSout__5441852A = new global::System.Data.DataRelation("FK__Room__RoomIDSout__5441852A", new global::System.Data.DataColumn[] {
-                        this.tableRoom.RoomIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableRoom.RoomIDSouthColumn}, false);
-            this.Relations.Add(this.relationFK__Room__RoomIDSout__5441852A);
-            this.relationFK__Room__RoomIDWest__5535A963 = new global::System.Data.DataRelation("FK__Room__RoomIDWest__5535A963", new global::System.Data.DataColumn[] {
-                        this.tableRoom.RoomIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableRoom.RoomIDWestColumn}, false);
-            this.Relations.Add(this.relationFK__Room__RoomIDWest__5535A963);
-            this.relationFK__Sensor__RoomID__5AEE82B9 = new global::System.Data.DataRelation("FK__Sensor__RoomID__5AEE82B9", new global::System.Data.DataColumn[] {
-                        this.tableRoom.RoomIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableSensor.RoomIDColumn}, false);
-            this.Relations.Add(this.relationFK__Sensor__RoomID__5AEE82B9);
-            this.relationFK__Sensor__SensorTy__59FA5E80 = new global::System.Data.DataRelation("FK__Sensor__SensorTy__59FA5E80", new global::System.Data.DataColumn[] {
-                        this.tableSensorType.SensorTypeIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableSensor.SensorTypeIDColumn}, false);
-            this.Relations.Add(this.relationFK__Sensor__SensorTy__59FA5E80);
+            this.tablePDC_Customer = new PDC_CustomerDataTable();
+            base.Tables.Add(this.tablePDC_Customer);
+            this.tablePDC_Room = new PDC_RoomDataTable();
+            base.Tables.Add(this.tablePDC_Room);
+            this.tablePDC_Sensor = new PDC_SensorDataTable();
+            base.Tables.Add(this.tablePDC_Sensor);
+            this.tablePDC_SensorType = new PDC_SensorTypeDataTable();
+            base.Tables.Add(this.tablePDC_SensorType);
+            this.relationFK__PDC_Room__Custom__0E6E26BF = new global::System.Data.DataRelation("FK__PDC_Room__Custom__0E6E26BF", new global::System.Data.DataColumn[] {
+                        this.tablePDC_Customer.CustomerIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePDC_Room.CustomerIDColumn}, false);
+            this.Relations.Add(this.relationFK__PDC_Room__Custom__0E6E26BF);
+            this.relationFK__PDC_Room__RoomID__0F624AF8 = new global::System.Data.DataRelation("FK__PDC_Room__RoomID__0F624AF8", new global::System.Data.DataColumn[] {
+                        this.tablePDC_Room.RoomIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePDC_Room.RoomIDNorthColumn}, false);
+            this.Relations.Add(this.relationFK__PDC_Room__RoomID__0F624AF8);
+            this.relationFK__PDC_Room__RoomID__10566F31 = new global::System.Data.DataRelation("FK__PDC_Room__RoomID__10566F31", new global::System.Data.DataColumn[] {
+                        this.tablePDC_Room.RoomIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePDC_Room.RoomIDEastColumn}, false);
+            this.Relations.Add(this.relationFK__PDC_Room__RoomID__10566F31);
+            this.relationFK__PDC_Room__RoomID__114A936A = new global::System.Data.DataRelation("FK__PDC_Room__RoomID__114A936A", new global::System.Data.DataColumn[] {
+                        this.tablePDC_Room.RoomIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePDC_Room.RoomIDSouthColumn}, false);
+            this.Relations.Add(this.relationFK__PDC_Room__RoomID__114A936A);
+            this.relationFK__PDC_Room__RoomID__123EB7A3 = new global::System.Data.DataRelation("FK__PDC_Room__RoomID__123EB7A3", new global::System.Data.DataColumn[] {
+                        this.tablePDC_Room.RoomIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePDC_Room.RoomIDWestColumn}, false);
+            this.Relations.Add(this.relationFK__PDC_Room__RoomID__123EB7A3);
+            this.relationFK__PDC_Senso__RoomI__17F790F9 = new global::System.Data.DataRelation("FK__PDC_Senso__RoomI__17F790F9", new global::System.Data.DataColumn[] {
+                        this.tablePDC_Room.RoomIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePDC_Sensor.RoomIDColumn}, false);
+            this.Relations.Add(this.relationFK__PDC_Senso__RoomI__17F790F9);
+            this.relationFK__PDC_Senso__Senso__17036CC0 = new global::System.Data.DataRelation("FK__PDC_Senso__Senso__17036CC0", new global::System.Data.DataColumn[] {
+                        this.tablePDC_SensorType.SensorTypeIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePDC_Sensor.SensorTypeIDColumn}, false);
+            this.Relations.Add(this.relationFK__PDC_Senso__Senso__17036CC0);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeCustomer() {
+        private bool ShouldSerializePDC_Customer() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeHouse() {
+        private bool ShouldSerializePDC_Room() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeRoom() {
+        private bool ShouldSerializePDC_Sensor() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeSensor() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeSensorType() {
+        private bool ShouldSerializePDC_SensorType() {
             return false;
         }
         
@@ -454,26 +415,23 @@ namespace SafeHome {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void CustomerRowChangeEventHandler(object sender, CustomerRowChangeEvent e);
+        public delegate void PDC_CustomerRowChangeEventHandler(object sender, PDC_CustomerRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void HouseRowChangeEventHandler(object sender, HouseRowChangeEvent e);
+        public delegate void PDC_RoomRowChangeEventHandler(object sender, PDC_RoomRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void RoomRowChangeEventHandler(object sender, RoomRowChangeEvent e);
+        public delegate void PDC_SensorRowChangeEventHandler(object sender, PDC_SensorRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void SensorRowChangeEventHandler(object sender, SensorRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void SensorTypeRowChangeEventHandler(object sender, SensorTypeRowChangeEvent e);
+        public delegate void PDC_SensorTypeRowChangeEventHandler(object sender, PDC_SensorTypeRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class CustomerDataTable : global::System.Data.TypedTableBase<CustomerRow> {
+        public partial class PDC_CustomerDataTable : global::System.Data.TypedTableBase<PDC_CustomerRow> {
             
             private global::System.Data.DataColumn columnCustomerID;
             
@@ -483,8 +441,8 @@ namespace SafeHome {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CustomerDataTable() {
-                this.TableName = "Customer";
+            public PDC_CustomerDataTable() {
+                this.TableName = "PDC_Customer";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -492,7 +450,7 @@ namespace SafeHome {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal CustomerDataTable(global::System.Data.DataTable table) {
+            internal PDC_CustomerDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -509,7 +467,7 @@ namespace SafeHome {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected CustomerDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected PDC_CustomerDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -549,54 +507,54 @@ namespace SafeHome {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CustomerRow this[int index] {
+            public PDC_CustomerRow this[int index] {
                 get {
-                    return ((CustomerRow)(this.Rows[index]));
+                    return ((PDC_CustomerRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event CustomerRowChangeEventHandler CustomerRowChanging;
+            public event PDC_CustomerRowChangeEventHandler PDC_CustomerRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event CustomerRowChangeEventHandler CustomerRowChanged;
+            public event PDC_CustomerRowChangeEventHandler PDC_CustomerRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event CustomerRowChangeEventHandler CustomerRowDeleting;
+            public event PDC_CustomerRowChangeEventHandler PDC_CustomerRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event CustomerRowChangeEventHandler CustomerRowDeleted;
+            public event PDC_CustomerRowChangeEventHandler PDC_CustomerRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddCustomerRow(CustomerRow row) {
+            public void AddPDC_CustomerRow(PDC_CustomerRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CustomerRow AddCustomerRow(int CustomerID, string Username, string Password) {
-                CustomerRow rowCustomerRow = ((CustomerRow)(this.NewRow()));
+            public PDC_CustomerRow AddPDC_CustomerRow(string Username, string Password) {
+                PDC_CustomerRow rowPDC_CustomerRow = ((PDC_CustomerRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        CustomerID,
+                        null,
                         Username,
                         Password};
-                rowCustomerRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowCustomerRow);
-                return rowCustomerRow;
+                rowPDC_CustomerRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowPDC_CustomerRow);
+                return rowPDC_CustomerRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CustomerRow FindByCustomerID(int CustomerID) {
-                return ((CustomerRow)(this.Rows.Find(new object[] {
+            public PDC_CustomerRow FindByCustomerID(int CustomerID) {
+                return ((PDC_CustomerRow)(this.Rows.Find(new object[] {
                             CustomerID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                CustomerDataTable cln = ((CustomerDataTable)(base.Clone()));
+                PDC_CustomerDataTable cln = ((PDC_CustomerDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -604,7 +562,7 @@ namespace SafeHome {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new CustomerDataTable();
+                return new PDC_CustomerDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -626,7 +584,11 @@ namespace SafeHome {
                 base.Columns.Add(this.columnPassword);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCustomerID}, true));
+                this.columnCustomerID.AutoIncrement = true;
+                this.columnCustomerID.AutoIncrementSeed = -1;
+                this.columnCustomerID.AutoIncrementStep = -1;
                 this.columnCustomerID.AllowDBNull = false;
+                this.columnCustomerID.ReadOnly = true;
                 this.columnCustomerID.Unique = true;
                 this.columnUsername.AllowDBNull = false;
                 this.columnUsername.MaxLength = 255;
@@ -636,28 +598,28 @@ namespace SafeHome {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CustomerRow NewCustomerRow() {
-                return ((CustomerRow)(this.NewRow()));
+            public PDC_CustomerRow NewPDC_CustomerRow() {
+                return ((PDC_CustomerRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new CustomerRow(builder);
+                return new PDC_CustomerRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(CustomerRow);
+                return typeof(PDC_CustomerRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.CustomerRowChanged != null)) {
-                    this.CustomerRowChanged(this, new CustomerRowChangeEvent(((CustomerRow)(e.Row)), e.Action));
+                if ((this.PDC_CustomerRowChanged != null)) {
+                    this.PDC_CustomerRowChanged(this, new PDC_CustomerRowChangeEvent(((PDC_CustomerRow)(e.Row)), e.Action));
                 }
             }
             
@@ -665,8 +627,8 @@ namespace SafeHome {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.CustomerRowChanging != null)) {
-                    this.CustomerRowChanging(this, new CustomerRowChangeEvent(((CustomerRow)(e.Row)), e.Action));
+                if ((this.PDC_CustomerRowChanging != null)) {
+                    this.PDC_CustomerRowChanging(this, new PDC_CustomerRowChangeEvent(((PDC_CustomerRow)(e.Row)), e.Action));
                 }
             }
             
@@ -674,8 +636,8 @@ namespace SafeHome {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.CustomerRowDeleted != null)) {
-                    this.CustomerRowDeleted(this, new CustomerRowChangeEvent(((CustomerRow)(e.Row)), e.Action));
+                if ((this.PDC_CustomerRowDeleted != null)) {
+                    this.PDC_CustomerRowDeleted(this, new PDC_CustomerRowChangeEvent(((PDC_CustomerRow)(e.Row)), e.Action));
                 }
             }
             
@@ -683,14 +645,14 @@ namespace SafeHome {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.CustomerRowDeleting != null)) {
-                    this.CustomerRowDeleting(this, new CustomerRowChangeEvent(((CustomerRow)(e.Row)), e.Action));
+                if ((this.PDC_CustomerRowDeleting != null)) {
+                    this.PDC_CustomerRowDeleting(this, new PDC_CustomerRowChangeEvent(((PDC_CustomerRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveCustomerRow(CustomerRow row) {
+            public void RemovePDC_CustomerRow(PDC_CustomerRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -717,7 +679,7 @@ namespace SafeHome {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "CustomerDataTable";
+                attribute2.FixedValue = "PDC_CustomerDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -763,302 +725,36 @@ namespace SafeHome {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class HouseDataTable : global::System.Data.TypedTableBase<HouseRow> {
-            
-            private global::System.Data.DataColumn columnHouseID;
-            
-            private global::System.Data.DataColumn columnCustomerID;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public HouseDataTable() {
-                this.TableName = "House";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal HouseDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected HouseDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn HouseIDColumn {
-                get {
-                    return this.columnHouseID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CustomerIDColumn {
-                get {
-                    return this.columnCustomerID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public HouseRow this[int index] {
-                get {
-                    return ((HouseRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event HouseRowChangeEventHandler HouseRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event HouseRowChangeEventHandler HouseRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event HouseRowChangeEventHandler HouseRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event HouseRowChangeEventHandler HouseRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddHouseRow(HouseRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public HouseRow AddHouseRow(int HouseID, CustomerRow parentCustomerRowByFK__House__CustomerI__4E88ABD4) {
-                HouseRow rowHouseRow = ((HouseRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        HouseID,
-                        null};
-                if ((parentCustomerRowByFK__House__CustomerI__4E88ABD4 != null)) {
-                    columnValuesArray[1] = parentCustomerRowByFK__House__CustomerI__4E88ABD4[0];
-                }
-                rowHouseRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowHouseRow);
-                return rowHouseRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public HouseRow FindByHouseID(int HouseID) {
-                return ((HouseRow)(this.Rows.Find(new object[] {
-                            HouseID})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                HouseDataTable cln = ((HouseDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new HouseDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnHouseID = base.Columns["HouseID"];
-                this.columnCustomerID = base.Columns["CustomerID"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnHouseID = new global::System.Data.DataColumn("HouseID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnHouseID);
-                this.columnCustomerID = new global::System.Data.DataColumn("CustomerID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCustomerID);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnHouseID}, true));
-                this.columnHouseID.AllowDBNull = false;
-                this.columnHouseID.Unique = true;
-                this.columnCustomerID.AllowDBNull = false;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public HouseRow NewHouseRow() {
-                return ((HouseRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new HouseRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(HouseRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.HouseRowChanged != null)) {
-                    this.HouseRowChanged(this, new HouseRowChangeEvent(((HouseRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.HouseRowChanging != null)) {
-                    this.HouseRowChanging(this, new HouseRowChangeEvent(((HouseRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.HouseRowDeleted != null)) {
-                    this.HouseRowDeleted(this, new HouseRowChangeEvent(((HouseRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.HouseRowDeleting != null)) {
-                    this.HouseRowDeleting(this, new HouseRowChangeEvent(((HouseRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveHouseRow(HouseRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                SafeHomeDataSet ds = new SafeHomeDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "HouseDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class RoomDataTable : global::System.Data.TypedTableBase<RoomRow> {
+        public partial class PDC_RoomDataTable : global::System.Data.TypedTableBase<PDC_RoomRow> {
             
             private global::System.Data.DataColumn columnRoomID;
             
             private global::System.Data.DataColumn columnRoomName;
             
-            private global::System.Data.DataColumn columnHouseID;
+            private global::System.Data.DataColumn columnCustomerID;
+            
+            private global::System.Data.DataColumn columnFloorNumber;
             
             private global::System.Data.DataColumn columnRoomIDNorth;
             
+            private global::System.Data.DataColumn columnDoorNorth;
+            
             private global::System.Data.DataColumn columnRoomIDEast;
+            
+            private global::System.Data.DataColumn columnDoorEast;
             
             private global::System.Data.DataColumn columnRoomIDSouth;
             
+            private global::System.Data.DataColumn columnDoorSouth;
+            
             private global::System.Data.DataColumn columnRoomIDWest;
+            
+            private global::System.Data.DataColumn columnDoorWest;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RoomDataTable() {
-                this.TableName = "Room";
+            public PDC_RoomDataTable() {
+                this.TableName = "PDC_Room";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1066,7 +762,7 @@ namespace SafeHome {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal RoomDataTable(global::System.Data.DataTable table) {
+            internal PDC_RoomDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1083,7 +779,7 @@ namespace SafeHome {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected RoomDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected PDC_RoomDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -1106,9 +802,17 @@ namespace SafeHome {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn HouseIDColumn {
+            public global::System.Data.DataColumn CustomerIDColumn {
                 get {
-                    return this.columnHouseID;
+                    return this.columnCustomerID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FloorNumberColumn {
+                get {
+                    return this.columnFloorNumber;
                 }
             }
             
@@ -1122,9 +826,25 @@ namespace SafeHome {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DoorNorthColumn {
+                get {
+                    return this.columnDoorNorth;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn RoomIDEastColumn {
                 get {
                     return this.columnRoomIDEast;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DoorEastColumn {
+                get {
+                    return this.columnDoorEast;
                 }
             }
             
@@ -1138,9 +858,25 @@ namespace SafeHome {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DoorSouthColumn {
+                get {
+                    return this.columnDoorSouth;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn RoomIDWestColumn {
                 get {
                     return this.columnRoomIDWest;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DoorWestColumn {
+                get {
+                    return this.columnDoorWest;
                 }
             }
             
@@ -1155,73 +891,78 @@ namespace SafeHome {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RoomRow this[int index] {
+            public PDC_RoomRow this[int index] {
                 get {
-                    return ((RoomRow)(this.Rows[index]));
+                    return ((PDC_RoomRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RoomRowChangeEventHandler RoomRowChanging;
+            public event PDC_RoomRowChangeEventHandler PDC_RoomRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RoomRowChangeEventHandler RoomRowChanged;
+            public event PDC_RoomRowChangeEventHandler PDC_RoomRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RoomRowChangeEventHandler RoomRowDeleting;
+            public event PDC_RoomRowChangeEventHandler PDC_RoomRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RoomRowChangeEventHandler RoomRowDeleted;
+            public event PDC_RoomRowChangeEventHandler PDC_RoomRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddRoomRow(RoomRow row) {
+            public void AddPDC_RoomRow(PDC_RoomRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RoomRow AddRoomRow(int RoomID, string RoomName, HouseRow parentHouseRowByFK__Room__HouseID__5165187F, RoomRow parentRoomRowByFK__Room__RoomIDNort__52593CB8, RoomRow parentRoomRowByFK__Room__RoomIDEast__534D60F1, RoomRow parentRoomRowByFK__Room__RoomIDSout__5441852A, RoomRow parentRoomRowByFK__Room__RoomIDWest__5535A963) {
-                RoomRow rowRoomRow = ((RoomRow)(this.NewRow()));
+            public PDC_RoomRow AddPDC_RoomRow(string RoomName, PDC_CustomerRow parentPDC_CustomerRowByFK__PDC_Room__Custom__0E6E26BF, int FloorNumber, PDC_RoomRow parentPDC_RoomRowByFK__PDC_Room__RoomID__0F624AF8, bool DoorNorth, PDC_RoomRow parentPDC_RoomRowByFK__PDC_Room__RoomID__10566F31, bool DoorEast, PDC_RoomRow parentPDC_RoomRowByFK__PDC_Room__RoomID__114A936A, bool DoorSouth, PDC_RoomRow parentPDC_RoomRowByFK__PDC_Room__RoomID__123EB7A3, bool DoorWest) {
+                PDC_RoomRow rowPDC_RoomRow = ((PDC_RoomRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        RoomID,
+                        null,
                         RoomName,
                         null,
+                        FloorNumber,
                         null,
+                        DoorNorth,
                         null,
+                        DoorEast,
                         null,
-                        null};
-                if ((parentHouseRowByFK__Room__HouseID__5165187F != null)) {
-                    columnValuesArray[2] = parentHouseRowByFK__Room__HouseID__5165187F[0];
+                        DoorSouth,
+                        null,
+                        DoorWest};
+                if ((parentPDC_CustomerRowByFK__PDC_Room__Custom__0E6E26BF != null)) {
+                    columnValuesArray[2] = parentPDC_CustomerRowByFK__PDC_Room__Custom__0E6E26BF[0];
                 }
-                if ((parentRoomRowByFK__Room__RoomIDNort__52593CB8 != null)) {
-                    columnValuesArray[3] = parentRoomRowByFK__Room__RoomIDNort__52593CB8[0];
+                if ((parentPDC_RoomRowByFK__PDC_Room__RoomID__0F624AF8 != null)) {
+                    columnValuesArray[4] = parentPDC_RoomRowByFK__PDC_Room__RoomID__0F624AF8[0];
                 }
-                if ((parentRoomRowByFK__Room__RoomIDEast__534D60F1 != null)) {
-                    columnValuesArray[4] = parentRoomRowByFK__Room__RoomIDEast__534D60F1[0];
+                if ((parentPDC_RoomRowByFK__PDC_Room__RoomID__10566F31 != null)) {
+                    columnValuesArray[6] = parentPDC_RoomRowByFK__PDC_Room__RoomID__10566F31[0];
                 }
-                if ((parentRoomRowByFK__Room__RoomIDSout__5441852A != null)) {
-                    columnValuesArray[5] = parentRoomRowByFK__Room__RoomIDSout__5441852A[0];
+                if ((parentPDC_RoomRowByFK__PDC_Room__RoomID__114A936A != null)) {
+                    columnValuesArray[8] = parentPDC_RoomRowByFK__PDC_Room__RoomID__114A936A[0];
                 }
-                if ((parentRoomRowByFK__Room__RoomIDWest__5535A963 != null)) {
-                    columnValuesArray[6] = parentRoomRowByFK__Room__RoomIDWest__5535A963[0];
+                if ((parentPDC_RoomRowByFK__PDC_Room__RoomID__123EB7A3 != null)) {
+                    columnValuesArray[10] = parentPDC_RoomRowByFK__PDC_Room__RoomID__123EB7A3[0];
                 }
-                rowRoomRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowRoomRow);
-                return rowRoomRow;
+                rowPDC_RoomRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowPDC_RoomRow);
+                return rowPDC_RoomRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RoomRow FindByRoomID(int RoomID) {
-                return ((RoomRow)(this.Rows.Find(new object[] {
+            public PDC_RoomRow FindByRoomID(int RoomID) {
+                return ((PDC_RoomRow)(this.Rows.Find(new object[] {
                             RoomID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                RoomDataTable cln = ((RoomDataTable)(base.Clone()));
+                PDC_RoomDataTable cln = ((PDC_RoomDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1229,7 +970,7 @@ namespace SafeHome {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new RoomDataTable();
+                return new PDC_RoomDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1237,11 +978,16 @@ namespace SafeHome {
             internal void InitVars() {
                 this.columnRoomID = base.Columns["RoomID"];
                 this.columnRoomName = base.Columns["RoomName"];
-                this.columnHouseID = base.Columns["HouseID"];
+                this.columnCustomerID = base.Columns["CustomerID"];
+                this.columnFloorNumber = base.Columns["FloorNumber"];
                 this.columnRoomIDNorth = base.Columns["RoomIDNorth"];
+                this.columnDoorNorth = base.Columns["DoorNorth"];
                 this.columnRoomIDEast = base.Columns["RoomIDEast"];
+                this.columnDoorEast = base.Columns["DoorEast"];
                 this.columnRoomIDSouth = base.Columns["RoomIDSouth"];
+                this.columnDoorSouth = base.Columns["DoorSouth"];
                 this.columnRoomIDWest = base.Columns["RoomIDWest"];
+                this.columnDoorWest = base.Columns["DoorWest"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1251,49 +997,63 @@ namespace SafeHome {
                 base.Columns.Add(this.columnRoomID);
                 this.columnRoomName = new global::System.Data.DataColumn("RoomName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRoomName);
-                this.columnHouseID = new global::System.Data.DataColumn("HouseID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnHouseID);
+                this.columnCustomerID = new global::System.Data.DataColumn("CustomerID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCustomerID);
+                this.columnFloorNumber = new global::System.Data.DataColumn("FloorNumber", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFloorNumber);
                 this.columnRoomIDNorth = new global::System.Data.DataColumn("RoomIDNorth", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRoomIDNorth);
+                this.columnDoorNorth = new global::System.Data.DataColumn("DoorNorth", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDoorNorth);
                 this.columnRoomIDEast = new global::System.Data.DataColumn("RoomIDEast", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRoomIDEast);
+                this.columnDoorEast = new global::System.Data.DataColumn("DoorEast", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDoorEast);
                 this.columnRoomIDSouth = new global::System.Data.DataColumn("RoomIDSouth", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRoomIDSouth);
+                this.columnDoorSouth = new global::System.Data.DataColumn("DoorSouth", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDoorSouth);
                 this.columnRoomIDWest = new global::System.Data.DataColumn("RoomIDWest", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRoomIDWest);
+                this.columnDoorWest = new global::System.Data.DataColumn("DoorWest", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDoorWest);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnRoomID}, true));
+                this.columnRoomID.AutoIncrement = true;
+                this.columnRoomID.AutoIncrementSeed = -1;
+                this.columnRoomID.AutoIncrementStep = -1;
                 this.columnRoomID.AllowDBNull = false;
+                this.columnRoomID.ReadOnly = true;
                 this.columnRoomID.Unique = true;
                 this.columnRoomName.AllowDBNull = false;
                 this.columnRoomName.MaxLength = 255;
-                this.columnHouseID.AllowDBNull = false;
+                this.columnCustomerID.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RoomRow NewRoomRow() {
-                return ((RoomRow)(this.NewRow()));
+            public PDC_RoomRow NewPDC_RoomRow() {
+                return ((PDC_RoomRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new RoomRow(builder);
+                return new PDC_RoomRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(RoomRow);
+                return typeof(PDC_RoomRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.RoomRowChanged != null)) {
-                    this.RoomRowChanged(this, new RoomRowChangeEvent(((RoomRow)(e.Row)), e.Action));
+                if ((this.PDC_RoomRowChanged != null)) {
+                    this.PDC_RoomRowChanged(this, new PDC_RoomRowChangeEvent(((PDC_RoomRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1301,8 +1061,8 @@ namespace SafeHome {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.RoomRowChanging != null)) {
-                    this.RoomRowChanging(this, new RoomRowChangeEvent(((RoomRow)(e.Row)), e.Action));
+                if ((this.PDC_RoomRowChanging != null)) {
+                    this.PDC_RoomRowChanging(this, new PDC_RoomRowChangeEvent(((PDC_RoomRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1310,8 +1070,8 @@ namespace SafeHome {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.RoomRowDeleted != null)) {
-                    this.RoomRowDeleted(this, new RoomRowChangeEvent(((RoomRow)(e.Row)), e.Action));
+                if ((this.PDC_RoomRowDeleted != null)) {
+                    this.PDC_RoomRowDeleted(this, new PDC_RoomRowChangeEvent(((PDC_RoomRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1319,14 +1079,14 @@ namespace SafeHome {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.RoomRowDeleting != null)) {
-                    this.RoomRowDeleting(this, new RoomRowChangeEvent(((RoomRow)(e.Row)), e.Action));
+                if ((this.PDC_RoomRowDeleting != null)) {
+                    this.PDC_RoomRowDeleting(this, new PDC_RoomRowChangeEvent(((PDC_RoomRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveRoomRow(RoomRow row) {
+            public void RemovePDC_RoomRow(PDC_RoomRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1353,7 +1113,7 @@ namespace SafeHome {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "RoomDataTable";
+                attribute2.FixedValue = "PDC_RoomDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1399,7 +1159,7 @@ namespace SafeHome {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class SensorDataTable : global::System.Data.TypedTableBase<SensorRow> {
+        public partial class PDC_SensorDataTable : global::System.Data.TypedTableBase<PDC_SensorRow> {
             
             private global::System.Data.DataColumn columnSensorID;
             
@@ -1407,12 +1167,10 @@ namespace SafeHome {
             
             private global::System.Data.DataColumn columnRoomID;
             
-            private global::System.Data.DataColumn columnLocationInRoom;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SensorDataTable() {
-                this.TableName = "Sensor";
+            public PDC_SensorDataTable() {
+                this.TableName = "PDC_Sensor";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1420,7 +1178,7 @@ namespace SafeHome {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SensorDataTable(global::System.Data.DataTable table) {
+            internal PDC_SensorDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1437,7 +1195,7 @@ namespace SafeHome {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected SensorDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected PDC_SensorDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -1468,14 +1226,6 @@ namespace SafeHome {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LocationInRoomColumn {
-                get {
-                    return this.columnLocationInRoom;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1485,61 +1235,60 @@ namespace SafeHome {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SensorRow this[int index] {
+            public PDC_SensorRow this[int index] {
                 get {
-                    return ((SensorRow)(this.Rows[index]));
+                    return ((PDC_SensorRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SensorRowChangeEventHandler SensorRowChanging;
+            public event PDC_SensorRowChangeEventHandler PDC_SensorRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SensorRowChangeEventHandler SensorRowChanged;
+            public event PDC_SensorRowChangeEventHandler PDC_SensorRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SensorRowChangeEventHandler SensorRowDeleting;
+            public event PDC_SensorRowChangeEventHandler PDC_SensorRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SensorRowChangeEventHandler SensorRowDeleted;
+            public event PDC_SensorRowChangeEventHandler PDC_SensorRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddSensorRow(SensorRow row) {
+            public void AddPDC_SensorRow(PDC_SensorRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SensorRow AddSensorRow(int SensorID, SensorTypeRow parentSensorTypeRowByFK__Sensor__SensorTy__59FA5E80, RoomRow parentRoomRowByFK__Sensor__RoomID__5AEE82B9, int LocationInRoom) {
-                SensorRow rowSensorRow = ((SensorRow)(this.NewRow()));
+            public PDC_SensorRow AddPDC_SensorRow(PDC_SensorTypeRow parentPDC_SensorTypeRowByFK__PDC_Senso__Senso__17036CC0, PDC_RoomRow parentPDC_RoomRowByFK__PDC_Senso__RoomI__17F790F9) {
+                PDC_SensorRow rowPDC_SensorRow = ((PDC_SensorRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        SensorID,
                         null,
                         null,
-                        LocationInRoom};
-                if ((parentSensorTypeRowByFK__Sensor__SensorTy__59FA5E80 != null)) {
-                    columnValuesArray[1] = parentSensorTypeRowByFK__Sensor__SensorTy__59FA5E80[0];
+                        null};
+                if ((parentPDC_SensorTypeRowByFK__PDC_Senso__Senso__17036CC0 != null)) {
+                    columnValuesArray[1] = parentPDC_SensorTypeRowByFK__PDC_Senso__Senso__17036CC0[0];
                 }
-                if ((parentRoomRowByFK__Sensor__RoomID__5AEE82B9 != null)) {
-                    columnValuesArray[2] = parentRoomRowByFK__Sensor__RoomID__5AEE82B9[0];
+                if ((parentPDC_RoomRowByFK__PDC_Senso__RoomI__17F790F9 != null)) {
+                    columnValuesArray[2] = parentPDC_RoomRowByFK__PDC_Senso__RoomI__17F790F9[0];
                 }
-                rowSensorRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowSensorRow);
-                return rowSensorRow;
+                rowPDC_SensorRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowPDC_SensorRow);
+                return rowPDC_SensorRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SensorRow FindBySensorID(int SensorID) {
-                return ((SensorRow)(this.Rows.Find(new object[] {
+            public PDC_SensorRow FindBySensorID(int SensorID) {
+                return ((PDC_SensorRow)(this.Rows.Find(new object[] {
                             SensorID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                SensorDataTable cln = ((SensorDataTable)(base.Clone()));
+                PDC_SensorDataTable cln = ((PDC_SensorDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1547,7 +1296,7 @@ namespace SafeHome {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new SensorDataTable();
+                return new PDC_SensorDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1556,7 +1305,6 @@ namespace SafeHome {
                 this.columnSensorID = base.Columns["SensorID"];
                 this.columnSensorTypeID = base.Columns["SensorTypeID"];
                 this.columnRoomID = base.Columns["RoomID"];
-                this.columnLocationInRoom = base.Columns["LocationInRoom"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1568,41 +1316,42 @@ namespace SafeHome {
                 base.Columns.Add(this.columnSensorTypeID);
                 this.columnRoomID = new global::System.Data.DataColumn("RoomID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRoomID);
-                this.columnLocationInRoom = new global::System.Data.DataColumn("LocationInRoom", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLocationInRoom);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnSensorID}, true));
+                this.columnSensorID.AutoIncrement = true;
+                this.columnSensorID.AutoIncrementSeed = -1;
+                this.columnSensorID.AutoIncrementStep = -1;
                 this.columnSensorID.AllowDBNull = false;
+                this.columnSensorID.ReadOnly = true;
                 this.columnSensorID.Unique = true;
                 this.columnSensorTypeID.AllowDBNull = false;
                 this.columnRoomID.AllowDBNull = false;
-                this.columnLocationInRoom.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SensorRow NewSensorRow() {
-                return ((SensorRow)(this.NewRow()));
+            public PDC_SensorRow NewPDC_SensorRow() {
+                return ((PDC_SensorRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new SensorRow(builder);
+                return new PDC_SensorRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(SensorRow);
+                return typeof(PDC_SensorRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.SensorRowChanged != null)) {
-                    this.SensorRowChanged(this, new SensorRowChangeEvent(((SensorRow)(e.Row)), e.Action));
+                if ((this.PDC_SensorRowChanged != null)) {
+                    this.PDC_SensorRowChanged(this, new PDC_SensorRowChangeEvent(((PDC_SensorRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1610,8 +1359,8 @@ namespace SafeHome {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.SensorRowChanging != null)) {
-                    this.SensorRowChanging(this, new SensorRowChangeEvent(((SensorRow)(e.Row)), e.Action));
+                if ((this.PDC_SensorRowChanging != null)) {
+                    this.PDC_SensorRowChanging(this, new PDC_SensorRowChangeEvent(((PDC_SensorRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1619,8 +1368,8 @@ namespace SafeHome {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.SensorRowDeleted != null)) {
-                    this.SensorRowDeleted(this, new SensorRowChangeEvent(((SensorRow)(e.Row)), e.Action));
+                if ((this.PDC_SensorRowDeleted != null)) {
+                    this.PDC_SensorRowDeleted(this, new PDC_SensorRowChangeEvent(((PDC_SensorRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1628,14 +1377,14 @@ namespace SafeHome {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.SensorRowDeleting != null)) {
-                    this.SensorRowDeleting(this, new SensorRowChangeEvent(((SensorRow)(e.Row)), e.Action));
+                if ((this.PDC_SensorRowDeleting != null)) {
+                    this.PDC_SensorRowDeleting(this, new PDC_SensorRowChangeEvent(((PDC_SensorRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveSensorRow(SensorRow row) {
+            public void RemovePDC_SensorRow(PDC_SensorRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1662,7 +1411,7 @@ namespace SafeHome {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "SensorDataTable";
+                attribute2.FixedValue = "PDC_SensorDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1708,7 +1457,7 @@ namespace SafeHome {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class SensorTypeDataTable : global::System.Data.TypedTableBase<SensorTypeRow> {
+        public partial class PDC_SensorTypeDataTable : global::System.Data.TypedTableBase<PDC_SensorTypeRow> {
             
             private global::System.Data.DataColumn columnSensorTypeID;
             
@@ -1716,8 +1465,8 @@ namespace SafeHome {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SensorTypeDataTable() {
-                this.TableName = "SensorType";
+            public PDC_SensorTypeDataTable() {
+                this.TableName = "PDC_SensorType";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1725,7 +1474,7 @@ namespace SafeHome {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SensorTypeDataTable(global::System.Data.DataTable table) {
+            internal PDC_SensorTypeDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1742,7 +1491,7 @@ namespace SafeHome {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected SensorTypeDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected PDC_SensorTypeDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -1774,53 +1523,53 @@ namespace SafeHome {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SensorTypeRow this[int index] {
+            public PDC_SensorTypeRow this[int index] {
                 get {
-                    return ((SensorTypeRow)(this.Rows[index]));
+                    return ((PDC_SensorTypeRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SensorTypeRowChangeEventHandler SensorTypeRowChanging;
+            public event PDC_SensorTypeRowChangeEventHandler PDC_SensorTypeRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SensorTypeRowChangeEventHandler SensorTypeRowChanged;
+            public event PDC_SensorTypeRowChangeEventHandler PDC_SensorTypeRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SensorTypeRowChangeEventHandler SensorTypeRowDeleting;
+            public event PDC_SensorTypeRowChangeEventHandler PDC_SensorTypeRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SensorTypeRowChangeEventHandler SensorTypeRowDeleted;
+            public event PDC_SensorTypeRowChangeEventHandler PDC_SensorTypeRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddSensorTypeRow(SensorTypeRow row) {
+            public void AddPDC_SensorTypeRow(PDC_SensorTypeRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SensorTypeRow AddSensorTypeRow(int SensorTypeID, string SensorName) {
-                SensorTypeRow rowSensorTypeRow = ((SensorTypeRow)(this.NewRow()));
+            public PDC_SensorTypeRow AddPDC_SensorTypeRow(string SensorName) {
+                PDC_SensorTypeRow rowPDC_SensorTypeRow = ((PDC_SensorTypeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        SensorTypeID,
+                        null,
                         SensorName};
-                rowSensorTypeRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowSensorTypeRow);
-                return rowSensorTypeRow;
+                rowPDC_SensorTypeRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowPDC_SensorTypeRow);
+                return rowPDC_SensorTypeRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SensorTypeRow FindBySensorTypeID(int SensorTypeID) {
-                return ((SensorTypeRow)(this.Rows.Find(new object[] {
+            public PDC_SensorTypeRow FindBySensorTypeID(int SensorTypeID) {
+                return ((PDC_SensorTypeRow)(this.Rows.Find(new object[] {
                             SensorTypeID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                SensorTypeDataTable cln = ((SensorTypeDataTable)(base.Clone()));
+                PDC_SensorTypeDataTable cln = ((PDC_SensorTypeDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1828,7 +1577,7 @@ namespace SafeHome {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new SensorTypeDataTable();
+                return new PDC_SensorTypeDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1847,7 +1596,11 @@ namespace SafeHome {
                 base.Columns.Add(this.columnSensorName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnSensorTypeID}, true));
+                this.columnSensorTypeID.AutoIncrement = true;
+                this.columnSensorTypeID.AutoIncrementSeed = -1;
+                this.columnSensorTypeID.AutoIncrementStep = -1;
                 this.columnSensorTypeID.AllowDBNull = false;
+                this.columnSensorTypeID.ReadOnly = true;
                 this.columnSensorTypeID.Unique = true;
                 this.columnSensorName.AllowDBNull = false;
                 this.columnSensorName.MaxLength = 255;
@@ -1855,28 +1608,28 @@ namespace SafeHome {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SensorTypeRow NewSensorTypeRow() {
-                return ((SensorTypeRow)(this.NewRow()));
+            public PDC_SensorTypeRow NewPDC_SensorTypeRow() {
+                return ((PDC_SensorTypeRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new SensorTypeRow(builder);
+                return new PDC_SensorTypeRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(SensorTypeRow);
+                return typeof(PDC_SensorTypeRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.SensorTypeRowChanged != null)) {
-                    this.SensorTypeRowChanged(this, new SensorTypeRowChangeEvent(((SensorTypeRow)(e.Row)), e.Action));
+                if ((this.PDC_SensorTypeRowChanged != null)) {
+                    this.PDC_SensorTypeRowChanged(this, new PDC_SensorTypeRowChangeEvent(((PDC_SensorTypeRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1884,8 +1637,8 @@ namespace SafeHome {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.SensorTypeRowChanging != null)) {
-                    this.SensorTypeRowChanging(this, new SensorTypeRowChangeEvent(((SensorTypeRow)(e.Row)), e.Action));
+                if ((this.PDC_SensorTypeRowChanging != null)) {
+                    this.PDC_SensorTypeRowChanging(this, new PDC_SensorTypeRowChangeEvent(((PDC_SensorTypeRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1893,8 +1646,8 @@ namespace SafeHome {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.SensorTypeRowDeleted != null)) {
-                    this.SensorTypeRowDeleted(this, new SensorTypeRowChangeEvent(((SensorTypeRow)(e.Row)), e.Action));
+                if ((this.PDC_SensorTypeRowDeleted != null)) {
+                    this.PDC_SensorTypeRowDeleted(this, new PDC_SensorTypeRowChangeEvent(((PDC_SensorTypeRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1902,14 +1655,14 @@ namespace SafeHome {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.SensorTypeRowDeleting != null)) {
-                    this.SensorTypeRowDeleting(this, new SensorTypeRowChangeEvent(((SensorTypeRow)(e.Row)), e.Action));
+                if ((this.PDC_SensorTypeRowDeleting != null)) {
+                    this.PDC_SensorTypeRowDeleting(this, new PDC_SensorTypeRowChangeEvent(((PDC_SensorTypeRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveSensorTypeRow(SensorTypeRow row) {
+            public void RemovePDC_SensorTypeRow(PDC_SensorTypeRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1936,7 +1689,7 @@ namespace SafeHome {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "SensorTypeDataTable";
+                attribute2.FixedValue = "PDC_SensorTypeDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1980,25 +1733,25 @@ namespace SafeHome {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class CustomerRow : global::System.Data.DataRow {
+        public partial class PDC_CustomerRow : global::System.Data.DataRow {
             
-            private CustomerDataTable tableCustomer;
+            private PDC_CustomerDataTable tablePDC_Customer;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal CustomerRow(global::System.Data.DataRowBuilder rb) : 
+            internal PDC_CustomerRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableCustomer = ((CustomerDataTable)(this.Table));
+                this.tablePDC_Customer = ((PDC_CustomerDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int CustomerID {
                 get {
-                    return ((int)(this[this.tableCustomer.CustomerIDColumn]));
+                    return ((int)(this[this.tablePDC_Customer.CustomerIDColumn]));
                 }
                 set {
-                    this[this.tableCustomer.CustomerIDColumn] = value;
+                    this[this.tablePDC_Customer.CustomerIDColumn] = value;
                 }
             }
             
@@ -2006,10 +1759,10 @@ namespace SafeHome {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Username {
                 get {
-                    return ((string)(this[this.tableCustomer.UsernameColumn]));
+                    return ((string)(this[this.tablePDC_Customer.UsernameColumn]));
                 }
                 set {
-                    this[this.tableCustomer.UsernameColumn] = value;
+                    this[this.tablePDC_Customer.UsernameColumn] = value;
                 }
             }
             
@@ -2017,21 +1770,21 @@ namespace SafeHome {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Password {
                 get {
-                    return ((string)(this[this.tableCustomer.PasswordColumn]));
+                    return ((string)(this[this.tablePDC_Customer.PasswordColumn]));
                 }
                 set {
-                    this[this.tableCustomer.PasswordColumn] = value;
+                    this[this.tablePDC_Customer.PasswordColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public HouseRow[] GetHouseRows() {
-                if ((this.Table.ChildRelations["FK__House__CustomerI__4E88ABD4"] == null)) {
-                    return new HouseRow[0];
+            public PDC_RoomRow[] GetPDC_RoomRows() {
+                if ((this.Table.ChildRelations["FK__PDC_Room__Custom__0E6E26BF"] == null)) {
+                    return new PDC_RoomRow[0];
                 }
                 else {
-                    return ((HouseRow[])(base.GetChildRows(this.Table.ChildRelations["FK__House__CustomerI__4E88ABD4"])));
+                    return ((PDC_RoomRow[])(base.GetChildRows(this.Table.ChildRelations["FK__PDC_Room__Custom__0E6E26BF"])));
                 }
             }
         }
@@ -2039,84 +1792,25 @@ namespace SafeHome {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class HouseRow : global::System.Data.DataRow {
+        public partial class PDC_RoomRow : global::System.Data.DataRow {
             
-            private HouseDataTable tableHouse;
+            private PDC_RoomDataTable tablePDC_Room;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal HouseRow(global::System.Data.DataRowBuilder rb) : 
+            internal PDC_RoomRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableHouse = ((HouseDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int HouseID {
-                get {
-                    return ((int)(this[this.tableHouse.HouseIDColumn]));
-                }
-                set {
-                    this[this.tableHouse.HouseIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int CustomerID {
-                get {
-                    return ((int)(this[this.tableHouse.CustomerIDColumn]));
-                }
-                set {
-                    this[this.tableHouse.CustomerIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CustomerRow CustomerRow {
-                get {
-                    return ((CustomerRow)(this.GetParentRow(this.Table.ParentRelations["FK__House__CustomerI__4E88ABD4"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__House__CustomerI__4E88ABD4"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RoomRow[] GetRoomRows() {
-                if ((this.Table.ChildRelations["FK__Room__HouseID__5165187F"] == null)) {
-                    return new RoomRow[0];
-                }
-                else {
-                    return ((RoomRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Room__HouseID__5165187F"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class RoomRow : global::System.Data.DataRow {
-            
-            private RoomDataTable tableRoom;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal RoomRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableRoom = ((RoomDataTable)(this.Table));
+                this.tablePDC_Room = ((PDC_RoomDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int RoomID {
                 get {
-                    return ((int)(this[this.tableRoom.RoomIDColumn]));
+                    return ((int)(this[this.tablePDC_Room.RoomIDColumn]));
                 }
                 set {
-                    this[this.tableRoom.RoomIDColumn] = value;
+                    this[this.tablePDC_Room.RoomIDColumn] = value;
                 }
             }
             
@@ -2124,21 +1818,37 @@ namespace SafeHome {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string RoomName {
                 get {
-                    return ((string)(this[this.tableRoom.RoomNameColumn]));
+                    return ((string)(this[this.tablePDC_Room.RoomNameColumn]));
                 }
                 set {
-                    this[this.tableRoom.RoomNameColumn] = value;
+                    this[this.tablePDC_Room.RoomNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int HouseID {
+            public int CustomerID {
                 get {
-                    return ((int)(this[this.tableRoom.HouseIDColumn]));
+                    return ((int)(this[this.tablePDC_Room.CustomerIDColumn]));
                 }
                 set {
-                    this[this.tableRoom.HouseIDColumn] = value;
+                    this[this.tablePDC_Room.CustomerIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int FloorNumber {
+                get {
+                    try {
+                        return ((int)(this[this.tablePDC_Room.FloorNumberColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FloorNumber\' in table \'PDC_Room\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePDC_Room.FloorNumberColumn] = value;
                 }
             }
             
@@ -2147,14 +1857,30 @@ namespace SafeHome {
             public int RoomIDNorth {
                 get {
                     try {
-                        return ((int)(this[this.tableRoom.RoomIDNorthColumn]));
+                        return ((int)(this[this.tablePDC_Room.RoomIDNorthColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'RoomIDNorth\' in table \'Room\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'RoomIDNorth\' in table \'PDC_Room\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRoom.RoomIDNorthColumn] = value;
+                    this[this.tablePDC_Room.RoomIDNorthColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool DoorNorth {
+                get {
+                    try {
+                        return ((bool)(this[this.tablePDC_Room.DoorNorthColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DoorNorth\' in table \'PDC_Room\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePDC_Room.DoorNorthColumn] = value;
                 }
             }
             
@@ -2163,14 +1889,30 @@ namespace SafeHome {
             public int RoomIDEast {
                 get {
                     try {
-                        return ((int)(this[this.tableRoom.RoomIDEastColumn]));
+                        return ((int)(this[this.tablePDC_Room.RoomIDEastColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'RoomIDEast\' in table \'Room\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'RoomIDEast\' in table \'PDC_Room\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRoom.RoomIDEastColumn] = value;
+                    this[this.tablePDC_Room.RoomIDEastColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool DoorEast {
+                get {
+                    try {
+                        return ((bool)(this[this.tablePDC_Room.DoorEastColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DoorEast\' in table \'PDC_Room\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePDC_Room.DoorEastColumn] = value;
                 }
             }
             
@@ -2179,14 +1921,30 @@ namespace SafeHome {
             public int RoomIDSouth {
                 get {
                     try {
-                        return ((int)(this[this.tableRoom.RoomIDSouthColumn]));
+                        return ((int)(this[this.tablePDC_Room.RoomIDSouthColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'RoomIDSouth\' in table \'Room\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'RoomIDSouth\' in table \'PDC_Room\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRoom.RoomIDSouthColumn] = value;
+                    this[this.tablePDC_Room.RoomIDSouthColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool DoorSouth {
+                get {
+                    try {
+                        return ((bool)(this[this.tablePDC_Room.DoorSouthColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DoorSouth\' in table \'PDC_Room\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePDC_Room.DoorSouthColumn] = value;
                 }
             }
             
@@ -2195,172 +1953,248 @@ namespace SafeHome {
             public int RoomIDWest {
                 get {
                     try {
-                        return ((int)(this[this.tableRoom.RoomIDWestColumn]));
+                        return ((int)(this[this.tablePDC_Room.RoomIDWestColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'RoomIDWest\' in table \'Room\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'RoomIDWest\' in table \'PDC_Room\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRoom.RoomIDWestColumn] = value;
+                    this[this.tablePDC_Room.RoomIDWestColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public HouseRow HouseRow {
+            public bool DoorWest {
                 get {
-                    return ((HouseRow)(this.GetParentRow(this.Table.ParentRelations["FK__Room__HouseID__5165187F"])));
+                    try {
+                        return ((bool)(this[this.tablePDC_Room.DoorWestColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DoorWest\' in table \'PDC_Room\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Room__HouseID__5165187F"]);
+                    this[this.tablePDC_Room.DoorWestColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RoomRow RoomRowParentByFK__Room__RoomIDEast__534D60F1 {
+            public PDC_CustomerRow PDC_CustomerRow {
                 get {
-                    return ((RoomRow)(this.GetParentRow(this.Table.ParentRelations["FK__Room__RoomIDEast__534D60F1"])));
+                    return ((PDC_CustomerRow)(this.GetParentRow(this.Table.ParentRelations["FK__PDC_Room__Custom__0E6E26BF"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Room__RoomIDEast__534D60F1"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__PDC_Room__Custom__0E6E26BF"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RoomRow RoomRowParentByFK__Room__RoomIDNort__52593CB8 {
+            public PDC_RoomRow PDC_RoomRowParentByFK__PDC_Room__RoomID__0F624AF8 {
                 get {
-                    return ((RoomRow)(this.GetParentRow(this.Table.ParentRelations["FK__Room__RoomIDNort__52593CB8"])));
+                    return ((PDC_RoomRow)(this.GetParentRow(this.Table.ParentRelations["FK__PDC_Room__RoomID__0F624AF8"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Room__RoomIDNort__52593CB8"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__PDC_Room__RoomID__0F624AF8"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RoomRow RoomRowParentByFK__Room__RoomIDSout__5441852A {
+            public PDC_RoomRow PDC_RoomRowParentByFK__PDC_Room__RoomID__10566F31 {
                 get {
-                    return ((RoomRow)(this.GetParentRow(this.Table.ParentRelations["FK__Room__RoomIDSout__5441852A"])));
+                    return ((PDC_RoomRow)(this.GetParentRow(this.Table.ParentRelations["FK__PDC_Room__RoomID__10566F31"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Room__RoomIDSout__5441852A"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__PDC_Room__RoomID__10566F31"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RoomRow RoomRowParentByFK__Room__RoomIDWest__5535A963 {
+            public PDC_RoomRow PDC_RoomRowParentByFK__PDC_Room__RoomID__114A936A {
                 get {
-                    return ((RoomRow)(this.GetParentRow(this.Table.ParentRelations["FK__Room__RoomIDWest__5535A963"])));
+                    return ((PDC_RoomRow)(this.GetParentRow(this.Table.ParentRelations["FK__PDC_Room__RoomID__114A936A"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Room__RoomIDWest__5535A963"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__PDC_Room__RoomID__114A936A"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PDC_RoomRow PDC_RoomRowParentByFK__PDC_Room__RoomID__123EB7A3 {
+                get {
+                    return ((PDC_RoomRow)(this.GetParentRow(this.Table.ParentRelations["FK__PDC_Room__RoomID__123EB7A3"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__PDC_Room__RoomID__123EB7A3"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFloorNumberNull() {
+                return this.IsNull(this.tablePDC_Room.FloorNumberColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFloorNumberNull() {
+                this[this.tablePDC_Room.FloorNumberColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsRoomIDNorthNull() {
-                return this.IsNull(this.tableRoom.RoomIDNorthColumn);
+                return this.IsNull(this.tablePDC_Room.RoomIDNorthColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetRoomIDNorthNull() {
-                this[this.tableRoom.RoomIDNorthColumn] = global::System.Convert.DBNull;
+                this[this.tablePDC_Room.RoomIDNorthColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDoorNorthNull() {
+                return this.IsNull(this.tablePDC_Room.DoorNorthColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDoorNorthNull() {
+                this[this.tablePDC_Room.DoorNorthColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsRoomIDEastNull() {
-                return this.IsNull(this.tableRoom.RoomIDEastColumn);
+                return this.IsNull(this.tablePDC_Room.RoomIDEastColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetRoomIDEastNull() {
-                this[this.tableRoom.RoomIDEastColumn] = global::System.Convert.DBNull;
+                this[this.tablePDC_Room.RoomIDEastColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDoorEastNull() {
+                return this.IsNull(this.tablePDC_Room.DoorEastColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDoorEastNull() {
+                this[this.tablePDC_Room.DoorEastColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsRoomIDSouthNull() {
-                return this.IsNull(this.tableRoom.RoomIDSouthColumn);
+                return this.IsNull(this.tablePDC_Room.RoomIDSouthColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetRoomIDSouthNull() {
-                this[this.tableRoom.RoomIDSouthColumn] = global::System.Convert.DBNull;
+                this[this.tablePDC_Room.RoomIDSouthColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDoorSouthNull() {
+                return this.IsNull(this.tablePDC_Room.DoorSouthColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDoorSouthNull() {
+                this[this.tablePDC_Room.DoorSouthColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsRoomIDWestNull() {
-                return this.IsNull(this.tableRoom.RoomIDWestColumn);
+                return this.IsNull(this.tablePDC_Room.RoomIDWestColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetRoomIDWestNull() {
-                this[this.tableRoom.RoomIDWestColumn] = global::System.Convert.DBNull;
+                this[this.tablePDC_Room.RoomIDWestColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RoomRow[] GetRoomRowsByFK__Room__RoomIDEast__534D60F1() {
-                if ((this.Table.ChildRelations["FK__Room__RoomIDEast__534D60F1"] == null)) {
-                    return new RoomRow[0];
-                }
-                else {
-                    return ((RoomRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Room__RoomIDEast__534D60F1"])));
-                }
+            public bool IsDoorWestNull() {
+                return this.IsNull(this.tablePDC_Room.DoorWestColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RoomRow[] GetRoomRowsByFK__Room__RoomIDNort__52593CB8() {
-                if ((this.Table.ChildRelations["FK__Room__RoomIDNort__52593CB8"] == null)) {
-                    return new RoomRow[0];
-                }
-                else {
-                    return ((RoomRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Room__RoomIDNort__52593CB8"])));
-                }
+            public void SetDoorWestNull() {
+                this[this.tablePDC_Room.DoorWestColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RoomRow[] GetRoomRowsByFK__Room__RoomIDSout__5441852A() {
-                if ((this.Table.ChildRelations["FK__Room__RoomIDSout__5441852A"] == null)) {
-                    return new RoomRow[0];
+            public PDC_RoomRow[] GetPDC_RoomRowsByFK__PDC_Room__RoomID__0F624AF8() {
+                if ((this.Table.ChildRelations["FK__PDC_Room__RoomID__0F624AF8"] == null)) {
+                    return new PDC_RoomRow[0];
                 }
                 else {
-                    return ((RoomRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Room__RoomIDSout__5441852A"])));
+                    return ((PDC_RoomRow[])(base.GetChildRows(this.Table.ChildRelations["FK__PDC_Room__RoomID__0F624AF8"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RoomRow[] GetRoomRowsByFK__Room__RoomIDWest__5535A963() {
-                if ((this.Table.ChildRelations["FK__Room__RoomIDWest__5535A963"] == null)) {
-                    return new RoomRow[0];
+            public PDC_RoomRow[] GetPDC_RoomRowsByFK__PDC_Room__RoomID__10566F31() {
+                if ((this.Table.ChildRelations["FK__PDC_Room__RoomID__10566F31"] == null)) {
+                    return new PDC_RoomRow[0];
                 }
                 else {
-                    return ((RoomRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Room__RoomIDWest__5535A963"])));
+                    return ((PDC_RoomRow[])(base.GetChildRows(this.Table.ChildRelations["FK__PDC_Room__RoomID__10566F31"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SensorRow[] GetSensorRows() {
-                if ((this.Table.ChildRelations["FK__Sensor__RoomID__5AEE82B9"] == null)) {
-                    return new SensorRow[0];
+            public PDC_RoomRow[] GetPDC_RoomRowsByFK__PDC_Room__RoomID__114A936A() {
+                if ((this.Table.ChildRelations["FK__PDC_Room__RoomID__114A936A"] == null)) {
+                    return new PDC_RoomRow[0];
                 }
                 else {
-                    return ((SensorRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Sensor__RoomID__5AEE82B9"])));
+                    return ((PDC_RoomRow[])(base.GetChildRows(this.Table.ChildRelations["FK__PDC_Room__RoomID__114A936A"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PDC_RoomRow[] GetPDC_RoomRowsByFK__PDC_Room__RoomID__123EB7A3() {
+                if ((this.Table.ChildRelations["FK__PDC_Room__RoomID__123EB7A3"] == null)) {
+                    return new PDC_RoomRow[0];
+                }
+                else {
+                    return ((PDC_RoomRow[])(base.GetChildRows(this.Table.ChildRelations["FK__PDC_Room__RoomID__123EB7A3"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PDC_SensorRow[] GetPDC_SensorRows() {
+                if ((this.Table.ChildRelations["FK__PDC_Senso__RoomI__17F790F9"] == null)) {
+                    return new PDC_SensorRow[0];
+                }
+                else {
+                    return ((PDC_SensorRow[])(base.GetChildRows(this.Table.ChildRelations["FK__PDC_Senso__RoomI__17F790F9"])));
                 }
             }
         }
@@ -2368,25 +2202,25 @@ namespace SafeHome {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class SensorRow : global::System.Data.DataRow {
+        public partial class PDC_SensorRow : global::System.Data.DataRow {
             
-            private SensorDataTable tableSensor;
+            private PDC_SensorDataTable tablePDC_Sensor;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SensorRow(global::System.Data.DataRowBuilder rb) : 
+            internal PDC_SensorRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableSensor = ((SensorDataTable)(this.Table));
+                this.tablePDC_Sensor = ((PDC_SensorDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int SensorID {
                 get {
-                    return ((int)(this[this.tableSensor.SensorIDColumn]));
+                    return ((int)(this[this.tablePDC_Sensor.SensorIDColumn]));
                 }
                 set {
-                    this[this.tableSensor.SensorIDColumn] = value;
+                    this[this.tablePDC_Sensor.SensorIDColumn] = value;
                 }
             }
             
@@ -2394,10 +2228,10 @@ namespace SafeHome {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int SensorTypeID {
                 get {
-                    return ((int)(this[this.tableSensor.SensorTypeIDColumn]));
+                    return ((int)(this[this.tablePDC_Sensor.SensorTypeIDColumn]));
                 }
                 set {
-                    this[this.tableSensor.SensorTypeIDColumn] = value;
+                    this[this.tablePDC_Sensor.SensorTypeIDColumn] = value;
                 }
             }
             
@@ -2405,43 +2239,32 @@ namespace SafeHome {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int RoomID {
                 get {
-                    return ((int)(this[this.tableSensor.RoomIDColumn]));
+                    return ((int)(this[this.tablePDC_Sensor.RoomIDColumn]));
                 }
                 set {
-                    this[this.tableSensor.RoomIDColumn] = value;
+                    this[this.tablePDC_Sensor.RoomIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int LocationInRoom {
+            public PDC_RoomRow PDC_RoomRow {
                 get {
-                    return ((int)(this[this.tableSensor.LocationInRoomColumn]));
+                    return ((PDC_RoomRow)(this.GetParentRow(this.Table.ParentRelations["FK__PDC_Senso__RoomI__17F790F9"])));
                 }
                 set {
-                    this[this.tableSensor.LocationInRoomColumn] = value;
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__PDC_Senso__RoomI__17F790F9"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RoomRow RoomRow {
+            public PDC_SensorTypeRow PDC_SensorTypeRow {
                 get {
-                    return ((RoomRow)(this.GetParentRow(this.Table.ParentRelations["FK__Sensor__RoomID__5AEE82B9"])));
+                    return ((PDC_SensorTypeRow)(this.GetParentRow(this.Table.ParentRelations["FK__PDC_Senso__Senso__17036CC0"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Sensor__RoomID__5AEE82B9"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SensorTypeRow SensorTypeRow {
-                get {
-                    return ((SensorTypeRow)(this.GetParentRow(this.Table.ParentRelations["FK__Sensor__SensorTy__59FA5E80"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Sensor__SensorTy__59FA5E80"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__PDC_Senso__Senso__17036CC0"]);
                 }
             }
         }
@@ -2449,25 +2272,25 @@ namespace SafeHome {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class SensorTypeRow : global::System.Data.DataRow {
+        public partial class PDC_SensorTypeRow : global::System.Data.DataRow {
             
-            private SensorTypeDataTable tableSensorType;
+            private PDC_SensorTypeDataTable tablePDC_SensorType;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SensorTypeRow(global::System.Data.DataRowBuilder rb) : 
+            internal PDC_SensorTypeRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableSensorType = ((SensorTypeDataTable)(this.Table));
+                this.tablePDC_SensorType = ((PDC_SensorTypeDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int SensorTypeID {
                 get {
-                    return ((int)(this[this.tableSensorType.SensorTypeIDColumn]));
+                    return ((int)(this[this.tablePDC_SensorType.SensorTypeIDColumn]));
                 }
                 set {
-                    this[this.tableSensorType.SensorTypeIDColumn] = value;
+                    this[this.tablePDC_SensorType.SensorTypeIDColumn] = value;
                 }
             }
             
@@ -2475,21 +2298,21 @@ namespace SafeHome {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string SensorName {
                 get {
-                    return ((string)(this[this.tableSensorType.SensorNameColumn]));
+                    return ((string)(this[this.tablePDC_SensorType.SensorNameColumn]));
                 }
                 set {
-                    this[this.tableSensorType.SensorNameColumn] = value;
+                    this[this.tablePDC_SensorType.SensorNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SensorRow[] GetSensorRows() {
-                if ((this.Table.ChildRelations["FK__Sensor__SensorTy__59FA5E80"] == null)) {
-                    return new SensorRow[0];
+            public PDC_SensorRow[] GetPDC_SensorRows() {
+                if ((this.Table.ChildRelations["FK__PDC_Senso__Senso__17036CC0"] == null)) {
+                    return new PDC_SensorRow[0];
                 }
                 else {
-                    return ((SensorRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Sensor__SensorTy__59FA5E80"])));
+                    return ((PDC_SensorRow[])(base.GetChildRows(this.Table.ChildRelations["FK__PDC_Senso__Senso__17036CC0"])));
                 }
             }
         }
@@ -2498,22 +2321,22 @@ namespace SafeHome {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class CustomerRowChangeEvent : global::System.EventArgs {
+        public class PDC_CustomerRowChangeEvent : global::System.EventArgs {
             
-            private CustomerRow eventRow;
+            private PDC_CustomerRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CustomerRowChangeEvent(CustomerRow row, global::System.Data.DataRowAction action) {
+            public PDC_CustomerRowChangeEvent(PDC_CustomerRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CustomerRow Row {
+            public PDC_CustomerRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -2532,22 +2355,22 @@ namespace SafeHome {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class HouseRowChangeEvent : global::System.EventArgs {
+        public class PDC_RoomRowChangeEvent : global::System.EventArgs {
             
-            private HouseRow eventRow;
+            private PDC_RoomRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public HouseRowChangeEvent(HouseRow row, global::System.Data.DataRowAction action) {
+            public PDC_RoomRowChangeEvent(PDC_RoomRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public HouseRow Row {
+            public PDC_RoomRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -2566,22 +2389,22 @@ namespace SafeHome {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class RoomRowChangeEvent : global::System.EventArgs {
+        public class PDC_SensorRowChangeEvent : global::System.EventArgs {
             
-            private RoomRow eventRow;
+            private PDC_SensorRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RoomRowChangeEvent(RoomRow row, global::System.Data.DataRowAction action) {
+            public PDC_SensorRowChangeEvent(PDC_SensorRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RoomRow Row {
+            public PDC_SensorRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -2600,56 +2423,22 @@ namespace SafeHome {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class SensorRowChangeEvent : global::System.EventArgs {
+        public class PDC_SensorTypeRowChangeEvent : global::System.EventArgs {
             
-            private SensorRow eventRow;
+            private PDC_SensorTypeRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SensorRowChangeEvent(SensorRow row, global::System.Data.DataRowAction action) {
+            public PDC_SensorTypeRowChangeEvent(PDC_SensorTypeRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SensorRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class SensorTypeRowChangeEvent : global::System.EventArgs {
-            
-            private SensorTypeRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SensorTypeRowChangeEvent(SensorTypeRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SensorTypeRow Row {
+            public PDC_SensorTypeRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -2677,7 +2466,7 @@ namespace SafeHome.SafeHomeDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class CustomerTableAdapter : global::System.ComponentModel.Component {
+    public partial class PDC_CustomerTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -2691,7 +2480,7 @@ namespace SafeHome.SafeHomeDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public CustomerTableAdapter() {
+        public PDC_CustomerTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -2788,39 +2577,38 @@ namespace SafeHome.SafeHomeDataSetTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Customer";
+            tableMapping.DataSetTable = "PDC_Customer";
             tableMapping.ColumnMappings.Add("CustomerID", "CustomerID");
             tableMapping.ColumnMappings.Add("Username", "Username");
             tableMapping.ColumnMappings.Add("Password", "Password");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Customer] WHERE (([CustomerID] = @Original_CustomerID) AND ([U" +
-                "sername] = @Original_Username) AND ([Password] = @Original_Password))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[PDC_Customer] WHERE (([CustomerID] = @Original_CustomerID) AND" +
+                " ([Username] = @Original_Username) AND ([Password] = @Original_Password))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Username", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Username", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Password", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Customer] ([CustomerID], [Username], [Password]) VALUES (@Cust" +
-                "omerID, @Username, @Password);\r\nSELECT CustomerID, Username, Password FROM Custo" +
-                "mer WHERE (CustomerID = @CustomerID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[PDC_Customer] ([Username], [Password]) VALUES (@Username, @Pas" +
+                "sword);\r\nSELECT CustomerID, Username, Password FROM PDC_Customer WHERE (Customer" +
+                "ID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Username", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Customer] SET [CustomerID] = @CustomerID, [Username] = @Username, [Password] = @Password WHERE (([CustomerID] = @Original_CustomerID) AND ([Username] = @Original_Username) AND ([Password] = @Original_Password));
-SELECT CustomerID, Username, Password FROM Customer WHERE (CustomerID = @CustomerID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[PDC_Customer] SET [Username] = @Username, [Password] = @Password WHERE (([CustomerID] = @Original_CustomerID) AND ([Username] = @Original_Username) AND ([Password] = @Original_Password));
+SELECT CustomerID, Username, Password FROM PDC_Customer WHERE (CustomerID = @CustomerID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Username", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Username", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Username", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Password", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2836,7 +2624,7 @@ SELECT CustomerID, Username, Password FROM Customer WHERE (CustomerID = @Custome
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT CustomerID, Username, Password FROM dbo.Customer";
+            this._commandCollection[0].CommandText = "SELECT CustomerID, Username, Password FROM dbo.PDC_Customer";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2844,7 +2632,7 @@ SELECT CustomerID, Username, Password FROM Customer WHERE (CustomerID = @Custome
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SafeHomeDataSet.CustomerDataTable dataTable) {
+        public virtual int Fill(SafeHomeDataSet.PDC_CustomerDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -2857,9 +2645,9 @@ SELECT CustomerID, Username, Password FROM Customer WHERE (CustomerID = @Custome
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SafeHomeDataSet.CustomerDataTable GetData() {
+        public virtual SafeHomeDataSet.PDC_CustomerDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            SafeHomeDataSet.CustomerDataTable dataTable = new SafeHomeDataSet.CustomerDataTable();
+            SafeHomeDataSet.PDC_CustomerDataTable dataTable = new SafeHomeDataSet.PDC_CustomerDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -2867,7 +2655,7 @@ SELECT CustomerID, Username, Password FROM Customer WHERE (CustomerID = @Custome
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SafeHomeDataSet.CustomerDataTable dataTable) {
+        public virtual int Update(SafeHomeDataSet.PDC_CustomerDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -2875,7 +2663,7 @@ SELECT CustomerID, Username, Password FROM Customer WHERE (CustomerID = @Custome
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(SafeHomeDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Customer");
+            return this.Adapter.Update(dataSet, "PDC_Customer");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2931,19 +2719,18 @@ SELECT CustomerID, Username, Password FROM Customer WHERE (CustomerID = @Custome
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int CustomerID, string Username, string Password) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(CustomerID));
+        public virtual int Insert(string Username, string Password) {
             if ((Username == null)) {
                 throw new global::System.ArgumentNullException("Username");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Username));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Username));
             }
             if ((Password == null)) {
                 throw new global::System.ArgumentNullException("Password");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Password));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Password));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2965,33 +2752,33 @@ SELECT CustomerID, Username, Password FROM Customer WHERE (CustomerID = @Custome
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int CustomerID, string Username, string Password, int Original_CustomerID, string Original_Username, string Original_Password) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(CustomerID));
+        public virtual int Update(string Username, string Password, int Original_CustomerID, string Original_Username, string Original_Password, int CustomerID) {
             if ((Username == null)) {
                 throw new global::System.ArgumentNullException("Username");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Username));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Username));
             }
             if ((Password == null)) {
                 throw new global::System.ArgumentNullException("Password");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Password));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Password));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_CustomerID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_CustomerID));
             if ((Original_Username == null)) {
                 throw new global::System.ArgumentNullException("Original_Username");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_Username));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_Username));
             }
             if ((Original_Password == null)) {
                 throw new global::System.ArgumentNullException("Original_Password");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_Password));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_Password));
             }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(CustomerID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3013,7 +2800,7 @@ SELECT CustomerID, Username, Password FROM Customer WHERE (CustomerID = @Custome
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string Username, string Password, int Original_CustomerID, string Original_Username, string Original_Password) {
-            return this.Update(Original_CustomerID, Username, Password, Original_CustomerID, Original_Username, Original_Password);
+            return this.Update(Username, Password, Original_CustomerID, Original_Username, Original_Password, Original_CustomerID);
         }
     }
     
@@ -3026,7 +2813,7 @@ SELECT CustomerID, Username, Password FROM Customer WHERE (CustomerID = @Custome
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class HouseTableAdapter : global::System.ComponentModel.Component {
+    public partial class PDC_RoomTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -3040,7 +2827,7 @@ SELECT CustomerID, Username, Password FROM Customer WHERE (CustomerID = @Custome
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public HouseTableAdapter() {
+        public PDC_RoomTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -3137,365 +2924,99 @@ SELECT CustomerID, Username, Password FROM Customer WHERE (CustomerID = @Custome
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "House";
-            tableMapping.ColumnMappings.Add("HouseID", "HouseID");
-            tableMapping.ColumnMappings.Add("CustomerID", "CustomerID");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[House] WHERE (([HouseID] = @Original_HouseID) AND ([CustomerID" +
-                "] = @Original_CustomerID))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HouseID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HouseID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[House] ([HouseID], [CustomerID]) VALUES (@HouseID, @CustomerID" +
-                ");\r\nSELECT HouseID, CustomerID FROM House WHERE (HouseID = @HouseID)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HouseID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HouseID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[House] SET [HouseID] = @HouseID, [CustomerID] = @CustomerID WHERE (" +
-                "([HouseID] = @Original_HouseID) AND ([CustomerID] = @Original_CustomerID));\r\nSEL" +
-                "ECT HouseID, CustomerID FROM House WHERE (HouseID = @HouseID)";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HouseID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HouseID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HouseID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HouseID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SafeHome.Properties.Settings.Default.SafeHomeConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT HouseID, CustomerID FROM dbo.House";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SafeHomeDataSet.HouseDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SafeHomeDataSet.HouseDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            SafeHomeDataSet.HouseDataTable dataTable = new SafeHomeDataSet.HouseDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SafeHomeDataSet.HouseDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SafeHomeDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "House");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_HouseID, int Original_CustomerID) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_HouseID));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_CustomerID));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int HouseID, int CustomerID) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(HouseID));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(CustomerID));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int HouseID, int CustomerID, int Original_HouseID, int Original_CustomerID) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(HouseID));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(CustomerID));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_HouseID));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_CustomerID));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int CustomerID, int Original_HouseID, int Original_CustomerID) {
-            return this.Update(Original_HouseID, CustomerID, Original_HouseID, Original_CustomerID);
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class RoomTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public RoomTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Room";
+            tableMapping.DataSetTable = "PDC_Room";
             tableMapping.ColumnMappings.Add("RoomID", "RoomID");
             tableMapping.ColumnMappings.Add("RoomName", "RoomName");
-            tableMapping.ColumnMappings.Add("HouseID", "HouseID");
+            tableMapping.ColumnMappings.Add("CustomerID", "CustomerID");
+            tableMapping.ColumnMappings.Add("FloorNumber", "FloorNumber");
             tableMapping.ColumnMappings.Add("RoomIDNorth", "RoomIDNorth");
+            tableMapping.ColumnMappings.Add("DoorNorth", "DoorNorth");
             tableMapping.ColumnMappings.Add("RoomIDEast", "RoomIDEast");
+            tableMapping.ColumnMappings.Add("DoorEast", "DoorEast");
             tableMapping.ColumnMappings.Add("RoomIDSouth", "RoomIDSouth");
+            tableMapping.ColumnMappings.Add("DoorSouth", "DoorSouth");
             tableMapping.ColumnMappings.Add("RoomIDWest", "RoomIDWest");
+            tableMapping.ColumnMappings.Add("DoorWest", "DoorWest");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Room] WHERE (([RoomID] = @Original_RoomID) AND ([RoomName] = @Original_RoomName) AND ([HouseID] = @Original_HouseID) AND ((@IsNull_RoomIDNorth = 1 AND [RoomIDNorth] IS NULL) OR ([RoomIDNorth] = @Original_RoomIDNorth)) AND ((@IsNull_RoomIDEast = 1 AND [RoomIDEast] IS NULL) OR ([RoomIDEast] = @Original_RoomIDEast)) AND ((@IsNull_RoomIDSouth = 1 AND [RoomIDSouth] IS NULL) OR ([RoomIDSouth] = @Original_RoomIDSouth)) AND ((@IsNull_RoomIDWest = 1 AND [RoomIDWest] IS NULL) OR ([RoomIDWest] = @Original_RoomIDWest)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[PDC_Room] WHERE (([RoomID] = @Original_RoomID) AND ([RoomName] = @Original_RoomName) AND ([CustomerID] = @Original_CustomerID) AND ((@IsNull_FloorNumber = 1 AND [FloorNumber] IS NULL) OR ([FloorNumber] = @Original_FloorNumber)) AND ((@IsNull_RoomIDNorth = 1 AND [RoomIDNorth] IS NULL) OR ([RoomIDNorth] = @Original_RoomIDNorth)) AND ((@IsNull_DoorNorth = 1 AND [DoorNorth] IS NULL) OR ([DoorNorth] = @Original_DoorNorth)) AND ((@IsNull_RoomIDEast = 1 AND [RoomIDEast] IS NULL) OR ([RoomIDEast] = @Original_RoomIDEast)) AND ((@IsNull_DoorEast = 1 AND [DoorEast] IS NULL) OR ([DoorEast] = @Original_DoorEast)) AND ((@IsNull_RoomIDSouth = 1 AND [RoomIDSouth] IS NULL) OR ([RoomIDSouth] = @Original_RoomIDSouth)) AND ((@IsNull_DoorSouth = 1 AND [DoorSouth] IS NULL) OR ([DoorSouth] = @Original_DoorSouth)) AND ((@IsNull_RoomIDWest = 1 AND [RoomIDWest] IS NULL) OR ([RoomIDWest] = @Original_RoomIDWest)) AND ((@IsNull_DoorWest = 1 AND [DoorWest] IS NULL) OR ([DoorWest] = @Original_DoorWest)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoomID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoomName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HouseID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HouseID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FloorNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FloorNumber", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FloorNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FloorNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RoomIDNorth", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDNorth", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoomIDNorth", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDNorth", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DoorNorth", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorNorth", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DoorNorth", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorNorth", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RoomIDEast", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDEast", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoomIDEast", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDEast", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DoorEast", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorEast", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DoorEast", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorEast", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RoomIDSouth", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDSouth", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoomIDSouth", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDSouth", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DoorSouth", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorSouth", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DoorSouth", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorSouth", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RoomIDWest", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDWest", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoomIDWest", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDWest", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DoorWest", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorWest", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DoorWest", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorWest", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Room] ([RoomID], [RoomName], [HouseID], [RoomIDNorth], [RoomIDEast], [RoomIDSouth], [RoomIDWest]) VALUES (@RoomID, @RoomName, @HouseID, @RoomIDNorth, @RoomIDEast, @RoomIDSouth, @RoomIDWest);
-SELECT RoomID, RoomName, HouseID, RoomIDNorth, RoomIDEast, RoomIDSouth, RoomIDWest FROM Room WHERE (RoomID = @RoomID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[PDC_Room] ([RoomName], [CustomerID], [FloorNumber], [RoomIDNorth], [DoorNorth], [RoomIDEast], [DoorEast], [RoomIDSouth], [DoorSouth], [RoomIDWest], [DoorWest]) VALUES (@RoomName, @CustomerID, @FloorNumber, @RoomIDNorth, @DoorNorth, @RoomIDEast, @DoorEast, @RoomIDSouth, @DoorSouth, @RoomIDWest, @DoorWest);
+SELECT RoomID, RoomName, CustomerID, FloorNumber, RoomIDNorth, DoorNorth, RoomIDEast, DoorEast, RoomIDSouth, DoorSouth, RoomIDWest, DoorWest FROM PDC_Room WHERE (RoomID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoomID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoomName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HouseID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HouseID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FloorNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FloorNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoomIDNorth", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDNorth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DoorNorth", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorNorth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoomIDEast", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDEast", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DoorEast", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorEast", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoomIDSouth", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDSouth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DoorSouth", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorSouth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoomIDWest", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDWest", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DoorWest", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorWest", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Room] SET [RoomID] = @RoomID, [RoomName] = @RoomName, [HouseID] = @HouseID, [RoomIDNorth] = @RoomIDNorth, [RoomIDEast] = @RoomIDEast, [RoomIDSouth] = @RoomIDSouth, [RoomIDWest] = @RoomIDWest WHERE (([RoomID] = @Original_RoomID) AND ([RoomName] = @Original_RoomName) AND ([HouseID] = @Original_HouseID) AND ((@IsNull_RoomIDNorth = 1 AND [RoomIDNorth] IS NULL) OR ([RoomIDNorth] = @Original_RoomIDNorth)) AND ((@IsNull_RoomIDEast = 1 AND [RoomIDEast] IS NULL) OR ([RoomIDEast] = @Original_RoomIDEast)) AND ((@IsNull_RoomIDSouth = 1 AND [RoomIDSouth] IS NULL) OR ([RoomIDSouth] = @Original_RoomIDSouth)) AND ((@IsNull_RoomIDWest = 1 AND [RoomIDWest] IS NULL) OR ([RoomIDWest] = @Original_RoomIDWest)));
-SELECT RoomID, RoomName, HouseID, RoomIDNorth, RoomIDEast, RoomIDSouth, RoomIDWest FROM Room WHERE (RoomID = @RoomID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[PDC_Room] SET [RoomName] = @RoomName, [CustomerID] = @CustomerID, [FloorNumber] = @FloorNumber, [RoomIDNorth] = @RoomIDNorth, [DoorNorth] = @DoorNorth, [RoomIDEast] = @RoomIDEast, [DoorEast] = @DoorEast, [RoomIDSouth] = @RoomIDSouth, [DoorSouth] = @DoorSouth, [RoomIDWest] = @RoomIDWest, [DoorWest] = @DoorWest WHERE (([RoomID] = @Original_RoomID) AND ([RoomName] = @Original_RoomName) AND ([CustomerID] = @Original_CustomerID) AND ((@IsNull_FloorNumber = 1 AND [FloorNumber] IS NULL) OR ([FloorNumber] = @Original_FloorNumber)) AND ((@IsNull_RoomIDNorth = 1 AND [RoomIDNorth] IS NULL) OR ([RoomIDNorth] = @Original_RoomIDNorth)) AND ((@IsNull_DoorNorth = 1 AND [DoorNorth] IS NULL) OR ([DoorNorth] = @Original_DoorNorth)) AND ((@IsNull_RoomIDEast = 1 AND [RoomIDEast] IS NULL) OR ([RoomIDEast] = @Original_RoomIDEast)) AND ((@IsNull_DoorEast = 1 AND [DoorEast] IS NULL) OR ([DoorEast] = @Original_DoorEast)) AND ((@IsNull_RoomIDSouth = 1 AND [RoomIDSouth] IS NULL) OR ([RoomIDSouth] = @Original_RoomIDSouth)) AND ((@IsNull_DoorSouth = 1 AND [DoorSouth] IS NULL) OR ([DoorSouth] = @Original_DoorSouth)) AND ((@IsNull_RoomIDWest = 1 AND [RoomIDWest] IS NULL) OR ([RoomIDWest] = @Original_RoomIDWest)) AND ((@IsNull_DoorWest = 1 AND [DoorWest] IS NULL) OR ([DoorWest] = @Original_DoorWest)));
+SELECT RoomID, RoomName, CustomerID, FloorNumber, RoomIDNorth, DoorNorth, RoomIDEast, DoorEast, RoomIDSouth, DoorSouth, RoomIDWest, DoorWest FROM PDC_Room WHERE (RoomID = @RoomID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoomID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoomName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HouseID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HouseID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FloorNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FloorNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoomIDNorth", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDNorth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DoorNorth", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorNorth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoomIDEast", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDEast", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DoorEast", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorEast", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoomIDSouth", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDSouth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DoorSouth", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorSouth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoomIDWest", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDWest", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DoorWest", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorWest", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoomID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoomName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HouseID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HouseID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FloorNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FloorNumber", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FloorNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FloorNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RoomIDNorth", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDNorth", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoomIDNorth", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDNorth", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DoorNorth", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorNorth", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DoorNorth", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorNorth", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RoomIDEast", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDEast", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoomIDEast", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDEast", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DoorEast", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorEast", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DoorEast", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorEast", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RoomIDSouth", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDSouth", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoomIDSouth", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDSouth", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DoorSouth", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorSouth", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DoorSouth", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorSouth", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RoomIDWest", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDWest", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoomIDWest", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomIDWest", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DoorWest", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorWest", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DoorWest", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DoorWest", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoomID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "RoomID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3511,8 +3032,8 @@ SELECT RoomID, RoomName, HouseID, RoomIDNorth, RoomIDEast, RoomIDSouth, RoomIDWe
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT RoomID, RoomName, HouseID, RoomIDNorth, RoomIDEast, RoomIDSouth, RoomIDWes" +
-                "t FROM dbo.Room";
+            this._commandCollection[0].CommandText = "SELECT RoomID, RoomName, CustomerID, FloorNumber, RoomIDNorth, DoorNorth, RoomIDE" +
+                "ast, DoorEast, RoomIDSouth, DoorSouth, RoomIDWest, DoorWest FROM dbo.PDC_Room";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -3520,7 +3041,7 @@ SELECT RoomID, RoomName, HouseID, RoomIDNorth, RoomIDEast, RoomIDSouth, RoomIDWe
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SafeHomeDataSet.RoomDataTable dataTable) {
+        public virtual int Fill(SafeHomeDataSet.PDC_RoomDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3533,9 +3054,9 @@ SELECT RoomID, RoomName, HouseID, RoomIDNorth, RoomIDEast, RoomIDSouth, RoomIDWe
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SafeHomeDataSet.RoomDataTable GetData() {
+        public virtual SafeHomeDataSet.PDC_RoomDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            SafeHomeDataSet.RoomDataTable dataTable = new SafeHomeDataSet.RoomDataTable();
+            SafeHomeDataSet.PDC_RoomDataTable dataTable = new SafeHomeDataSet.PDC_RoomDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3543,7 +3064,7 @@ SELECT RoomID, RoomName, HouseID, RoomIDNorth, RoomIDEast, RoomIDSouth, RoomIDWe
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SafeHomeDataSet.RoomDataTable dataTable) {
+        public virtual int Update(SafeHomeDataSet.PDC_RoomDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -3551,7 +3072,7 @@ SELECT RoomID, RoomName, HouseID, RoomIDNorth, RoomIDEast, RoomIDSouth, RoomIDWe
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(SafeHomeDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Room");
+            return this.Adapter.Update(dataSet, "PDC_Room");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3573,7 +3094,7 @@ SELECT RoomID, RoomName, HouseID, RoomIDNorth, RoomIDEast, RoomIDSouth, RoomIDWe
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_RoomID, string Original_RoomName, int Original_HouseID, global::System.Nullable<int> Original_RoomIDNorth, global::System.Nullable<int> Original_RoomIDEast, global::System.Nullable<int> Original_RoomIDSouth, global::System.Nullable<int> Original_RoomIDWest) {
+        public virtual int Delete(int Original_RoomID, string Original_RoomName, int Original_CustomerID, global::System.Nullable<int> Original_FloorNumber, global::System.Nullable<int> Original_RoomIDNorth, global::System.Nullable<bool> Original_DoorNorth, global::System.Nullable<int> Original_RoomIDEast, global::System.Nullable<bool> Original_DoorEast, global::System.Nullable<int> Original_RoomIDSouth, global::System.Nullable<bool> Original_DoorSouth, global::System.Nullable<int> Original_RoomIDWest, global::System.Nullable<bool> Original_DoorWest) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_RoomID));
             if ((Original_RoomName == null)) {
                 throw new global::System.ArgumentNullException("Original_RoomName");
@@ -3581,38 +3102,78 @@ SELECT RoomID, RoomName, HouseID, RoomIDNorth, RoomIDEast, RoomIDSouth, RoomIDWe
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_RoomName));
             }
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_HouseID));
-            if ((Original_RoomIDNorth.HasValue == true)) {
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_CustomerID));
+            if ((Original_FloorNumber.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_RoomIDNorth.Value));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_FloorNumber.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Original_RoomIDEast.HasValue == true)) {
+            if ((Original_RoomIDNorth.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_RoomIDEast.Value));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_RoomIDNorth.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Original_RoomIDSouth.HasValue == true)) {
+            if ((Original_DoorNorth.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_RoomIDSouth.Value));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((bool)(Original_DoorNorth.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Original_RoomIDWest.HasValue == true)) {
+            if ((Original_RoomIDEast.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_RoomIDWest.Value));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_RoomIDEast.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((Original_DoorEast.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((bool)(Original_DoorEast.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((Original_RoomIDSouth.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((int)(Original_RoomIDSouth.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((Original_DoorSouth.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((bool)(Original_DoorSouth.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            if ((Original_RoomIDWest.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((int)(Original_RoomIDWest.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            if ((Original_DoorWest.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((bool)(Original_DoorWest.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3634,38 +3195,67 @@ SELECT RoomID, RoomName, HouseID, RoomIDNorth, RoomIDEast, RoomIDSouth, RoomIDWe
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int RoomID, string RoomName, int HouseID, global::System.Nullable<int> RoomIDNorth, global::System.Nullable<int> RoomIDEast, global::System.Nullable<int> RoomIDSouth, global::System.Nullable<int> RoomIDWest) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(RoomID));
+        public virtual int Insert(string RoomName, int CustomerID, global::System.Nullable<int> FloorNumber, global::System.Nullable<int> RoomIDNorth, global::System.Nullable<bool> DoorNorth, global::System.Nullable<int> RoomIDEast, global::System.Nullable<bool> DoorEast, global::System.Nullable<int> RoomIDSouth, global::System.Nullable<bool> DoorSouth, global::System.Nullable<int> RoomIDWest, global::System.Nullable<bool> DoorWest) {
             if ((RoomName == null)) {
                 throw new global::System.ArgumentNullException("RoomName");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(RoomName));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(RoomName));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(HouseID));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(CustomerID));
+            if ((FloorNumber.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(FloorNumber.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
             if ((RoomIDNorth.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = ((int)(RoomIDNorth.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((RoomIDEast.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(RoomIDEast.Value));
+            if ((DoorNorth.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((bool)(DoorNorth.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((RoomIDSouth.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(RoomIDSouth.Value));
+            if ((RoomIDEast.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(RoomIDEast.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((RoomIDWest.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(RoomIDWest.Value));
+            if ((DoorEast.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((bool)(DoorEast.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((RoomIDSouth.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((int)(RoomIDSouth.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((DoorSouth.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((bool)(DoorSouth.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((RoomIDWest.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((int)(RoomIDWest.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((DoorWest.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((bool)(DoorWest.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3687,79 +3277,173 @@ SELECT RoomID, RoomName, HouseID, RoomIDNorth, RoomIDEast, RoomIDSouth, RoomIDWe
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int RoomID, string RoomName, int HouseID, global::System.Nullable<int> RoomIDNorth, global::System.Nullable<int> RoomIDEast, global::System.Nullable<int> RoomIDSouth, global::System.Nullable<int> RoomIDWest, int Original_RoomID, string Original_RoomName, int Original_HouseID, global::System.Nullable<int> Original_RoomIDNorth, global::System.Nullable<int> Original_RoomIDEast, global::System.Nullable<int> Original_RoomIDSouth, global::System.Nullable<int> Original_RoomIDWest) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(RoomID));
+        public virtual int Update(
+                    string RoomName, 
+                    int CustomerID, 
+                    global::System.Nullable<int> FloorNumber, 
+                    global::System.Nullable<int> RoomIDNorth, 
+                    global::System.Nullable<bool> DoorNorth, 
+                    global::System.Nullable<int> RoomIDEast, 
+                    global::System.Nullable<bool> DoorEast, 
+                    global::System.Nullable<int> RoomIDSouth, 
+                    global::System.Nullable<bool> DoorSouth, 
+                    global::System.Nullable<int> RoomIDWest, 
+                    global::System.Nullable<bool> DoorWest, 
+                    int Original_RoomID, 
+                    string Original_RoomName, 
+                    int Original_CustomerID, 
+                    global::System.Nullable<int> Original_FloorNumber, 
+                    global::System.Nullable<int> Original_RoomIDNorth, 
+                    global::System.Nullable<bool> Original_DoorNorth, 
+                    global::System.Nullable<int> Original_RoomIDEast, 
+                    global::System.Nullable<bool> Original_DoorEast, 
+                    global::System.Nullable<int> Original_RoomIDSouth, 
+                    global::System.Nullable<bool> Original_DoorSouth, 
+                    global::System.Nullable<int> Original_RoomIDWest, 
+                    global::System.Nullable<bool> Original_DoorWest, 
+                    int RoomID) {
             if ((RoomName == null)) {
                 throw new global::System.ArgumentNullException("RoomName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(RoomName));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(RoomName));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(HouseID));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(CustomerID));
+            if ((FloorNumber.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(FloorNumber.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
             if ((RoomIDNorth.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(RoomIDNorth.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((RoomIDEast.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(RoomIDEast.Value));
+            if ((DoorNorth.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((bool)(DoorNorth.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((RoomIDSouth.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(RoomIDSouth.Value));
+            if ((RoomIDEast.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(RoomIDEast.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((RoomIDWest.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(RoomIDWest.Value));
+            if ((DoorEast.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((bool)(DoorEast.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_RoomID));
+            if ((RoomIDSouth.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(RoomIDSouth.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((DoorSouth.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((bool)(DoorSouth.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((RoomIDWest.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(RoomIDWest.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((DoorWest.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((bool)(DoorWest.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_RoomID));
             if ((Original_RoomName == null)) {
                 throw new global::System.ArgumentNullException("Original_RoomName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_RoomName));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_RoomName));
             }
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_HouseID));
-            if ((Original_RoomIDNorth.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_RoomIDNorth.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            if ((Original_RoomIDEast.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_RoomIDEast.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
-            if ((Original_RoomIDSouth.HasValue == true)) {
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_CustomerID));
+            if ((Original_FloorNumber.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_RoomIDSouth.Value));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_FloorNumber.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
-            if ((Original_RoomIDWest.HasValue == true)) {
+            if ((Original_RoomIDNorth.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_RoomIDWest.Value));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_RoomIDNorth.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
+            if ((Original_DoorNorth.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((bool)(Original_DoorNorth.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            if ((Original_RoomIDEast.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(Original_RoomIDEast.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            if ((Original_DoorEast.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((bool)(Original_DoorEast.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            if ((Original_RoomIDSouth.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((int)(Original_RoomIDSouth.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            if ((Original_DoorSouth.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((bool)(Original_DoorSouth.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
+            }
+            if ((Original_RoomIDWest.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((int)(Original_RoomIDWest.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
+            }
+            if ((Original_DoorWest.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((bool)(Original_DoorWest.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[32].Value = ((int)(RoomID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3780,8 +3464,31 @@ SELECT RoomID, RoomName, HouseID, RoomIDNorth, RoomIDEast, RoomIDSouth, RoomIDWe
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string RoomName, int HouseID, global::System.Nullable<int> RoomIDNorth, global::System.Nullable<int> RoomIDEast, global::System.Nullable<int> RoomIDSouth, global::System.Nullable<int> RoomIDWest, int Original_RoomID, string Original_RoomName, int Original_HouseID, global::System.Nullable<int> Original_RoomIDNorth, global::System.Nullable<int> Original_RoomIDEast, global::System.Nullable<int> Original_RoomIDSouth, global::System.Nullable<int> Original_RoomIDWest) {
-            return this.Update(Original_RoomID, RoomName, HouseID, RoomIDNorth, RoomIDEast, RoomIDSouth, RoomIDWest, Original_RoomID, Original_RoomName, Original_HouseID, Original_RoomIDNorth, Original_RoomIDEast, Original_RoomIDSouth, Original_RoomIDWest);
+        public virtual int Update(
+                    string RoomName, 
+                    int CustomerID, 
+                    global::System.Nullable<int> FloorNumber, 
+                    global::System.Nullable<int> RoomIDNorth, 
+                    global::System.Nullable<bool> DoorNorth, 
+                    global::System.Nullable<int> RoomIDEast, 
+                    global::System.Nullable<bool> DoorEast, 
+                    global::System.Nullable<int> RoomIDSouth, 
+                    global::System.Nullable<bool> DoorSouth, 
+                    global::System.Nullable<int> RoomIDWest, 
+                    global::System.Nullable<bool> DoorWest, 
+                    int Original_RoomID, 
+                    string Original_RoomName, 
+                    int Original_CustomerID, 
+                    global::System.Nullable<int> Original_FloorNumber, 
+                    global::System.Nullable<int> Original_RoomIDNorth, 
+                    global::System.Nullable<bool> Original_DoorNorth, 
+                    global::System.Nullable<int> Original_RoomIDEast, 
+                    global::System.Nullable<bool> Original_DoorEast, 
+                    global::System.Nullable<int> Original_RoomIDSouth, 
+                    global::System.Nullable<bool> Original_DoorSouth, 
+                    global::System.Nullable<int> Original_RoomIDWest, 
+                    global::System.Nullable<bool> Original_DoorWest) {
+            return this.Update(RoomName, CustomerID, FloorNumber, RoomIDNorth, DoorNorth, RoomIDEast, DoorEast, RoomIDSouth, DoorSouth, RoomIDWest, DoorWest, Original_RoomID, Original_RoomName, Original_CustomerID, Original_FloorNumber, Original_RoomIDNorth, Original_DoorNorth, Original_RoomIDEast, Original_DoorEast, Original_RoomIDSouth, Original_DoorSouth, Original_RoomIDWest, Original_DoorWest, Original_RoomID);
         }
     }
     
@@ -3794,7 +3501,7 @@ SELECT RoomID, RoomName, HouseID, RoomIDNorth, RoomIDEast, RoomIDSouth, RoomIDWe
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class SensorTableAdapter : global::System.ComponentModel.Component {
+    public partial class PDC_SensorTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -3808,7 +3515,7 @@ SELECT RoomID, RoomName, HouseID, RoomIDNorth, RoomIDEast, RoomIDSouth, RoomIDWe
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public SensorTableAdapter() {
+        public PDC_SensorTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -3905,45 +3612,38 @@ SELECT RoomID, RoomName, HouseID, RoomIDNorth, RoomIDEast, RoomIDSouth, RoomIDWe
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Sensor";
+            tableMapping.DataSetTable = "PDC_Sensor";
             tableMapping.ColumnMappings.Add("SensorID", "SensorID");
             tableMapping.ColumnMappings.Add("SensorTypeID", "SensorTypeID");
             tableMapping.ColumnMappings.Add("RoomID", "RoomID");
-            tableMapping.ColumnMappings.Add("LocationInRoom", "LocationInRoom");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Sensor] WHERE (([SensorID] = @Original_SensorID) AND ([SensorT" +
-                "ypeID] = @Original_SensorTypeID) AND ([RoomID] = @Original_RoomID) AND ([Locatio" +
-                "nInRoom] = @Original_LocationInRoom))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[PDC_Sensor] WHERE (([SensorID] = @Original_SensorID) AND ([Sen" +
+                "sorTypeID] = @Original_SensorTypeID) AND ([RoomID] = @Original_RoomID))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SensorID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SensorID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SensorTypeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SensorTypeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoomID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LocationInRoom", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LocationInRoom", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Sensor] ([SensorID], [SensorTypeID], [RoomID], [LocationInRoom" +
-                "]) VALUES (@SensorID, @SensorTypeID, @RoomID, @LocationInRoom);\r\nSELECT SensorID" +
-                ", SensorTypeID, RoomID, LocationInRoom FROM Sensor WHERE (SensorID = @SensorID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[PDC_Sensor] ([SensorTypeID], [RoomID]) VALUES (@SensorTypeID, " +
+                "@RoomID);\r\nSELECT SensorID, SensorTypeID, RoomID FROM PDC_Sensor WHERE (SensorID" +
+                " = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SensorID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SensorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SensorTypeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SensorTypeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoomID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LocationInRoom", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LocationInRoom", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Sensor] SET [SensorID] = @SensorID, [SensorTypeID] = @SensorTypeID, [RoomID] = @RoomID, [LocationInRoom] = @LocationInRoom WHERE (([SensorID] = @Original_SensorID) AND ([SensorTypeID] = @Original_SensorTypeID) AND ([RoomID] = @Original_RoomID) AND ([LocationInRoom] = @Original_LocationInRoom));
-SELECT SensorID, SensorTypeID, RoomID, LocationInRoom FROM Sensor WHERE (SensorID = @SensorID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[PDC_Sensor] SET [SensorTypeID] = @SensorTypeID, [RoomID] = @RoomID WHERE (([SensorID] = @Original_SensorID) AND ([SensorTypeID] = @Original_SensorTypeID) AND ([RoomID] = @Original_RoomID));
+SELECT SensorID, SensorTypeID, RoomID FROM PDC_Sensor WHERE (SensorID = @SensorID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SensorID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SensorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SensorTypeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SensorTypeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoomID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LocationInRoom", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LocationInRoom", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SensorID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SensorID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SensorTypeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SensorTypeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoomID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LocationInRoom", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LocationInRoom", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SensorID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "SensorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3959,7 +3659,7 @@ SELECT SensorID, SensorTypeID, RoomID, LocationInRoom FROM Sensor WHERE (SensorI
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT SensorID, SensorTypeID, RoomID, LocationInRoom FROM dbo.Sensor";
+            this._commandCollection[0].CommandText = "SELECT SensorID, SensorTypeID, RoomID FROM dbo.PDC_Sensor";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -3967,7 +3667,7 @@ SELECT SensorID, SensorTypeID, RoomID, LocationInRoom FROM Sensor WHERE (SensorI
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SafeHomeDataSet.SensorDataTable dataTable) {
+        public virtual int Fill(SafeHomeDataSet.PDC_SensorDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3980,9 +3680,9 @@ SELECT SensorID, SensorTypeID, RoomID, LocationInRoom FROM Sensor WHERE (SensorI
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SafeHomeDataSet.SensorDataTable GetData() {
+        public virtual SafeHomeDataSet.PDC_SensorDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            SafeHomeDataSet.SensorDataTable dataTable = new SafeHomeDataSet.SensorDataTable();
+            SafeHomeDataSet.PDC_SensorDataTable dataTable = new SafeHomeDataSet.PDC_SensorDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3990,7 +3690,7 @@ SELECT SensorID, SensorTypeID, RoomID, LocationInRoom FROM Sensor WHERE (SensorI
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SafeHomeDataSet.SensorDataTable dataTable) {
+        public virtual int Update(SafeHomeDataSet.PDC_SensorDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -3998,7 +3698,7 @@ SELECT SensorID, SensorTypeID, RoomID, LocationInRoom FROM Sensor WHERE (SensorI
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(SafeHomeDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Sensor");
+            return this.Adapter.Update(dataSet, "PDC_Sensor");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4020,11 +3720,10 @@ SELECT SensorID, SensorTypeID, RoomID, LocationInRoom FROM Sensor WHERE (SensorI
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_SensorID, int Original_SensorTypeID, int Original_RoomID, int Original_LocationInRoom) {
+        public virtual int Delete(int Original_SensorID, int Original_SensorTypeID, int Original_RoomID) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_SensorID));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_SensorTypeID));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_RoomID));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_LocationInRoom));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4045,11 +3744,9 @@ SELECT SensorID, SensorTypeID, RoomID, LocationInRoom FROM Sensor WHERE (SensorI
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int SensorID, int SensorTypeID, int RoomID, int LocationInRoom) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(SensorID));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(SensorTypeID));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(RoomID));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(LocationInRoom));
+        public virtual int Insert(int SensorTypeID, int RoomID) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(SensorTypeID));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(RoomID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4070,15 +3767,13 @@ SELECT SensorID, SensorTypeID, RoomID, LocationInRoom FROM Sensor WHERE (SensorI
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int SensorID, int SensorTypeID, int RoomID, int LocationInRoom, int Original_SensorID, int Original_SensorTypeID, int Original_RoomID, int Original_LocationInRoom) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(SensorID));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(SensorTypeID));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(RoomID));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(LocationInRoom));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_SensorID));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_SensorTypeID));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_RoomID));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_LocationInRoom));
+        public virtual int Update(int SensorTypeID, int RoomID, int Original_SensorID, int Original_SensorTypeID, int Original_RoomID, int SensorID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(SensorTypeID));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(RoomID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_SensorID));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_SensorTypeID));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_RoomID));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(SensorID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4099,8 +3794,8 @@ SELECT SensorID, SensorTypeID, RoomID, LocationInRoom FROM Sensor WHERE (SensorI
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int SensorTypeID, int RoomID, int LocationInRoom, int Original_SensorID, int Original_SensorTypeID, int Original_RoomID, int Original_LocationInRoom) {
-            return this.Update(Original_SensorID, SensorTypeID, RoomID, LocationInRoom, Original_SensorID, Original_SensorTypeID, Original_RoomID, Original_LocationInRoom);
+        public virtual int Update(int SensorTypeID, int RoomID, int Original_SensorID, int Original_SensorTypeID, int Original_RoomID) {
+            return this.Update(SensorTypeID, RoomID, Original_SensorID, Original_SensorTypeID, Original_RoomID, Original_SensorID);
         }
     }
     
@@ -4113,7 +3808,7 @@ SELECT SensorID, SensorTypeID, RoomID, LocationInRoom FROM Sensor WHERE (SensorI
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class SensorTypeTableAdapter : global::System.ComponentModel.Component {
+    public partial class PDC_SensorTypeTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -4127,7 +3822,7 @@ SELECT SensorID, SensorTypeID, RoomID, LocationInRoom FROM Sensor WHERE (SensorI
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public SensorTypeTableAdapter() {
+        public PDC_SensorTypeTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -4224,34 +3919,35 @@ SELECT SensorID, SensorTypeID, RoomID, LocationInRoom FROM Sensor WHERE (SensorI
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "SensorType";
+            tableMapping.DataSetTable = "PDC_SensorType";
             tableMapping.ColumnMappings.Add("SensorTypeID", "SensorTypeID");
             tableMapping.ColumnMappings.Add("SensorName", "SensorName");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[SensorType] WHERE (([SensorTypeID] = @Original_SensorTypeID) A" +
-                "ND ([SensorName] = @Original_SensorName))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[PDC_SensorType] WHERE (([SensorTypeID] = @Original_SensorTypeI" +
+                "D) AND ([SensorName] = @Original_SensorName))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SensorTypeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SensorTypeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SensorName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SensorName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[SensorType] ([SensorTypeID], [SensorName]) VALUES (@SensorType" +
-                "ID, @SensorName);\r\nSELECT SensorTypeID, SensorName FROM SensorType WHERE (Sensor" +
-                "TypeID = @SensorTypeID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[PDC_SensorType] ([SensorName]) VALUES (@SensorName);\r\nSELECT S" +
+                "ensorTypeID, SensorName FROM PDC_SensorType WHERE (SensorTypeID = SCOPE_IDENTITY" +
+                "())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SensorTypeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SensorTypeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SensorName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SensorName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[SensorType] SET [SensorTypeID] = @SensorTypeID, [SensorName] = @SensorName WHERE (([SensorTypeID] = @Original_SensorTypeID) AND ([SensorName] = @Original_SensorName));
-SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTypeID)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[PDC_SensorType] SET [SensorName] = @SensorName WHERE (([SensorTypeI" +
+                "D] = @Original_SensorTypeID) AND ([SensorName] = @Original_SensorName));\r\nSELECT" +
+                " SensorTypeID, SensorName FROM PDC_SensorType WHERE (SensorTypeID = @SensorTypeI" +
+                "D)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SensorTypeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SensorTypeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SensorName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SensorName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SensorTypeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SensorTypeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SensorName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SensorName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SensorTypeID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "SensorTypeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4267,7 +3963,7 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT SensorTypeID, SensorName FROM dbo.SensorType";
+            this._commandCollection[0].CommandText = "SELECT SensorTypeID, SensorName FROM dbo.PDC_SensorType";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4275,7 +3971,7 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SafeHomeDataSet.SensorTypeDataTable dataTable) {
+        public virtual int Fill(SafeHomeDataSet.PDC_SensorTypeDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4288,9 +3984,9 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SafeHomeDataSet.SensorTypeDataTable GetData() {
+        public virtual SafeHomeDataSet.PDC_SensorTypeDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            SafeHomeDataSet.SensorTypeDataTable dataTable = new SafeHomeDataSet.SensorTypeDataTable();
+            SafeHomeDataSet.PDC_SensorTypeDataTable dataTable = new SafeHomeDataSet.PDC_SensorTypeDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4298,7 +3994,7 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SafeHomeDataSet.SensorTypeDataTable dataTable) {
+        public virtual int Update(SafeHomeDataSet.PDC_SensorTypeDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -4306,7 +4002,7 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(SafeHomeDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "SensorType");
+            return this.Adapter.Update(dataSet, "PDC_SensorType");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4356,13 +4052,12 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int SensorTypeID, string SensorName) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(SensorTypeID));
+        public virtual int Insert(string SensorName) {
             if ((SensorName == null)) {
                 throw new global::System.ArgumentNullException("SensorName");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(SensorName));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(SensorName));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4384,21 +4079,21 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int SensorTypeID, string SensorName, int Original_SensorTypeID, string Original_SensorName) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(SensorTypeID));
+        public virtual int Update(string SensorName, int Original_SensorTypeID, string Original_SensorName, int SensorTypeID) {
             if ((SensorName == null)) {
                 throw new global::System.ArgumentNullException("SensorName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(SensorName));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(SensorName));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_SensorTypeID));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_SensorTypeID));
             if ((Original_SensorName == null)) {
                 throw new global::System.ArgumentNullException("Original_SensorName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_SensorName));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_SensorName));
             }
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(SensorTypeID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4420,7 +4115,7 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string SensorName, int Original_SensorTypeID, string Original_SensorName) {
-            return this.Update(Original_SensorTypeID, SensorName, Original_SensorTypeID, Original_SensorName);
+            return this.Update(SensorName, Original_SensorTypeID, Original_SensorName, Original_SensorTypeID);
         }
     }
     
@@ -4436,15 +4131,13 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
         
         private UpdateOrderOption _updateOrder;
         
-        private CustomerTableAdapter _customerTableAdapter;
+        private PDC_CustomerTableAdapter _pDC_CustomerTableAdapter;
         
-        private HouseTableAdapter _houseTableAdapter;
+        private PDC_RoomTableAdapter _pDC_RoomTableAdapter;
         
-        private RoomTableAdapter _roomTableAdapter;
+        private PDC_SensorTableAdapter _pDC_SensorTableAdapter;
         
-        private SensorTableAdapter _sensorTableAdapter;
-        
-        private SensorTypeTableAdapter _sensorTypeTableAdapter;
+        private PDC_SensorTypeTableAdapter _pDC_SensorTypeTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -4466,12 +4159,12 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public CustomerTableAdapter CustomerTableAdapter {
+        public PDC_CustomerTableAdapter PDC_CustomerTableAdapter {
             get {
-                return this._customerTableAdapter;
+                return this._pDC_CustomerTableAdapter;
             }
             set {
-                this._customerTableAdapter = value;
+                this._pDC_CustomerTableAdapter = value;
             }
         }
         
@@ -4480,12 +4173,12 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public HouseTableAdapter HouseTableAdapter {
+        public PDC_RoomTableAdapter PDC_RoomTableAdapter {
             get {
-                return this._houseTableAdapter;
+                return this._pDC_RoomTableAdapter;
             }
             set {
-                this._houseTableAdapter = value;
+                this._pDC_RoomTableAdapter = value;
             }
         }
         
@@ -4494,12 +4187,12 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public RoomTableAdapter RoomTableAdapter {
+        public PDC_SensorTableAdapter PDC_SensorTableAdapter {
             get {
-                return this._roomTableAdapter;
+                return this._pDC_SensorTableAdapter;
             }
             set {
-                this._roomTableAdapter = value;
+                this._pDC_SensorTableAdapter = value;
             }
         }
         
@@ -4508,26 +4201,12 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public SensorTableAdapter SensorTableAdapter {
+        public PDC_SensorTypeTableAdapter PDC_SensorTypeTableAdapter {
             get {
-                return this._sensorTableAdapter;
+                return this._pDC_SensorTypeTableAdapter;
             }
             set {
-                this._sensorTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public SensorTypeTableAdapter SensorTypeTableAdapter {
-            get {
-                return this._sensorTypeTableAdapter;
-            }
-            set {
-                this._sensorTypeTableAdapter = value;
+                this._pDC_SensorTypeTableAdapter = value;
             }
         }
         
@@ -4550,25 +4229,21 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._customerTableAdapter != null) 
-                            && (this._customerTableAdapter.Connection != null))) {
-                    return this._customerTableAdapter.Connection;
+                if (((this._pDC_CustomerTableAdapter != null) 
+                            && (this._pDC_CustomerTableAdapter.Connection != null))) {
+                    return this._pDC_CustomerTableAdapter.Connection;
                 }
-                if (((this._houseTableAdapter != null) 
-                            && (this._houseTableAdapter.Connection != null))) {
-                    return this._houseTableAdapter.Connection;
+                if (((this._pDC_RoomTableAdapter != null) 
+                            && (this._pDC_RoomTableAdapter.Connection != null))) {
+                    return this._pDC_RoomTableAdapter.Connection;
                 }
-                if (((this._roomTableAdapter != null) 
-                            && (this._roomTableAdapter.Connection != null))) {
-                    return this._roomTableAdapter.Connection;
+                if (((this._pDC_SensorTableAdapter != null) 
+                            && (this._pDC_SensorTableAdapter.Connection != null))) {
+                    return this._pDC_SensorTableAdapter.Connection;
                 }
-                if (((this._sensorTableAdapter != null) 
-                            && (this._sensorTableAdapter.Connection != null))) {
-                    return this._sensorTableAdapter.Connection;
-                }
-                if (((this._sensorTypeTableAdapter != null) 
-                            && (this._sensorTypeTableAdapter.Connection != null))) {
-                    return this._sensorTypeTableAdapter.Connection;
+                if (((this._pDC_SensorTypeTableAdapter != null) 
+                            && (this._pDC_SensorTypeTableAdapter.Connection != null))) {
+                    return this._pDC_SensorTypeTableAdapter.Connection;
                 }
                 return null;
             }
@@ -4583,19 +4258,16 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._customerTableAdapter != null)) {
+                if ((this._pDC_CustomerTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._houseTableAdapter != null)) {
+                if ((this._pDC_RoomTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._roomTableAdapter != null)) {
+                if ((this._pDC_SensorTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._sensorTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._sensorTypeTableAdapter != null)) {
+                if ((this._pDC_SensorTypeTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -4609,55 +4281,46 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(SafeHomeDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._customerTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Customer.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._pDC_CustomerTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.PDC_Customer.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._customerTableAdapter.Update(updatedRows));
+                    result = (result + this._pDC_CustomerTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._houseTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.House.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._pDC_RoomTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.PDC_Room.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._houseTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._roomTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Room.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    this.SortSelfReferenceRows(updatedRows, dataSet.Relations["FK__Room__RoomIDEast__534D60F1"], false);
+                    this.SortSelfReferenceRows(updatedRows, dataSet.Relations["FK__PDC_Room__RoomID__0F624AF8"], false);
                     // Note: More than one self-referenced relation found.  The generated code may not work correctly.
-                    this.SortSelfReferenceRows(updatedRows, dataSet.Relations["FK__Room__RoomIDNort__52593CB8"], false);
+                    this.SortSelfReferenceRows(updatedRows, dataSet.Relations["FK__PDC_Room__RoomID__10566F31"], false);
                     // Note: More than one self-referenced relation found.  The generated code may not work correctly.
-                    this.SortSelfReferenceRows(updatedRows, dataSet.Relations["FK__Room__RoomIDSout__5441852A"], false);
+                    this.SortSelfReferenceRows(updatedRows, dataSet.Relations["FK__PDC_Room__RoomID__114A936A"], false);
                     // Note: More than one self-referenced relation found.  The generated code may not work correctly.
-                    this.SortSelfReferenceRows(updatedRows, dataSet.Relations["FK__Room__RoomIDWest__5535A963"], false);
-                    result = (result + this._roomTableAdapter.Update(updatedRows));
+                    this.SortSelfReferenceRows(updatedRows, dataSet.Relations["FK__PDC_Room__RoomID__123EB7A3"], false);
+                    result = (result + this._pDC_RoomTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._sensorTypeTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.SensorType.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._pDC_SensorTypeTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.PDC_SensorType.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._sensorTypeTableAdapter.Update(updatedRows));
+                    result = (result + this._pDC_SensorTypeTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._sensorTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Sensor.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._pDC_SensorTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.PDC_Sensor.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._sensorTableAdapter.Update(updatedRows));
+                    result = (result + this._pDC_SensorTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -4671,50 +4334,42 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(SafeHomeDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._customerTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Customer.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._pDC_CustomerTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.PDC_Customer.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._customerTableAdapter.Update(addedRows));
+                    result = (result + this._pDC_CustomerTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._houseTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.House.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._pDC_RoomTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.PDC_Room.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._houseTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._roomTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Room.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    this.SortSelfReferenceRows(addedRows, dataSet.Relations["FK__Room__RoomIDEast__534D60F1"], false);
+                    this.SortSelfReferenceRows(addedRows, dataSet.Relations["FK__PDC_Room__RoomID__0F624AF8"], false);
                     // Note: More than one self-referenced relation found.  The generated code may not work correctly.
-                    this.SortSelfReferenceRows(addedRows, dataSet.Relations["FK__Room__RoomIDNort__52593CB8"], false);
+                    this.SortSelfReferenceRows(addedRows, dataSet.Relations["FK__PDC_Room__RoomID__10566F31"], false);
                     // Note: More than one self-referenced relation found.  The generated code may not work correctly.
-                    this.SortSelfReferenceRows(addedRows, dataSet.Relations["FK__Room__RoomIDSout__5441852A"], false);
+                    this.SortSelfReferenceRows(addedRows, dataSet.Relations["FK__PDC_Room__RoomID__114A936A"], false);
                     // Note: More than one self-referenced relation found.  The generated code may not work correctly.
-                    this.SortSelfReferenceRows(addedRows, dataSet.Relations["FK__Room__RoomIDWest__5535A963"], false);
-                    result = (result + this._roomTableAdapter.Update(addedRows));
+                    this.SortSelfReferenceRows(addedRows, dataSet.Relations["FK__PDC_Room__RoomID__123EB7A3"], false);
+                    result = (result + this._pDC_RoomTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._sensorTypeTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.SensorType.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._pDC_SensorTypeTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.PDC_SensorType.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._sensorTypeTableAdapter.Update(addedRows));
+                    result = (result + this._pDC_SensorTypeTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._sensorTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Sensor.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._pDC_SensorTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.PDC_Sensor.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._sensorTableAdapter.Update(addedRows));
+                    result = (result + this._pDC_SensorTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -4728,50 +4383,42 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(SafeHomeDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._sensorTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Sensor.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._pDC_SensorTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.PDC_Sensor.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._sensorTableAdapter.Update(deletedRows));
+                    result = (result + this._pDC_SensorTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._sensorTypeTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.SensorType.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._pDC_SensorTypeTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.PDC_SensorType.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._sensorTypeTableAdapter.Update(deletedRows));
+                    result = (result + this._pDC_SensorTypeTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._roomTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Room.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._pDC_RoomTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.PDC_Room.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    this.SortSelfReferenceRows(deletedRows, dataSet.Relations["FK__Room__RoomIDEast__534D60F1"], true);
+                    this.SortSelfReferenceRows(deletedRows, dataSet.Relations["FK__PDC_Room__RoomID__0F624AF8"], true);
                     // Note: More than one self-referenced relation found.  The generated code may not work correctly.
-                    this.SortSelfReferenceRows(deletedRows, dataSet.Relations["FK__Room__RoomIDNort__52593CB8"], true);
+                    this.SortSelfReferenceRows(deletedRows, dataSet.Relations["FK__PDC_Room__RoomID__10566F31"], true);
                     // Note: More than one self-referenced relation found.  The generated code may not work correctly.
-                    this.SortSelfReferenceRows(deletedRows, dataSet.Relations["FK__Room__RoomIDSout__5441852A"], true);
+                    this.SortSelfReferenceRows(deletedRows, dataSet.Relations["FK__PDC_Room__RoomID__114A936A"], true);
                     // Note: More than one self-referenced relation found.  The generated code may not work correctly.
-                    this.SortSelfReferenceRows(deletedRows, dataSet.Relations["FK__Room__RoomIDWest__5535A963"], true);
-                    result = (result + this._roomTableAdapter.Update(deletedRows));
+                    this.SortSelfReferenceRows(deletedRows, dataSet.Relations["FK__PDC_Room__RoomID__123EB7A3"], true);
+                    result = (result + this._pDC_RoomTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._houseTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.House.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._pDC_CustomerTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.PDC_Customer.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._houseTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._customerTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Customer.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._customerTableAdapter.Update(deletedRows));
+                    result = (result + this._pDC_CustomerTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -4814,28 +4461,23 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._customerTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._customerTableAdapter.Connection) == false))) {
+            if (((this._pDC_CustomerTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._pDC_CustomerTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._houseTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._houseTableAdapter.Connection) == false))) {
+            if (((this._pDC_RoomTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._pDC_RoomTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._roomTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._roomTableAdapter.Connection) == false))) {
+            if (((this._pDC_SensorTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._pDC_SensorTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._sensorTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._sensorTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
-            if (((this._sensorTypeTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._sensorTypeTableAdapter.Connection) == false))) {
+            if (((this._pDC_SensorTypeTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._pDC_SensorTypeTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -4871,49 +4513,40 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._customerTableAdapter != null)) {
-                    revertConnections.Add(this._customerTableAdapter, this._customerTableAdapter.Connection);
-                    this._customerTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._customerTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._customerTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._customerTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._customerTableAdapter.Adapter);
+                if ((this._pDC_CustomerTableAdapter != null)) {
+                    revertConnections.Add(this._pDC_CustomerTableAdapter, this._pDC_CustomerTableAdapter.Connection);
+                    this._pDC_CustomerTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._pDC_CustomerTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._pDC_CustomerTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._pDC_CustomerTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._pDC_CustomerTableAdapter.Adapter);
                     }
                 }
-                if ((this._houseTableAdapter != null)) {
-                    revertConnections.Add(this._houseTableAdapter, this._houseTableAdapter.Connection);
-                    this._houseTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._houseTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._houseTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._houseTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._houseTableAdapter.Adapter);
+                if ((this._pDC_RoomTableAdapter != null)) {
+                    revertConnections.Add(this._pDC_RoomTableAdapter, this._pDC_RoomTableAdapter.Connection);
+                    this._pDC_RoomTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._pDC_RoomTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._pDC_RoomTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._pDC_RoomTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._pDC_RoomTableAdapter.Adapter);
                     }
                 }
-                if ((this._roomTableAdapter != null)) {
-                    revertConnections.Add(this._roomTableAdapter, this._roomTableAdapter.Connection);
-                    this._roomTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._roomTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._roomTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._roomTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._roomTableAdapter.Adapter);
+                if ((this._pDC_SensorTableAdapter != null)) {
+                    revertConnections.Add(this._pDC_SensorTableAdapter, this._pDC_SensorTableAdapter.Connection);
+                    this._pDC_SensorTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._pDC_SensorTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._pDC_SensorTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._pDC_SensorTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._pDC_SensorTableAdapter.Adapter);
                     }
                 }
-                if ((this._sensorTableAdapter != null)) {
-                    revertConnections.Add(this._sensorTableAdapter, this._sensorTableAdapter.Connection);
-                    this._sensorTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._sensorTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._sensorTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._sensorTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._sensorTableAdapter.Adapter);
-                    }
-                }
-                if ((this._sensorTypeTableAdapter != null)) {
-                    revertConnections.Add(this._sensorTypeTableAdapter, this._sensorTypeTableAdapter.Connection);
-                    this._sensorTypeTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._sensorTypeTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._sensorTypeTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._sensorTypeTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._sensorTypeTableAdapter.Adapter);
+                if ((this._pDC_SensorTypeTableAdapter != null)) {
+                    revertConnections.Add(this._pDC_SensorTypeTableAdapter, this._pDC_SensorTypeTableAdapter.Connection);
+                    this._pDC_SensorTypeTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._pDC_SensorTypeTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._pDC_SensorTypeTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._pDC_SensorTypeTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._pDC_SensorTypeTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -4974,25 +4607,21 @@ SELECT SensorTypeID, SensorName FROM SensorType WHERE (SensorTypeID = @SensorTyp
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._customerTableAdapter != null)) {
-                    this._customerTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._customerTableAdapter]));
-                    this._customerTableAdapter.Transaction = null;
+                if ((this._pDC_CustomerTableAdapter != null)) {
+                    this._pDC_CustomerTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._pDC_CustomerTableAdapter]));
+                    this._pDC_CustomerTableAdapter.Transaction = null;
                 }
-                if ((this._houseTableAdapter != null)) {
-                    this._houseTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._houseTableAdapter]));
-                    this._houseTableAdapter.Transaction = null;
+                if ((this._pDC_RoomTableAdapter != null)) {
+                    this._pDC_RoomTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._pDC_RoomTableAdapter]));
+                    this._pDC_RoomTableAdapter.Transaction = null;
                 }
-                if ((this._roomTableAdapter != null)) {
-                    this._roomTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._roomTableAdapter]));
-                    this._roomTableAdapter.Transaction = null;
+                if ((this._pDC_SensorTableAdapter != null)) {
+                    this._pDC_SensorTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._pDC_SensorTableAdapter]));
+                    this._pDC_SensorTableAdapter.Transaction = null;
                 }
-                if ((this._sensorTableAdapter != null)) {
-                    this._sensorTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._sensorTableAdapter]));
-                    this._sensorTableAdapter.Transaction = null;
-                }
-                if ((this._sensorTypeTableAdapter != null)) {
-                    this._sensorTypeTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._sensorTypeTableAdapter]));
-                    this._sensorTypeTableAdapter.Transaction = null;
+                if ((this._pDC_SensorTypeTableAdapter != null)) {
+                    this._pDC_SensorTypeTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._pDC_SensorTypeTableAdapter]));
+                    this._pDC_SensorTypeTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
