@@ -182,33 +182,33 @@ namespace SafeHome
             return sensorTypes;
         }
 
-        public static bool db_AddRoom(Room r)
+        public static int db_AddRoom(string rmName, int cID, int flr, int rIDN, bool drN, int rIDE, bool drE, int rIDS, bool drS, int rIDW, bool drW)
         {
             SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
 
             // Parameterise input to avoid SQL Injection
             SqlParameter paramRoomName = new SqlParameter("@paramRoomName", SqlDbType.VarChar);
-            paramRoomName.Value = r.RoomName1;
+            paramRoomName.Value = rmName;
             SqlParameter paramCID = new SqlParameter("@ParamCID", SqlDbType.Int);
-            paramCID.Value = r.CustomerID1;
-            SqlParameter paramFloor = new SqlParameter("@paramFloor", SqlDbType.VarChar);
-            paramFloor.Value = r.Floor1;
-            SqlParameter paramRoomN = new SqlParameter("@paramRoomN", SqlDbType.VarChar);
-            paramRoomN.Value = r.RoomIDNorth1;
-            SqlParameter paramDoorN = new SqlParameter("@paramDoorN", SqlDbType.VarChar);
-            paramDoorN.Value = r.DoorNorth1;
-            SqlParameter paramRoomE = new SqlParameter("@paramRoomE", SqlDbType.VarChar);
-            paramRoomE.Value = r.RoomIDEast1;
-            SqlParameter paramDoorE = new SqlParameter("@paramDoorE", SqlDbType.VarChar);
-            paramDoorE.Value = r.DoorEast1;
-            SqlParameter paramRoomS = new SqlParameter("@paramRoomS", SqlDbType.VarChar);
-            paramRoomS.Value = r.RoomIDSouth1;
-            SqlParameter paramDoorS = new SqlParameter("@paramDoorS", SqlDbType.VarChar);
-            paramDoorS.Value = r.DoorSouth1;
-            SqlParameter paramRoomW = new SqlParameter("@paramRoomW", SqlDbType.VarChar);
-            paramRoomW.Value = r.RoomIDWest1;
-            SqlParameter paramDoorW = new SqlParameter("@paramDoorW", SqlDbType.VarChar);
-            paramDoorW.Value = r.DoorWest1;
+            paramCID.Value = cID;
+            SqlParameter paramFloor = new SqlParameter("@paramFloor", SqlDbType.Int);
+            paramFloor.Value = flr;
+            SqlParameter paramRoomN = new SqlParameter("@paramRoomN", SqlDbType.Int);
+            paramRoomN.Value = rIDN;
+            SqlParameter paramDoorN = new SqlParameter("@paramDoorN", SqlDbType.Bit);
+            paramDoorN.Value = drN;
+            SqlParameter paramRoomE = new SqlParameter("@paramRoomE", SqlDbType.Int);
+            paramRoomE.Value = rIDE;
+            SqlParameter paramDoorE = new SqlParameter("@paramDoorE", SqlDbType.Bit);
+            paramDoorE.Value = drE;
+            SqlParameter paramRoomS = new SqlParameter("@paramRoomS", SqlDbType.Int);
+            paramRoomS.Value = rIDS;
+            SqlParameter paramDoorS = new SqlParameter("@paramDoorS", SqlDbType.Bit);
+            paramDoorS.Value = drS;
+            SqlParameter paramRoomW = new SqlParameter("@paramRoomW", SqlDbType.Int);
+            paramRoomW.Value = rIDW;
+            SqlParameter paramDoorW = new SqlParameter("@paramDoorW", SqlDbType.Bit);
+            paramDoorW.Value = drW;
 
             SqlCommand myCommand = new SqlCommand(
                 "INSERT INTO dbo.PDC_Room (RoomID, RoomName, CustomerID, FloorNumber, RoomIDNorth, DoorNorth, RoomIDEast, DoorEast, RoomIDSouth, DoorSouth, RoomIDWest, DoorWest) VALUES (@paramRoomName,@ParamCID,@paramFloor,@paramRoomN,@paramDoorN,@paramRoomE,@paramDoorE,@paramRoomS,@paramDoorS,@paramRoomW,@paramDoorW)", myConnection);
@@ -223,6 +223,77 @@ namespace SafeHome
             myCommand.Parameters.Add(paramDoorS);
             myCommand.Parameters.Add(paramRoomW);
             myCommand.Parameters.Add(paramDoorW);
+
+            try
+            {
+                myConnection.Open();
+                return int.Parse(myCommand.ExecuteScalar().ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return 0;
+        }
+
+        public static List<Sensor> db_getRoomSensors(int roomID)
+        {
+            List<Sensor> sensors = new List<Sensor>();
+            SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
+
+            SqlParameter paramRoomID = new SqlParameter("@paramRoomID", SqlDbType.Int);
+            paramRoomID.Value = roomID;
+
+            SqlCommand myCommand = new SqlCommand(
+                "SELECT s.SensorID, s.SensorTypeID, st.SensorName FROM PDC_Sensor s INNER JOIN PDC_SensorType st ON s.SensorTypeID = st.SensorTypeID WHERE s.RoomID = @paramRoomID", myConnection);
+            myCommand.Parameters.Add(paramRoomID);
+
+            SqlDataReader myReader = null;
+
+            try
+            {
+                myConnection.Open();
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    Sensor s = new Sensor(
+                        int.Parse(myReader["SensorID"].ToString()), 
+                        int.Parse(myReader["SensorTypeID"].ToString()), 
+                        myReader["SensorName"].ToString(),
+                        roomID
+                        );
+                    sensors.Add(s);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return sensors;
+        }
+
+        public static bool db_AddSensor(int typeID, int roomID)
+        {
+            SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
+
+            // Parameterise input to avoid SQL Injection
+            SqlParameter paramSensorType = new SqlParameter("@paramSensorType", SqlDbType.Int);
+            paramSensorType.Value = typeID;
+            SqlParameter paramRoomID = new SqlParameter("@paramRoomID", SqlDbType.Int);
+            paramRoomID.Value = roomID;
+
+            SqlCommand myCommand = new SqlCommand(
+                "INSERT INTO dbo.PDC_SensorID (SensorTypeID, RoomID) VALUES (@paramSensorType, @paramRoomID)", myConnection);
+            myCommand.Parameters.Add(paramSensorType);
+            myCommand.Parameters.Add(paramRoomID);
 
             try
             {

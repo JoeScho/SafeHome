@@ -66,6 +66,7 @@
       <DependentUpon>SafeHomeDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Sensor.cs" />
+    <Compile Include="SensorType.cs" />
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>

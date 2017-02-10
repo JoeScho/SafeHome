@@ -50,6 +50,8 @@
             this.txtLoginPwd = new System.Windows.Forms.TextBox();
             this.txtLoginName = new System.Windows.Forms.TextBox();
             this.pnlAddRoom = new System.Windows.Forms.Panel();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.lblSaveRoomError = new System.Windows.Forms.Label();
             this.lblAddSensor = new System.Windows.Forms.Label();
             this.btnDeleteSensor = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -71,31 +73,31 @@
             this.comboRoomN = new System.Windows.Forms.ComboBox();
             this.lblRoomName = new System.Windows.Forms.Label();
             this.pnlViewRooms = new System.Windows.Forms.Panel();
+            this.lblAddError = new System.Windows.Forms.Label();
             this.btnViewRoom = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtFloor = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblRooms = new System.Windows.Forms.Label();
             this.listboxRooms = new System.Windows.Forms.ListBox();
-            this.btnAddRoom = new System.Windows.Forms.Button();
+            this.pDCRoomBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.safeHomeDataSet = new SafeHome.SafeHomeDataSet();
+            this.btnAddRoom = new System.Windows.Forms.Button();
             this.btnLaunchEmulator = new System.Windows.Forms.Button();
             this.pDCSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pDC_SensorTableAdapter = new SafeHome.SafeHomeDataSetTableAdapters.PDC_SensorTableAdapter();
-            this.lblAddError = new System.Windows.Forms.Label();
             this.pDCRoomBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pDC_RoomTableAdapter = new SafeHome.SafeHomeDataSetTableAdapters.PDC_RoomTableAdapter();
-            this.pDCRoomBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.lblSaveRoomError = new System.Windows.Forms.Label();
+            this.lvSensors = new System.Windows.Forms.ListView();
             this.pnlLogin.SuspendLayout();
             this.gbRegister.SuspendLayout();
             this.gbLogin.SuspendLayout();
             this.pnlAddRoom.SuspendLayout();
             this.pnlViewRooms.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pDCRoomBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.safeHomeDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pDCSensorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pDCRoomBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pDCRoomBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSafeHome
@@ -297,6 +299,8 @@
             // 
             // pnlAddRoom
             // 
+            this.pnlAddRoom.Controls.Add(this.lvSensors);
+            this.pnlAddRoom.Controls.Add(this.btnCancel);
             this.pnlAddRoom.Controls.Add(this.lblSaveRoomError);
             this.pnlAddRoom.Controls.Add(this.lblAddSensor);
             this.pnlAddRoom.Controls.Add(this.btnDeleteSensor);
@@ -306,7 +310,6 @@
             this.pnlAddRoom.Controls.Add(this.label5);
             this.pnlAddRoom.Controls.Add(this.btnAddSensor);
             this.pnlAddRoom.Controls.Add(this.comboAddSensor);
-            this.pnlAddRoom.Controls.Add(this.lbSensors);
             this.pnlAddRoom.Controls.Add(this.btnSave);
             this.pnlAddRoom.Controls.Add(this.txtRoomName);
             this.pnlAddRoom.Controls.Add(this.checkDoorS);
@@ -322,6 +325,26 @@
             this.pnlAddRoom.Name = "pnlAddRoom";
             this.pnlAddRoom.Size = new System.Drawing.Size(654, 218);
             this.pnlAddRoom.TabIndex = 8;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Font = new System.Drawing.Font("American Typewriter", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(372, 161);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(270, 39);
+            this.btnCancel.TabIndex = 19;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // lblSaveRoomError
+            // 
+            this.lblSaveRoomError.AutoSize = true;
+            this.lblSaveRoomError.Font = new System.Drawing.Font("Copperplate Gothic Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSaveRoomError.Location = new System.Drawing.Point(18, 146);
+            this.lblSaveRoomError.Name = "lblSaveRoomError";
+            this.lblSaveRoomError.Size = new System.Drawing.Size(0, 12);
+            this.lblSaveRoomError.TabIndex = 18;
             // 
             // lblAddSensor
             // 
@@ -410,7 +433,7 @@
             this.lbSensors.Font = new System.Drawing.Font("Copperplate Gothic Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSensors.FormattingEnabled = true;
             this.lbSensors.ItemHeight = 12;
-            this.lbSensors.Location = new System.Drawing.Point(372, 59);
+            this.lbSensors.Location = new System.Drawing.Point(372, 113);
             this.lbSensors.Name = "lbSensors";
             this.lbSensors.Size = new System.Drawing.Size(270, 76);
             this.lbSensors.TabIndex = 10;
@@ -420,7 +443,7 @@
             this.btnSave.Font = new System.Drawing.Font("American Typewriter", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(14, 161);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(628, 39);
+            this.btnSave.Size = new System.Drawing.Size(307, 39);
             this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -534,10 +557,20 @@
             this.pnlViewRooms.Controls.Add(this.lblRooms);
             this.pnlViewRooms.Controls.Add(this.listboxRooms);
             this.pnlViewRooms.Controls.Add(this.btnAddRoom);
+            this.pnlViewRooms.Controls.Add(this.lbSensors);
             this.pnlViewRooms.Location = new System.Drawing.Point(16, 285);
             this.pnlViewRooms.Name = "pnlViewRooms";
             this.pnlViewRooms.Size = new System.Drawing.Size(654, 218);
             this.pnlViewRooms.TabIndex = 7;
+            // 
+            // lblAddError
+            // 
+            this.lblAddError.AutoSize = true;
+            this.lblAddError.Font = new System.Drawing.Font("Copperplate Gothic Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddError.Location = new System.Drawing.Point(305, 99);
+            this.lblAddError.Name = "lblAddError";
+            this.lblAddError.Size = new System.Drawing.Size(0, 12);
+            this.lblAddError.TabIndex = 16;
             // 
             // btnViewRoom
             // 
@@ -598,6 +631,16 @@
             this.listboxRooms.Size = new System.Drawing.Size(274, 116);
             this.listboxRooms.TabIndex = 10;
             // 
+            // pDCRoomBindingSource1
+            // 
+            this.pDCRoomBindingSource1.DataMember = "PDC_Room";
+            this.pDCRoomBindingSource1.DataSource = this.safeHomeDataSet;
+            // 
+            // safeHomeDataSet
+            // 
+            this.safeHomeDataSet.DataSetName = "SafeHomeDataSet";
+            this.safeHomeDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // btnAddRoom
             // 
             this.btnAddRoom.Font = new System.Drawing.Font("American Typewriter", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -608,11 +651,6 @@
             this.btnAddRoom.Text = "Add";
             this.btnAddRoom.UseVisualStyleBackColor = true;
             this.btnAddRoom.Click += new System.EventHandler(this.btnAddRoom_Click);
-            // 
-            // safeHomeDataSet
-            // 
-            this.safeHomeDataSet.DataSetName = "SafeHomeDataSet";
-            this.safeHomeDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnLaunchEmulator
             // 
@@ -634,15 +672,6 @@
             // 
             this.pDC_SensorTableAdapter.ClearBeforeFill = true;
             // 
-            // lblAddError
-            // 
-            this.lblAddError.AutoSize = true;
-            this.lblAddError.Font = new System.Drawing.Font("Copperplate Gothic Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddError.Location = new System.Drawing.Point(305, 99);
-            this.lblAddError.Name = "lblAddError";
-            this.lblAddError.Size = new System.Drawing.Size(0, 12);
-            this.lblAddError.TabIndex = 16;
-            // 
             // pDCRoomBindingSource
             // 
             this.pDCRoomBindingSource.DataMember = "PDC_Room";
@@ -652,19 +681,13 @@
             // 
             this.pDC_RoomTableAdapter.ClearBeforeFill = true;
             // 
-            // pDCRoomBindingSource1
+            // lvSensors
             // 
-            this.pDCRoomBindingSource1.DataMember = "PDC_Room";
-            this.pDCRoomBindingSource1.DataSource = this.safeHomeDataSet;
-            // 
-            // lblSaveRoomError
-            // 
-            this.lblSaveRoomError.AutoSize = true;
-            this.lblSaveRoomError.Font = new System.Drawing.Font("Copperplate Gothic Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSaveRoomError.Location = new System.Drawing.Point(18, 146);
-            this.lblSaveRoomError.Name = "lblSaveRoomError";
-            this.lblSaveRoomError.Size = new System.Drawing.Size(0, 12);
-            this.lblSaveRoomError.TabIndex = 18;
+            this.lvSensors.Location = new System.Drawing.Point(372, 58);
+            this.lvSensors.Name = "lvSensors";
+            this.lvSensors.Size = new System.Drawing.Size(270, 97);
+            this.lvSensors.TabIndex = 20;
+            this.lvSensors.UseCompatibleStateImageBehavior = false;
             // 
             // Home
             // 
@@ -691,10 +714,10 @@
             this.pnlAddRoom.PerformLayout();
             this.pnlViewRooms.ResumeLayout(false);
             this.pnlViewRooms.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pDCRoomBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.safeHomeDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pDCSensorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pDCRoomBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pDCRoomBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -759,5 +782,7 @@
         private SafeHomeDataSetTableAdapters.PDC_RoomTableAdapter pDC_RoomTableAdapter;
         private System.Windows.Forms.BindingSource pDCRoomBindingSource1;
         private System.Windows.Forms.Label lblSaveRoomError;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.ListView lvSensors;
     }
 }
