@@ -99,33 +99,7 @@ namespace SafeHome
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!update)
-            {
-                int rIDN = 0;
-                int rIDE = 0;
-                int rIDS = 0;
-                int rIDW = 0;
-                // Add new room and sensor data
-                if (comboRoomN.SelectedValue.ToString() != null)
-                {
-                    Room cbRoom = Room.getRoomByName(comboRoomN.SelectedValue.ToString(), customerRooms);
-                    rIDN = cbRoom.RoomID1;
-                }
-                if (comboRoomE.SelectedValue.ToString() != null)
-                {
-                    Room cbRoom = Room.getRoomByName(comboRoomE.SelectedValue.ToString(), customerRooms);
-                    rIDE = cbRoom.RoomID1;
-                }
-                if (comboRoomS.SelectedValue.ToString() != null)
-                {
-                    Room cbRoom = Room.getRoomByName(comboRoomS.SelectedValue.ToString(), customerRooms);
-                    rIDS = cbRoom.RoomID1;
-                }
-                if (comboRoomW.SelectedValue.ToString() != null)
-                {
-                    Room cbRoom = Room.getRoomByName(comboRoomW.SelectedValue.ToString(), customerRooms);
-                    rIDW = cbRoom.RoomID1;
-                }
-
+            {       
                 if (Room.getRoomByName(txtRoomName.Text, customerRooms) == null)
                 {
                     try
@@ -134,15 +108,37 @@ namespace SafeHome
                         int rmID = DBConnection.db_AddRoom(
                             txtRoomName.Text, 
                             c.CustomerID1, 
-                            floor, 
-                            rIDN, 
-                            checkDoorN.Checked, 
-                            rIDE, 
-                            checkDoorE.Checked, 
-                            rIDS, 
-                            checkDoorS.Checked, 
-                            rIDW, 
-                            checkDoorW.Checked);
+                            floor
+                            );
+                        try
+                        {
+                            // If adjacent rooms have been specified, update room details (includes updating other room)
+                            if (comboRoomN.SelectedItem != null)
+                            {
+                                Room cbRoom = Room.getRoomByName(comboRoomN.SelectedItem.ToString(), customerRooms);
+                                DBConnection.updateRoomN(rmID, cbRoom.RoomID1, checkDoorN.Checked);
+                            }
+                            if (comboRoomE.SelectedItem != null)
+                            {
+                                Room cbRoom = Room.getRoomByName(comboRoomE.SelectedItem.ToString(), customerRooms);
+                                DBConnection.updateRoomE(rmID, cbRoom.RoomID1, checkDoorN.Checked);
+                            }
+                            if (comboRoomS.SelectedItem != null)
+                            {
+                                Room cbRoom = Room.getRoomByName(comboRoomS.SelectedItem.ToString(), customerRooms);
+                                DBConnection.updateRoomS(rmID, cbRoom.RoomID1, checkDoorN.Checked);
+                            }
+                            if (comboRoomW.SelectedItem != null)
+                            {
+                                Room cbRoom = Room.getRoomByName(comboRoomW.SelectedItem.ToString(), customerRooms);
+                                DBConnection.updateRoomW(rmID, cbRoom.RoomID1, checkDoorN.Checked);
+                            }
+                        }    
+                        catch (Exception)
+                        {
+                            lblSaveRoomError.Text = "Error assigning adjacent rooms.";
+                        }                    
+
                         // Add sensors to DB
                         foreach (int i in sensorsToAdd)
                         {
@@ -170,19 +166,25 @@ namespace SafeHome
             else
             {
                 //update room
-            }
-            
+            }            
         }
 
         private void btnAddSensor_Click(object sender, EventArgs e)
         {
+            if(update)
+            {
+                sensorsToAdd.Add(int.Parse(lvSensors.SelectedItems[0].SubItems[1].Text));
+            }
             string s = comboAddSensor.Text;
-            lbSensors.Items.Add(s);
+            lvSensors.Items.Add(s);
         }
 
         private void btnDeleteSensor_Click(object sender, EventArgs e)
         {
-            sensorsToDelete.Add(int.Parse(lvSensors.SelectedItems[0].SubItems[1].Text));
+            if(update)
+            {
+                //sensorsToDelete.Add(int.Parse(lvSensors.SelectedItems[0].SubItems[1].Text));
+            }            
             lvSensors.Items.Remove(lvSensors.SelectedItems[0]);
         }
 
@@ -246,6 +248,7 @@ namespace SafeHome
             checkDoorE.Checked = false;
             checkDoorS.Checked = false;
             checkDoorW.Checked = false;
+            lvSensors.Clear();
             // Add rooms to drop down lists            
             setAllPanelsInvisible();
             pnlAddRoom.Visible = true;

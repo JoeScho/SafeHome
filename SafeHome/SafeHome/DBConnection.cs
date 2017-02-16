@@ -182,7 +182,7 @@ namespace SafeHome
             return sensorTypes;
         }
 
-        public static int db_AddRoom(string rmName, int cID, int flr, int rIDN, bool drN, int rIDE, bool drE, int rIDS, bool drS, int rIDW, bool drW)
+        public static int db_AddRoom(string rmName, int cID, int flr)
         {
             SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
 
@@ -193,41 +193,20 @@ namespace SafeHome
             paramCID.Value = cID;
             SqlParameter paramFloor = new SqlParameter("@paramFloor", SqlDbType.Int);
             paramFloor.Value = flr;
-            SqlParameter paramRoomN = new SqlParameter("@paramRoomN", SqlDbType.Int);
-            paramRoomN.Value = rIDN;
-            SqlParameter paramDoorN = new SqlParameter("@paramDoorN", SqlDbType.Bit);
-            paramDoorN.Value = drN;
-            SqlParameter paramRoomE = new SqlParameter("@paramRoomE", SqlDbType.Int);
-            paramRoomE.Value = rIDE;
-            SqlParameter paramDoorE = new SqlParameter("@paramDoorE", SqlDbType.Bit);
-            paramDoorE.Value = drE;
-            SqlParameter paramRoomS = new SqlParameter("@paramRoomS", SqlDbType.Int);
-            paramRoomS.Value = rIDS;
-            SqlParameter paramDoorS = new SqlParameter("@paramDoorS", SqlDbType.Bit);
-            paramDoorS.Value = drS;
-            SqlParameter paramRoomW = new SqlParameter("@paramRoomW", SqlDbType.Int);
-            paramRoomW.Value = rIDW;
-            SqlParameter paramDoorW = new SqlParameter("@paramDoorW", SqlDbType.Bit);
-            paramDoorW.Value = drW;
 
             SqlCommand myCommand = new SqlCommand(
-                "INSERT INTO dbo.PDC_Room (RoomID, RoomName, CustomerID, FloorNumber, RoomIDNorth, DoorNorth, RoomIDEast, DoorEast, RoomIDSouth, DoorSouth, RoomIDWest, DoorWest) VALUES (@paramRoomName,@ParamCID,@paramFloor,@paramRoomN,@paramDoorN,@paramRoomE,@paramDoorE,@paramRoomS,@paramDoorS,@paramRoomW,@paramDoorW)", myConnection);
+                "INSERT INTO dbo.PDC_Room (RoomName, CustomerID, FloorNumber) VALUES (@paramRoomName,@ParamCID,@paramFloor); "
+                + "SELECT CAST(scope_identity() AS int)", myConnection);
             myCommand.Parameters.Add(paramRoomName);
             myCommand.Parameters.Add(paramCID);
             myCommand.Parameters.Add(paramFloor);
-            myCommand.Parameters.Add(paramRoomN);
-            myCommand.Parameters.Add(paramDoorN);
-            myCommand.Parameters.Add(paramRoomE);
-            myCommand.Parameters.Add(paramDoorE);
-            myCommand.Parameters.Add(paramRoomS);
-            myCommand.Parameters.Add(paramDoorS);
-            myCommand.Parameters.Add(paramRoomW);
-            myCommand.Parameters.Add(paramDoorW);
 
             try
             {
                 myConnection.Open();
-                return int.Parse(myCommand.ExecuteScalar().ToString());
+                // TODO: This doesn't work properly, rooms don't update position relative to each other, sensors aren't added 
+                int id = (int)myCommand.ExecuteScalar();
+                return id;
             }
             catch (Exception e)
             {
@@ -238,6 +217,142 @@ namespace SafeHome
                 myConnection.Close();
             }
             return 0;
+        }
+
+        public static void updateRoomN(int roomID, int roomIDN, bool drN)
+        {
+            SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
+
+            // Parameterise input to avoid SQL Injection
+            SqlParameter paramRoom = new SqlParameter("@paramRoom", SqlDbType.Int);
+            paramRoom.Value = roomID;
+            SqlParameter paramRoomN = new SqlParameter("@paramRoomN", SqlDbType.Int);
+            paramRoomN.Value = roomIDN;
+            SqlParameter paramDoorN = new SqlParameter("@paramDoorN", SqlDbType.Bit);
+            paramDoorN.Value = drN;
+
+            SqlCommand myCommand = new SqlCommand(
+                "UPDATE dbo.PDC_Room SET RoomIDNorth = @paramRoomN, DoorNorth = @paramDoorN WHERE RoomID = @paramRoom;"
+                + "UPDATE dbo.PDC_Room SET RoomIDSouth = @paramRoom, DoorSouth = @paramDoorN WHERE RoomID = @paramRoomN;", myConnection);
+            myCommand.Parameters.Add(paramRoom);
+            myCommand.Parameters.Add(paramRoomN);
+            myCommand.Parameters.Add(paramDoorN);
+
+            try
+            {
+                myConnection.Open();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+        }
+
+        public static void updateRoomE(int roomID, int roomIDE, bool drE)
+        {
+            SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
+
+            // Parameterise input to avoid SQL Injection
+            SqlParameter paramRoom = new SqlParameter("@paramRoom", SqlDbType.Int);
+            paramRoom.Value = roomID;
+            SqlParameter paramRoomE = new SqlParameter("@paramRoomE", SqlDbType.Int);
+            paramRoomE.Value = roomIDE;
+            SqlParameter paramDoorE = new SqlParameter("@paramDoorE", SqlDbType.Bit);
+            paramDoorE.Value = drE;
+
+            SqlCommand myCommand = new SqlCommand(
+                 "UPDATE dbo.PDC_Room SET RoomIDEast = @paramRoomE, DoorEast = @paramDoorE WHERE RoomID = @paramRoom;"
+                 + "UPDATE dbo.PDC_Room SET RoomIDWest = @paramRoom, DoorWest = @paramDoorE WHERE RoomID = @paramRoomE;", myConnection);
+            myCommand.Parameters.Add(paramRoom);
+            myCommand.Parameters.Add(paramRoomE);
+            myCommand.Parameters.Add(paramDoorE);
+
+            try
+            {
+                myConnection.Open();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+        }
+
+        public static void updateRoomS(int roomID, int roomIDS, bool drS)
+        {
+            SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
+
+            // Parameterise input to avoid SQL Injection
+            SqlParameter paramRoom = new SqlParameter("@paramRoom", SqlDbType.Int);
+            paramRoom.Value = roomID;
+            SqlParameter paramRoomS = new SqlParameter("@paramRoomS", SqlDbType.Int);
+            paramRoomS.Value = roomIDS;
+            SqlParameter paramDoorS = new SqlParameter("@paramDoorS", SqlDbType.Bit);
+            paramDoorS.Value = drS;
+
+            SqlCommand myCommand = new SqlCommand(
+                 "UPDATE dbo.PDC_Room SET RoomIDSouth = @paramRoomS, DoorSouth = @paramDoorS WHERE RoomID = @paramRoom;"
+                 + "UPDATE dbo.PDC_Room SET RoomIDNorth = @paramRoom, DoorNorth = @paramDoorS WHERE RoomID = @paramRoomS;", myConnection);
+            myCommand.Parameters.Add(paramRoom);
+            myCommand.Parameters.Add(paramRoomS);
+            myCommand.Parameters.Add(paramDoorS);
+
+            try
+            {
+                myConnection.Open();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+        }
+
+        public static void updateRoomW(int roomID, int roomIDW, bool drW)
+        {
+            SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
+
+            // Parameterise input to avoid SQL Injection
+            SqlParameter paramRoom = new SqlParameter("@paramRoom", SqlDbType.Int);
+            paramRoom.Value = roomID;
+            SqlParameter paramRoomW = new SqlParameter("@paramRoomW", SqlDbType.Int);
+            paramRoomW.Value = roomIDW;
+            SqlParameter paramDoorW = new SqlParameter("@paramDoorW", SqlDbType.Bit);
+            paramDoorW.Value = drW;
+
+            SqlCommand myCommand = new SqlCommand(
+                 "UPDATE dbo.PDC_Room SET RoomIDWest = @paramRoomW, DoorWest = @paramDoorW WHERE RoomID = @paramRoom;"
+                 + "UPDATE dbo.PDC_Room SET RoomIDEast = @paramRoom, DoorEast = @paramDoorW WHERE RoomID = @paramRoomW;", myConnection);
+            myCommand.Parameters.Add(paramRoom);
+            myCommand.Parameters.Add(paramRoomW);
+            myCommand.Parameters.Add(paramDoorW);
+
+            try
+            {
+                myConnection.Open();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            finally
+            {
+                myConnection.Close();
+            }
         }
 
         public static List<Sensor> db_getRoomSensors(int roomID)

@@ -50,6 +50,7 @@
             this.txtLoginPwd = new System.Windows.Forms.TextBox();
             this.txtLoginName = new System.Windows.Forms.TextBox();
             this.pnlAddRoom = new System.Windows.Forms.Panel();
+            this.lvSensors = new System.Windows.Forms.ListView();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lblSaveRoomError = new System.Windows.Forms.Label();
             this.lblAddSensor = new System.Windows.Forms.Label();
@@ -60,7 +61,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnAddSensor = new System.Windows.Forms.Button();
             this.comboAddSensor = new System.Windows.Forms.ComboBox();
-            this.lbSensors = new System.Windows.Forms.ListBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtRoomName = new System.Windows.Forms.TextBox();
             this.checkDoorS = new System.Windows.Forms.CheckBox();
@@ -88,7 +88,6 @@
             this.pDC_SensorTableAdapter = new SafeHome.SafeHomeDataSetTableAdapters.PDC_SensorTableAdapter();
             this.pDCRoomBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pDC_RoomTableAdapter = new SafeHome.SafeHomeDataSetTableAdapters.PDC_RoomTableAdapter();
-            this.lvSensors = new System.Windows.Forms.ListView();
             this.pnlLogin.SuspendLayout();
             this.gbRegister.SuspendLayout();
             this.gbLogin.SuspendLayout();
@@ -326,6 +325,14 @@
             this.pnlAddRoom.Size = new System.Drawing.Size(654, 218);
             this.pnlAddRoom.TabIndex = 8;
             // 
+            // lvSensors
+            // 
+            this.lvSensors.Location = new System.Drawing.Point(372, 58);
+            this.lvSensors.Name = "lvSensors";
+            this.lvSensors.Size = new System.Drawing.Size(270, 97);
+            this.lvSensors.TabIndex = 20;
+            this.lvSensors.UseCompatibleStateImageBehavior = false;
+            // 
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("American Typewriter", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -427,16 +434,6 @@
             this.comboAddSensor.Size = new System.Drawing.Size(181, 20);
             this.comboAddSensor.TabIndex = 11;
             this.comboAddSensor.Text = "Add a sensor";
-            // 
-            // lbSensors
-            // 
-            this.lbSensors.Font = new System.Drawing.Font("Copperplate Gothic Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSensors.FormattingEnabled = true;
-            this.lbSensors.ItemHeight = 12;
-            this.lbSensors.Location = new System.Drawing.Point(372, 113);
-            this.lbSensors.Name = "lbSensors";
-            this.lbSensors.Size = new System.Drawing.Size(270, 76);
-            this.lbSensors.TabIndex = 10;
             // 
             // btnSave
             // 
@@ -557,7 +554,6 @@
             this.pnlViewRooms.Controls.Add(this.lblRooms);
             this.pnlViewRooms.Controls.Add(this.listboxRooms);
             this.pnlViewRooms.Controls.Add(this.btnAddRoom);
-            this.pnlViewRooms.Controls.Add(this.lbSensors);
             this.pnlViewRooms.Location = new System.Drawing.Point(16, 285);
             this.pnlViewRooms.Name = "pnlViewRooms";
             this.pnlViewRooms.Size = new System.Drawing.Size(654, 218);
@@ -681,14 +677,6 @@
             // 
             this.pDC_RoomTableAdapter.ClearBeforeFill = true;
             // 
-            // lvSensors
-            // 
-            this.lvSensors.Location = new System.Drawing.Point(372, 58);
-            this.lvSensors.Name = "lvSensors";
-            this.lvSensors.Size = new System.Drawing.Size(270, 97);
-            this.lvSensors.TabIndex = 20;
-            this.lvSensors.UseCompatibleStateImageBehavior = false;
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -755,7 +743,6 @@
         private System.Windows.Forms.ComboBox comboRoomN;
         private System.Windows.Forms.Label lblRoomName;
         private System.Windows.Forms.TextBox txtRoomName;
-        private System.Windows.Forms.ListBox lbSensors;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnAddSensor;
         private System.Windows.Forms.ComboBox comboAddSensor;
