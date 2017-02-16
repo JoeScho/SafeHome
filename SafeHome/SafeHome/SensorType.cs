@@ -43,7 +43,7 @@ namespace SafeHome
             }
         }
 
-        public string getSensorNameByID(int stID, List<SensorType> types)
+        public static string getSensorNameByID(int stID, List<SensorType> types)
         {
             foreach (SensorType st in types)
             {
@@ -53,6 +53,18 @@ namespace SafeHome
                 }
             }
             return "";
+        }
+
+        public static int getSensorTypeIDByName(string name, List<SensorType> types)
+        {
+            foreach (SensorType st in types)
+            {
+                if (st.SensorName1.Equals(name, StringComparison.Ordinal))
+                {
+                    return st.SensorTypeID1;
+                }
+            }
+            return -1;
         }
     }
 }

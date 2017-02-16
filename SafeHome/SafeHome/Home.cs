@@ -13,16 +13,14 @@ using SensorEmulator;
 namespace SafeHome
 {
     public partial class Home : Form
-    {        
+    {
         List<Panel> listPanels = new List<Panel>();
         List<Room> customerRooms = new List<Room>();
         List<Sensor> roomSensors = new List<Sensor>();
-        List<int> sensorsToDelete = new List<int>();
-        List<int> sensorsToAdd = new List<int>();
+        List<SensorType> sensorTypes = DBConnection.getSensorTypes();
         Customer c = new Customer();
         int floor;
-        bool update;
-        
+
         public Home()
         {
             InitializeComponent();
@@ -30,12 +28,10 @@ namespace SafeHome
 
         private void Home_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'safeHomeDataSet.PDC_Room' table. You can move, or remove it, as needed.
-            this.pDC_RoomTableAdapter.Fill(this.safeHomeDataSet.PDC_Room);
-            List<string> sensorTypes = DBConnection.getSensorTypes();
-            foreach (string s in sensorTypes)
+            this.pDC_RoomTableAdapter.Fill(this.safeHomeDataSet.PDC_Room);            
+            foreach (SensorType s in sensorTypes)
             {
-                comboAddSensor.Items.Add(s);
+                comboAddSensor.Items.Add(s.SensorName1);
             }
             listPanels.Add(pnlLogin);
             listPanels.Add(pnlViewRooms);
@@ -49,7 +45,7 @@ namespace SafeHome
             if (c.UserName1 != "")
             {
                 customerRooms = DBConnection.db_GetRooms(c.CustomerID1);
-                loadViewPage();                
+                loadViewPage();
             }
             else
             {
@@ -75,7 +71,6 @@ namespace SafeHome
         {
             try
             {
-                update = false;
                 floor = int.Parse(txtFloor.Text);
                 loadAddPage();
                 List<Room> roomsOnFloor = new List<Room>();
@@ -93,98 +88,91 @@ namespace SafeHome
             catch (Exception)
             {
                 lblAddError.Text = "Please enter Floor no.";
-            }                          
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!update)
-            {       
-                if (Room.getRoomByName(txtRoomName.Text, customerRooms) == null)
+            if (Room.getRoomByName(txtRoomName.Text, customerRooms) == null)
+            {
+                try
                 {
+                    // Add room to DB
+                    int rmID = DBConnection.db_AddRoom(
+                        txtRoomName.Text,
+                        c.CustomerID1,
+                        floor
+                        );
                     try
                     {
-                        // Add room to DB
-                        int rmID = DBConnection.db_AddRoom(
-                            txtRoomName.Text, 
-                            c.CustomerID1, 
-                            floor
-                            );
-                        try
+                        // If adjacent rooms have been specified, update room details (includes updating other room)
+                        if (comboRoomN.SelectedItem != null)
                         {
-                            // If adjacent rooms have been specified, update room details (includes updating other room)
-                            if (comboRoomN.SelectedItem != null)
-                            {
-                                Room cbRoom = Room.getRoomByName(comboRoomN.SelectedItem.ToString(), customerRooms);
-                                DBConnection.updateRoomN(rmID, cbRoom.RoomID1, checkDoorN.Checked);
-                            }
-                            if (comboRoomE.SelectedItem != null)
-                            {
-                                Room cbRoom = Room.getRoomByName(comboRoomE.SelectedItem.ToString(), customerRooms);
-                                DBConnection.updateRoomE(rmID, cbRoom.RoomID1, checkDoorN.Checked);
-                            }
-                            if (comboRoomS.SelectedItem != null)
-                            {
-                                Room cbRoom = Room.getRoomByName(comboRoomS.SelectedItem.ToString(), customerRooms);
-                                DBConnection.updateRoomS(rmID, cbRoom.RoomID1, checkDoorN.Checked);
-                            }
-                            if (comboRoomW.SelectedItem != null)
-                            {
-                                Room cbRoom = Room.getRoomByName(comboRoomW.SelectedItem.ToString(), customerRooms);
-                                DBConnection.updateRoomW(rmID, cbRoom.RoomID1, checkDoorN.Checked);
-                            }
-                        }    
-                        catch (Exception)
-                        {
-                            lblSaveRoomError.Text = "Error assigning adjacent rooms.";
-                        }                    
-
-                        // Add sensors to DB
-                        foreach (int i in sensorsToAdd)
-                        {
-                            try
-                            {
-                                DBConnection.db_AddSensor(i, rmID);
-                            }
-                            catch (Exception)
-                            {
-                                lblSaveRoomError.Text = "Added room but error adding sensor(s).";
-                            }                            
+                            Room cbRoom = Room.getRoomByName(comboRoomN.SelectedItem.ToString(), customerRooms);
+                            DBConnection.updateRoomN(rmID, cbRoom.RoomID1, checkDoorN.Checked);
                         }
-                        loadViewPage();
+                        if (comboRoomE.SelectedItem != null)
+                        {
+                            Room cbRoom = Room.getRoomByName(comboRoomE.SelectedItem.ToString(), customerRooms);
+                            DBConnection.updateRoomE(rmID, cbRoom.RoomID1, checkDoorE.Checked);
+                        }
+                        if (comboRoomS.SelectedItem != null)
+                        {
+                            Room cbRoom = Room.getRoomByName(comboRoomS.SelectedItem.ToString(), customerRooms);
+                            DBConnection.updateRoomS(rmID, cbRoom.RoomID1, checkDoorS.Checked);
+                        }
+                        if (comboRoomW.SelectedItem != null)
+                        {
+                            Room cbRoom = Room.getRoomByName(comboRoomW.SelectedItem.ToString(), customerRooms);
+                            DBConnection.updateRoomW(rmID, cbRoom.RoomID1, checkDoorW.Checked);
+                        }
                     }
                     catch (Exception)
                     {
-                        lblSaveRoomError.Text = "Error adding room.";
-                    }                    
+                        lblSaveRoomError.Text = "Error assigning adjacent rooms.";
+                    }
+
+                    List<Sensor> sensorsToAdd = new List<Sensor>();
+                    foreach (ListViewItem i in lvSensors.Items)
+                    {
+                        int sensorTypeID = SensorType.getSensorTypeIDByName(i.ToString(), sensorTypes);
+                        Sensor s = new Sensor(sensorTypeID, rmID);
+                        sensorsToAdd.Add(s);
+                    }
+
+                    // Add sensors to DB
+                    foreach (Sensor s in sensorsToAdd)
+                    {
+                        try
+                        {
+                            DBConnection.db_AddSensor(s.SensorTypeID1, rmID);
+                        }
+                        catch (Exception)
+                        {
+                            lblSaveRoomError.Text = "Added room but error adding sensor(s).";
+                        }
+                    }
+                    loadViewPage();
                 }
-                else
+                catch (Exception)
                 {
-                    lblSaveRoomError.Text = "Please ensure room name is unique.";
+                    lblSaveRoomError.Text = "Error adding room.";
                 }
             }
             else
             {
-                //update room
-            }            
+                lblSaveRoomError.Text = "Please ensure room name is unique.";
+            }
         }
 
         private void btnAddSensor_Click(object sender, EventArgs e)
         {
-            if(update)
-            {
-                sensorsToAdd.Add(int.Parse(lvSensors.SelectedItems[0].SubItems[1].Text));
-            }
             string s = comboAddSensor.Text;
             lvSensors.Items.Add(s);
         }
 
         private void btnDeleteSensor_Click(object sender, EventArgs e)
-        {
-            if(update)
-            {
-                //sensorsToDelete.Add(int.Parse(lvSensors.SelectedItems[0].SubItems[1].Text));
-            }            
+        {         
             lvSensors.Items.Remove(lvSensors.SelectedItems[0]);
         }
 
@@ -256,13 +244,12 @@ namespace SafeHome
 
         private void btnViewRoom_Click(object sender, EventArgs e)
         {
-            update = true;
             Room r = Room.getRoomByName(listboxRooms.SelectedItem.ToString(), customerRooms);
             txtRoomName.Text = r.RoomName1;            
 
             foreach (Sensor s in DBConnection.db_getRoomSensors(r.RoomID1))
             {
-                lvSensors.Items.Add(s.SensorName).SubItems.Add(s.SensorID1.ToString());
+                lvSensors.Items.Add(SensorType.getSensorNameByID(s.SensorTypeID1, sensorTypes));
             }
             loadAddPage();
         }

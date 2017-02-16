@@ -152,13 +152,13 @@ namespace SafeHome
             return rooms;
         }
 
-        public static List<string> getSensorTypes()
+        public static List<SensorType> getSensorTypes()
         {
-            List<string> sensorTypes = new List<string>();
+            List<SensorType> sensorTypes = new List<SensorType>();
             SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
 
             SqlCommand myCommand = new SqlCommand(
-                "SELECT SensorName FROM dbo.PDC_SensorType", myConnection);
+                "SELECT * FROM dbo.PDC_SensorType", myConnection);
 
             SqlDataReader myReader = null;
 
@@ -168,7 +168,10 @@ namespace SafeHome
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
-                    sensorTypes.Add(myReader["SensorName"].ToString()); 
+                    int id = int.Parse(myReader["SensorTypeID"].ToString());
+                    string name = myReader["SensorName"].ToString();
+                    SensorType s = new SensorType(id, name);
+                    sensorTypes.Add(s); 
                 }
             }
             catch (Exception e)
@@ -376,9 +379,7 @@ namespace SafeHome
                 while (myReader.Read())
                 {
                     Sensor s = new Sensor(
-                        int.Parse(myReader["SensorID"].ToString()), 
-                        int.Parse(myReader["SensorTypeID"].ToString()), 
-                        myReader["SensorName"].ToString(),
+                        int.Parse(myReader["SensorTypeID"].ToString()),
                         roomID
                         );
                     sensors.Add(s);
@@ -406,7 +407,7 @@ namespace SafeHome
             paramRoomID.Value = roomID;
 
             SqlCommand myCommand = new SqlCommand(
-                "INSERT INTO dbo.PDC_SensorID (SensorTypeID, RoomID) VALUES (@paramSensorType, @paramRoomID)", myConnection);
+                "INSERT INTO dbo.PDC_Sensor (SensorTypeID, RoomID) VALUES (@paramSensorType, @paramRoomID)", myConnection);
             myCommand.Parameters.Add(paramSensorType);
             myCommand.Parameters.Add(paramRoomID);
 
