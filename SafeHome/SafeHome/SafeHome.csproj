@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Customer.cs" />
     <Compile Include="DBConnection.cs" />
+    <Compile Include="Floor.cs" />
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>

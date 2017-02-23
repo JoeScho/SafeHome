@@ -81,19 +81,21 @@ namespace SafeHome
             return false;
         }
 
-        public static List<Room> db_GetRooms(int CustomerID)
+        public static List<Room> db_GetRooms(int CustomerID, int FloorID)
         {
             List<Room> rooms = new List<Room>();
             SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
 
             // Parameterise input to avoid SQL Injection
-            SqlParameter paramID = new SqlParameter("@ParamID", SqlDbType.VarChar);
-            paramID.Value = CustomerID;
+            SqlParameter paramCID = new SqlParameter("@paramCID", SqlDbType.Int);
+            paramCID.Value = CustomerID;
+            SqlParameter paramFID = new SqlParameter("@paramFID", SqlDbType.Int);
+            paramFID.Value = FloorID;
 
             SqlCommand myCommand = new SqlCommand(
-                "SELECT * FROM dbo.PDC_Room WHERE CustomerID = @ParamID", myConnection);
-            myCommand.Parameters.Add(paramID);
-
+                "SELECT * FROM dbo.PDC_Room WHERE CustomerID = @paramCID AND FloorID = @paramFID", myConnection);
+            myCommand.Parameters.Add(paramCID);
+            myCommand.Parameters.Add(paramFID);
             SqlDataReader myReader = null;
 
             try
@@ -124,21 +126,14 @@ namespace SafeHome
                         w = (int)myReader["RoomIDWest"];
                     }
 
-                    Room r = new Room(
-                        (int)myReader["RoomID"],
-                        myReader["RoomName"].ToString(),
-                        CustomerID,
-                        (int)myReader["FloorNumber"],
-                        n,
-                        myReader.GetBoolean(myReader.GetOrdinal("DoorNorth")),
-                        e,
-                        myReader.GetBoolean(myReader.GetOrdinal("DoorEast")),
-                        s,
-                        myReader.GetBoolean(myReader.GetOrdinal("DoorSouth")),
-                        w,
-                        myReader.GetBoolean(myReader.GetOrdinal("DoorWest"))
-                        );
-                    rooms.Add(r);                    
+                    int rID = (int)myReader["RoomID"];
+                    string name = myReader["RoomName"].ToString();
+                    bool drN = myReader.GetBoolean(myReader.GetOrdinal("DoorNorth"));
+                    bool drE = myReader.GetBoolean(myReader.GetOrdinal("DoorEast"));
+                    bool drS = myReader.GetBoolean(myReader.GetOrdinal("DoorSouth"));
+                    bool drW = myReader.GetBoolean(myReader.GetOrdinal("DoorWest"));
+                    Room r = new Room(rID, name, CustomerID, FloorID, n, drN, e, drE, s, drS, w, drW);
+                    rooms.Add(r);
                 }
             }
             catch (Exception e)
@@ -171,7 +166,7 @@ namespace SafeHome
                     int id = int.Parse(myReader["SensorTypeID"].ToString());
                     string name = myReader["SensorName"].ToString();
                     SensorType s = new SensorType(id, name);
-                    sensorTypes.Add(s); 
+                    sensorTypes.Add(s);
                 }
             }
             catch (Exception e)
@@ -185,7 +180,7 @@ namespace SafeHome
             return sensorTypes;
         }
 
-        public static int db_AddRoom(string rmName, int cID, int flr)
+        public static int db_AddRoom(string rmName, int cID, int flrID)
         {
             SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
 
@@ -194,20 +189,19 @@ namespace SafeHome
             paramRoomName.Value = rmName;
             SqlParameter paramCID = new SqlParameter("@ParamCID", SqlDbType.Int);
             paramCID.Value = cID;
-            SqlParameter paramFloor = new SqlParameter("@paramFloor", SqlDbType.Int);
-            paramFloor.Value = flr;
+            SqlParameter paramFloorID = new SqlParameter("@paramFloorID", SqlDbType.Int);
+            paramFloorID.Value = flrID;
 
             SqlCommand myCommand = new SqlCommand(
-                "INSERT INTO dbo.PDC_Room (RoomName, CustomerID, FloorNumber) VALUES (@paramRoomName,@ParamCID,@paramFloor); "
+                "INSERT INTO dbo.PDC_Room (RoomName, CustomerID, FloorID) VALUES (@paramRoomName,@ParamCID,@paramFloorID); "
                 + "SELECT CAST(scope_identity() AS int)", myConnection);
             myCommand.Parameters.Add(paramRoomName);
             myCommand.Parameters.Add(paramCID);
-            myCommand.Parameters.Add(paramFloor);
+            myCommand.Parameters.Add(paramFloorID);
 
             try
             {
                 myConnection.Open();
-                // TODO: This doesn't work properly, rooms don't update position relative to each other, sensors aren't added 
                 int id = (int)myCommand.ExecuteScalar();
                 return id;
             }
@@ -219,7 +213,7 @@ namespace SafeHome
             {
                 myConnection.Close();
             }
-            return 0;
+            return -1;
         }
 
         public static void updateRoomN(int roomID, int roomIDN, bool drN)
@@ -426,6 +420,120 @@ namespace SafeHome
                 myConnection.Close();
             }
             return false;
+        }
+
+        public static int db_AddFloor(int cID, int flr, int noOfRooms)
+        {
+            SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
+
+            // Parameterise input to avoid SQL Injection            
+            SqlParameter paramFloor = new SqlParameter("@paramFloor", SqlDbType.Int);
+            paramFloor.Value = flr;
+            SqlParameter paramNoOfRooms = new SqlParameter("@paramNoOfRooms", SqlDbType.Int);
+            paramNoOfRooms.Value = noOfRooms;
+            SqlParameter paramCID = new SqlParameter("@ParamCID", SqlDbType.Int);
+            paramCID.Value = cID;
+
+            SqlCommand myCommand = new SqlCommand(
+                "INSERT INTO dbo.PDC_Floor (FloorNum, NoOfRooms, CustomerID) VALUES (@paramFloor, @paramNoOfRooms, @ParamCID); "
+                + "SELECT CAST(scope_identity() AS int)", myConnection);
+            myCommand.Parameters.Add(paramFloor);
+            myCommand.Parameters.Add(paramNoOfRooms);
+            myCommand.Parameters.Add(paramCID);
+
+            try
+            {
+                myConnection.Open();
+                int id = (int)myCommand.ExecuteScalar();
+                return id;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return -1;
+        }
+
+        //public static int db_GetFloorID(int floor, int customerID)
+        //{
+        //    SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
+
+        //    // Parameterise input to avoid SQL Injection
+        //    SqlParameter paramCID = new SqlParameter("@ParamFloor", SqlDbType.Int);
+        //    paramCID.Value = floor;
+        //    SqlParameter paramFloor = new SqlParameter("@paramCID", SqlDbType.Int);
+        //    paramFloor.Value = customerID;
+
+        //    SqlCommand myCommand = new SqlCommand(
+        //        "SELECT FloorID FROM dbo.PDC_Floor WHERE FloorNum = @ParamFloor AND CustomerID = @paramCID);", myConnection);
+        //    myCommand.Parameters.Add(paramFloor);
+        //    myCommand.Parameters.Add(paramCID);
+        //    SqlDataReader myReader = null;
+
+        //    try
+        //    {
+        //        myConnection.Open();
+        //        myCommand.ExecuteReader();
+        //        while (myReader.Read())
+        //        {
+        //            return (int)myReader["FloorID"];
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine(e.ToString());
+        //    }
+        //    finally
+        //    {
+        //        myConnection.Close();
+        //    }
+        //    return -1;
+        //}
+
+        public static List<Floor> db_GetFloors(int CustomerID)
+        {
+            List<Floor> floors = new List<Floor>();
+            SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
+
+            // Parameterise input to avoid SQL Injection
+            SqlParameter paramID = new SqlParameter("@ParamID", SqlDbType.Int);
+            paramID.Value = CustomerID;
+
+            SqlCommand myCommand = new SqlCommand(
+                "SELECT * FROM dbo.PDC_Floor WHERE CustomerID = @ParamID", myConnection);
+            myCommand.Parameters.Add(paramID);
+
+            SqlDataReader myReader = null;
+
+            try
+            {
+                myConnection.Open();
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+
+                    Floor f = new Floor(
+                        (int)myReader["FloorID"],
+                        (int)myReader["FloorNum"],
+                        (int)myReader["NoOfRooms"],
+                        (int)myReader["CustomerID"]
+                        );
+                    floors.Add(f);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return floors;
         }
     }
 }

@@ -1,3 +1,5 @@
+DROP TABLE PDC_Floor;
+DROP TABLE PDC_SensorEvent;
 DROP TABLE PDC_Sensor;
 DROP TABLE PDC_SensorType;
 DROP TABLE PDC_Room;
