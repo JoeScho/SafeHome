@@ -73,6 +73,7 @@ namespace SafeHome
             {
                 floor = int.Parse(txtFloor.Text);
                 loadAddPage();
+                makeAddEditable();
                 List<Room> roomsOnFloor = new List<Room>();
                 foreach (Room r in customerRooms)
                 {
@@ -93,7 +94,7 @@ namespace SafeHome
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (Room.getRoomByName(txtRoomName.Text, customerRooms) == null)
+            if (Room.getRoomByName(txtRoomName.Text, customerRooms) == null && txtRoomName.Text != "")
             {
                 try
                 {
@@ -219,6 +220,8 @@ namespace SafeHome
             txtFloor.Text = "";
             setAllPanelsInvisible();
             pnlViewRooms.Visible = true;
+            btnSave.Visible = true;
+            checkDoorE.Enabled = true;
         }
 
         public void loadAddPage()
@@ -245,6 +248,7 @@ namespace SafeHome
         private void btnViewRoom_Click(object sender, EventArgs e)
         {
             loadAddPage();
+            makeAddViewOnly();
             Room r = Room.getRoomByName(listboxRooms.SelectedItem.ToString(), customerRooms);
             txtRoomName.Text = r.RoomName1;
             Room rmN = Room.getRoomByID(r.RoomIDNorth1, customerRooms);
@@ -279,7 +283,45 @@ namespace SafeHome
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            loadViewPage();
+            loadViewPage();            
+        }
+
+        public void makeAddViewOnly()
+        {
+            btnSave.Visible = false;
+            btnAddSensor.Visible = false;
+            btnDeleteSensor.Visible = false;
+            comboAddSensor.Visible = false;
+            lblAddSensor.Text = "Room sensors:";
+            lbSensors.Enabled = false;
+            txtRoomName.Enabled = false;
+            checkDoorN.Enabled = false;
+            checkDoorE.Enabled = false;
+            checkDoorS.Enabled = false;
+            checkDoorW.Enabled = false;
+            comboRoomN.Enabled = false;
+            comboRoomE.Enabled = false;
+            comboRoomS.Enabled = false;
+            comboRoomW.Enabled = false;
+        }
+
+        public void makeAddEditable()
+        {
+            btnSave.Visible = true;
+            btnAddSensor.Visible = true;
+            btnDeleteSensor.Visible = true;
+            comboAddSensor.Visible = true;
+            lblAddSensor.Text = "Add a sensor";
+            lbSensors.Enabled = true;
+            txtRoomName.Enabled = true;
+            checkDoorN.Enabled = true;
+            checkDoorE.Enabled = true;
+            checkDoorS.Enabled = true;
+            checkDoorW.Enabled = true;
+            comboRoomN.Enabled = true;
+            comboRoomE.Enabled = true;
+            comboRoomS.Enabled = true;
+            comboRoomW.Enabled = true;
         }
     }
 }

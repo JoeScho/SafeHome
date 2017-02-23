@@ -35,14 +35,12 @@
             this.pnlLogin = new System.Windows.Forms.Panel();
             this.gbRegister = new System.Windows.Forms.GroupBox();
             this.lblRegisterError = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btnRegister = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtRegisterPwd = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtRegisterName = new System.Windows.Forms.TextBox();
             this.gbLogin = new System.Windows.Forms.GroupBox();
-            this.linkForgotPwd = new System.Windows.Forms.LinkLabel();
             this.lblLoginErr = new System.Windows.Forms.Label();
             this.btnSignIn = new System.Windows.Forms.Button();
             this.lblLoginPwd = new System.Windows.Forms.Label();
@@ -50,6 +48,7 @@
             this.txtLoginPwd = new System.Windows.Forms.TextBox();
             this.txtLoginName = new System.Windows.Forms.TextBox();
             this.pnlAddRoom = new System.Windows.Forms.Panel();
+            this.lbSensors = new System.Windows.Forms.ListBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lblSaveRoomError = new System.Windows.Forms.Label();
             this.lblAddSensor = new System.Windows.Forms.Label();
@@ -87,7 +86,10 @@
             this.pDC_SensorTableAdapter = new SafeHome.SafeHomeDataSetTableAdapters.PDC_SensorTableAdapter();
             this.pDCRoomBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pDC_RoomTableAdapter = new SafeHome.SafeHomeDataSetTableAdapters.PDC_RoomTableAdapter();
-            this.lbSensors = new System.Windows.Forms.ListBox();
+            this.comboSelectFloor = new System.Windows.Forms.ComboBox();
+            this.comboRoomCount = new System.Windows.Forms.ComboBox();
+            this.lblFloor = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.pnlLogin.SuspendLayout();
             this.gbRegister.SuspendLayout();
             this.gbLogin.SuspendLayout();
@@ -133,7 +135,6 @@
             // gbRegister
             // 
             this.gbRegister.Controls.Add(this.lblRegisterError);
-            this.gbRegister.Controls.Add(this.linkLabel1);
             this.gbRegister.Controls.Add(this.btnRegister);
             this.gbRegister.Controls.Add(this.label2);
             this.gbRegister.Controls.Add(this.txtRegisterPwd);
@@ -155,17 +156,6 @@
             this.lblRegisterError.Name = "lblRegisterError";
             this.lblRegisterError.Size = new System.Drawing.Size(0, 13);
             this.lblRegisterError.TabIndex = 9;
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("American Typewriter", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(62, 183);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(189, 14);
-            this.linkLabel1.TabIndex = 3;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "View our terms and conditions.";
             // 
             // btnRegister
             // 
@@ -214,7 +204,6 @@
             // 
             // gbLogin
             // 
-            this.gbLogin.Controls.Add(this.linkForgotPwd);
             this.gbLogin.Controls.Add(this.lblLoginErr);
             this.gbLogin.Controls.Add(this.btnSignIn);
             this.gbLogin.Controls.Add(this.lblLoginPwd);
@@ -228,17 +217,6 @@
             this.gbLogin.TabIndex = 2;
             this.gbLogin.TabStop = false;
             this.gbLogin.Text = "Log in";
-            // 
-            // linkForgotPwd
-            // 
-            this.linkForgotPwd.AutoSize = true;
-            this.linkForgotPwd.Font = new System.Drawing.Font("American Typewriter", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkForgotPwd.Location = new System.Drawing.Point(121, 182);
-            this.linkForgotPwd.Name = "linkForgotPwd";
-            this.linkForgotPwd.Size = new System.Drawing.Size(132, 14);
-            this.linkForgotPwd.TabIndex = 9;
-            this.linkForgotPwd.TabStop = true;
-            this.linkForgotPwd.Text = "Forgotten Password?";
             // 
             // lblLoginErr
             // 
@@ -320,10 +298,20 @@
             this.pnlAddRoom.Controls.Add(this.checkDoorN);
             this.pnlAddRoom.Controls.Add(this.comboRoomN);
             this.pnlAddRoom.Controls.Add(this.lblRoomName);
-            this.pnlAddRoom.Location = new System.Drawing.Point(16, 511);
+            this.pnlAddRoom.Location = new System.Drawing.Point(6, 275);
             this.pnlAddRoom.Name = "pnlAddRoom";
             this.pnlAddRoom.Size = new System.Drawing.Size(654, 218);
             this.pnlAddRoom.TabIndex = 8;
+            // 
+            // lbSensors
+            // 
+            this.lbSensors.Font = new System.Drawing.Font("Copperplate Gothic Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSensors.FormattingEnabled = true;
+            this.lbSensors.ItemHeight = 12;
+            this.lbSensors.Location = new System.Drawing.Point(372, 61);
+            this.lbSensors.Name = "lbSensors";
+            this.lbSensors.Size = new System.Drawing.Size(270, 88);
+            this.lbSensors.TabIndex = 20;
             // 
             // btnCancel
             // 
@@ -538,6 +526,10 @@
             // 
             // pnlViewRooms
             // 
+            this.pnlViewRooms.Controls.Add(this.label9);
+            this.pnlViewRooms.Controls.Add(this.lblFloor);
+            this.pnlViewRooms.Controls.Add(this.comboRoomCount);
+            this.pnlViewRooms.Controls.Add(this.comboSelectFloor);
             this.pnlViewRooms.Controls.Add(this.lblAddError);
             this.pnlViewRooms.Controls.Add(this.btnViewRoom);
             this.pnlViewRooms.Controls.Add(this.label4);
@@ -546,7 +538,7 @@
             this.pnlViewRooms.Controls.Add(this.lblRooms);
             this.pnlViewRooms.Controls.Add(this.listboxRooms);
             this.pnlViewRooms.Controls.Add(this.btnAddRoom);
-            this.pnlViewRooms.Location = new System.Drawing.Point(16, 285);
+            this.pnlViewRooms.Location = new System.Drawing.Point(19, 61);
             this.pnlViewRooms.Name = "pnlViewRooms";
             this.pnlViewRooms.Size = new System.Drawing.Size(654, 218);
             this.pnlViewRooms.TabIndex = 7;
@@ -563,7 +555,7 @@
             // btnViewRoom
             // 
             this.btnViewRoom.Font = new System.Drawing.Font("American Typewriter", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewRoom.Location = new System.Drawing.Point(14, 150);
+            this.btnViewRoom.Location = new System.Drawing.Point(189, 150);
             this.btnViewRoom.Name = "btnViewRoom";
             this.btnViewRoom.Size = new System.Drawing.Size(274, 39);
             this.btnViewRoom.TabIndex = 15;
@@ -575,7 +567,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Copperplate Gothic Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(296, 35);
+            this.label4.Location = new System.Drawing.Point(523, 35);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 14);
             this.label4.TabIndex = 14;
@@ -583,7 +575,7 @@
             // 
             // txtFloor
             // 
-            this.txtFloor.Location = new System.Drawing.Point(353, 31);
+            this.txtFloor.Location = new System.Drawing.Point(580, 31);
             this.txtFloor.Name = "txtFloor";
             this.txtFloor.Size = new System.Drawing.Size(62, 20);
             this.txtFloor.TabIndex = 13;
@@ -592,7 +584,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Copperplate Gothic Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(296, 12);
+            this.label1.Location = new System.Drawing.Point(523, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 14);
             this.label1.TabIndex = 12;
@@ -602,7 +594,7 @@
             // 
             this.lblRooms.AutoSize = true;
             this.lblRooms.Font = new System.Drawing.Font("Copperplate Gothic Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRooms.Location = new System.Drawing.Point(11, 12);
+            this.lblRooms.Location = new System.Drawing.Point(186, 12);
             this.lblRooms.Name = "lblRooms";
             this.lblRooms.Size = new System.Drawing.Size(55, 14);
             this.lblRooms.TabIndex = 11;
@@ -614,7 +606,7 @@
             this.listboxRooms.Font = new System.Drawing.Font("Copperplate Gothic Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listboxRooms.FormattingEnabled = true;
             this.listboxRooms.ItemHeight = 14;
-            this.listboxRooms.Location = new System.Drawing.Point(14, 28);
+            this.listboxRooms.Location = new System.Drawing.Point(189, 28);
             this.listboxRooms.Name = "listboxRooms";
             this.listboxRooms.Size = new System.Drawing.Size(274, 116);
             this.listboxRooms.TabIndex = 10;
@@ -632,7 +624,7 @@
             // btnAddRoom
             // 
             this.btnAddRoom.Font = new System.Drawing.Font("American Typewriter", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddRoom.Location = new System.Drawing.Point(299, 57);
+            this.btnAddRoom.Location = new System.Drawing.Point(526, 57);
             this.btnAddRoom.Name = "btnAddRoom";
             this.btnAddRoom.Size = new System.Drawing.Size(116, 39);
             this.btnAddRoom.TabIndex = 9;
@@ -669,22 +661,48 @@
             // 
             this.pDC_RoomTableAdapter.ClearBeforeFill = true;
             // 
-            // lbSensors
+            // comboSelectFloor
             // 
-            this.lbSensors.Font = new System.Drawing.Font("Copperplate Gothic Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSensors.FormattingEnabled = true;
-            this.lbSensors.ItemHeight = 12;
-            this.lbSensors.Location = new System.Drawing.Point(372, 61);
-            this.lbSensors.Name = "lbSensors";
-            this.lbSensors.Size = new System.Drawing.Size(270, 88);
-            this.lbSensors.TabIndex = 20;
+            this.comboSelectFloor.FormattingEnabled = true;
+            this.comboSelectFloor.Location = new System.Drawing.Point(15, 28);
+            this.comboSelectFloor.Name = "comboSelectFloor";
+            this.comboSelectFloor.Size = new System.Drawing.Size(121, 21);
+            this.comboSelectFloor.TabIndex = 17;
+            // 
+            // comboRoomCount
+            // 
+            this.comboRoomCount.FormattingEnabled = true;
+            this.comboRoomCount.Location = new System.Drawing.Point(15, 120);
+            this.comboRoomCount.Name = "comboRoomCount";
+            this.comboRoomCount.Size = new System.Drawing.Size(121, 21);
+            this.comboRoomCount.TabIndex = 18;
+            // 
+            // lblFloor
+            // 
+            this.lblFloor.AutoSize = true;
+            this.lblFloor.Font = new System.Drawing.Font("Copperplate Gothic Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFloor.Location = new System.Drawing.Point(13, 11);
+            this.lblFloor.Name = "lblFloor";
+            this.lblFloor.Size = new System.Drawing.Size(55, 14);
+            this.lblFloor.TabIndex = 19;
+            this.lblFloor.Text = "Rooms";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Copperplate Gothic Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(13, 101);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(98, 14);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "No of rooms";
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(690, 741);
+            this.ClientSize = new System.Drawing.Size(690, 289);
             this.Controls.Add(this.btnLaunchEmulator);
             this.Controls.Add(this.pnlAddRoom);
             this.Controls.Add(this.pnlViewRooms);
@@ -725,7 +743,6 @@
         private System.Windows.Forms.TextBox txtLoginPwd;
         private System.Windows.Forms.TextBox txtLoginName;
         private System.Windows.Forms.GroupBox gbRegister;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtRegisterPwd;
@@ -753,7 +770,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnDeleteSensor;
-        private System.Windows.Forms.LinkLabel linkForgotPwd;
         private System.Windows.Forms.Label lblAddSensor;
         private System.Windows.Forms.Button btnLaunchEmulator;
         private System.Windows.Forms.Label label4;
@@ -773,5 +789,9 @@
         private System.Windows.Forms.Label lblSaveRoomError;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.ListBox lbSensors;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblFloor;
+        private System.Windows.Forms.ComboBox comboRoomCount;
+        private System.Windows.Forms.ComboBox comboSelectFloor;
     }
 }
