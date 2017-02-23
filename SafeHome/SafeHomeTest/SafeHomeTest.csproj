@@ -52,6 +52,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="FloorTest.cs" />
     <Compile Include="RoomTest.cs" />
     <Compile Include="SensorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
