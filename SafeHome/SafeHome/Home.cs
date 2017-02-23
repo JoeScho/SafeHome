@@ -133,9 +133,9 @@ namespace SafeHome
                     }
 
                     List<Sensor> sensorsToAdd = new List<Sensor>();
-                    foreach (ListViewItem i in lvSensors.Items)
+                    foreach (var sensor in lbSensors.Items)
                     {
-                        int sensorTypeID = SensorType.getSensorTypeIDByName(i.ToString(), sensorTypes);
+                        int sensorTypeID = SensorType.getSensorTypeIDByName(sensor.ToString(), sensorTypes);
                         Sensor s = new Sensor(sensorTypeID, rmID);
                         sensorsToAdd.Add(s);
                     }
@@ -168,12 +168,12 @@ namespace SafeHome
         private void btnAddSensor_Click(object sender, EventArgs e)
         {
             string s = comboAddSensor.Text;
-            lvSensors.Items.Add(s);
+            lbSensors.Items.Add(s);
         }
 
         private void btnDeleteSensor_Click(object sender, EventArgs e)
         {         
-            lvSensors.Items.Remove(lvSensors.SelectedItems[0]);
+            lbSensors.Items.Remove(lbSensors.SelectedItem);
         }
 
         private void btnLaunchEmulator_Click(object sender, EventArgs e)
@@ -236,7 +236,7 @@ namespace SafeHome
             checkDoorE.Checked = false;
             checkDoorS.Checked = false;
             checkDoorW.Checked = false;
-            lvSensors.Clear();
+            lbSensors.Items.Clear();
             // Add rooms to drop down lists            
             setAllPanelsInvisible();
             pnlAddRoom.Visible = true;
@@ -244,14 +244,37 @@ namespace SafeHome
 
         private void btnViewRoom_Click(object sender, EventArgs e)
         {
+            loadAddPage();
             Room r = Room.getRoomByName(listboxRooms.SelectedItem.ToString(), customerRooms);
-            txtRoomName.Text = r.RoomName1;            
-
+            txtRoomName.Text = r.RoomName1;
+            Room rmN = Room.getRoomByID(r.RoomIDNorth1, customerRooms);
+            Room rmE = Room.getRoomByID(r.RoomIDEast1, customerRooms);
+            Room rmS = Room.getRoomByID(r.RoomIDSouth1, customerRooms);
+            Room rmW = Room.getRoomByID(r.RoomIDWest1, customerRooms);
+            if (rmN != null)
+            {
+                comboRoomN.Text = rmN.RoomName1;
+            }
+            if (rmE != null)
+            {
+                comboRoomE.Text = rmE.RoomName1;
+            }
+            if (rmS != null)
+            {
+                comboRoomS.Text = rmS.RoomName1;
+            }
+            if (rmW != null)
+            {
+                comboRoomW.Text = rmW.RoomName1;
+            }
+            checkDoorN.Checked = r.DoorNorth1;
+            checkDoorE.Checked = r.DoorEast1;
+            checkDoorS.Checked = r.DoorSouth1;
+            checkDoorW.Checked = r.DoorWest1;
             foreach (Sensor s in DBConnection.db_getRoomSensors(r.RoomID1))
             {
-                lvSensors.Items.Add(SensorType.getSensorNameByID(s.SensorTypeID1, sensorTypes));
-            }
-            loadAddPage();
+                lbSensors.Items.Add(SensorType.getSensorNameByID(s.SensorTypeID1, sensorTypes));
+            }            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SafeHome;
 
 namespace SafeHomeTest
@@ -8,7 +7,7 @@ namespace SafeHomeTest
     public class SensorTest
     {
         [TestMethod]
-        public void sensorAlarmReturnsTrue()
+        public void _sensorAlarm()
         {
             Sensor s = new Sensor();
             Assert.AreEqual(true, s.alert());

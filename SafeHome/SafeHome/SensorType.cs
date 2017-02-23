@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SafeHome
 {
-    class SensorType
+    public class SensorType
     {
         private int SensorTypeID;
         private string SensorName;
@@ -59,7 +59,7 @@ namespace SafeHome
         {
             foreach (SensorType st in types)
             {
-                if (st.SensorName1.Equals(name, StringComparison.Ordinal))
+                if (st.SensorName1.Equals(name))
                 {
                     return st.SensorTypeID1;
                 }

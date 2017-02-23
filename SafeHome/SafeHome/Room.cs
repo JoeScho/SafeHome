@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SafeHome
 {
-    class Room
+    public class Room
     {
         int RoomID;
         string RoomName;
@@ -213,6 +213,18 @@ namespace SafeHome
             foreach (Room r in rooms)
             {
                 if (r.RoomName1 == name)
+                {
+                    return r;
+                }
+            }
+            return null;
+        }
+
+        public static Room getRoomByID(int ID, List<Room> rooms)
+        {
+            foreach (Room r in rooms)
+            {
+                if (r.RoomID1 == ID)
                 {
                     return r;
                 }
