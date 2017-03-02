@@ -36,6 +36,9 @@ namespace SafeHome
         private void comboFloor_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboRoom.Items.Clear();
+            comboSensor.Items.Clear();
+            selectedSensor = null;
+
             int floornum = int.Parse(comboFloor.SelectedItem.ToString());
             Floor selectedFloor = (from f in floors
                                    where f.FloorNum1 == floornum
@@ -50,6 +53,8 @@ namespace SafeHome
         private void comboRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboSensor.Items.Clear();
+            selectedSensor = null;
+
             string roomname = comboRoom.SelectedItem.ToString();
             Room selectedRoom = (from r in rooms
                                    where r.RoomName1 == roomname
@@ -81,8 +86,15 @@ namespace SafeHome
             {
                 detail = txtDetail.Text;
             }
-            // Call API to submit sensor reading
-            lblSubmit.Text = service.SubmitReading(selectedSensor.SensorID1,detail);
+            if (selectedSensor != null)
+            {
+                // Call API to submit sensor reading
+                lblSubmit.Text = service.SubmitReading(selectedSensor.SensorID1, detail);
+            }
+            else
+            {
+                lblSubmit.Text = "Please select a sensor.";
+            }
         }
     }
 }
