@@ -373,6 +373,7 @@ namespace SafeHome
                 while (myReader.Read())
                 {
                     Sensor s = new Sensor(
+                        int.Parse(myReader["SensorID"].ToString()),
                         int.Parse(myReader["SensorTypeID"].ToString()),
                         roomID
                         );
@@ -457,42 +458,6 @@ namespace SafeHome
             }
             return -1;
         }
-
-        //public static int db_GetFloorID(int floor, int customerID)
-        //{
-        //    SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
-
-        //    // Parameterise input to avoid SQL Injection
-        //    SqlParameter paramCID = new SqlParameter("@ParamFloor", SqlDbType.Int);
-        //    paramCID.Value = floor;
-        //    SqlParameter paramFloor = new SqlParameter("@paramCID", SqlDbType.Int);
-        //    paramFloor.Value = customerID;
-
-        //    SqlCommand myCommand = new SqlCommand(
-        //        "SELECT FloorID FROM dbo.PDC_Floor WHERE FloorNum = @ParamFloor AND CustomerID = @paramCID);", myConnection);
-        //    myCommand.Parameters.Add(paramFloor);
-        //    myCommand.Parameters.Add(paramCID);
-        //    SqlDataReader myReader = null;
-
-        //    try
-        //    {
-        //        myConnection.Open();
-        //        myCommand.ExecuteReader();
-        //        while (myReader.Read())
-        //        {
-        //            return (int)myReader["FloorID"];
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Console.WriteLine(e.ToString());
-        //    }
-        //    finally
-        //    {
-        //        myConnection.Close();
-        //    }
-        //    return -1;
-        //}
 
         public static List<Floor> db_GetFloors(int CustomerID)
         {

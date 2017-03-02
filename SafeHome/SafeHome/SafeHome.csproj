@@ -38,6 +38,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -67,7 +69,18 @@
       <DependentUpon>SafeHomeDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Sensor.cs" />
+    <Compile Include="SensorEmulator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SensorEmulator.Designer.cs">
+      <DependentUpon>SensorEmulator.cs</DependentUpon>
+    </Compile>
     <Compile Include="SensorType.cs" />
+    <Compile Include="Service References\SafeHomeAPIServices\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
@@ -80,6 +93,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SensorEmulator.resx">
+      <DependentUpon>SensorEmulator.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -100,18 +116,47 @@
     <None Include="SafeHomeDataSet.xss">
       <DependentUpon>SafeHomeDataSet.xsd</DependentUpon>
     </None>
+    <None Include="Service References\SafeHomeAPIServices\SafeHome.SafeHomeAPIServices.ActivateSystemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SafeHomeAPIServices\SafeHome.SafeHomeAPIServices.DeactivateSystemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SafeHomeAPIServices\SafeHome.SafeHomeAPIServices.GetSensorEventsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SafeHomeAPIServices\SafeHome.SafeHomeAPIServices.GetSystemStateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SafeHomeAPIServices\SafeHome.SafeHomeAPIServices.RestartSystemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SafeHomeAPIServices\SafeHome.SafeHomeAPIServices.SensorEvent.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SafeHomeAPIServices\SafeHome.SafeHomeAPIServices.SubmitReadingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SafeHomeAPIServices\SafeHomeAPI.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Service References\SafeHomeAPIServices\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\SafeHomeAPIServices\configuration.svcinfo" />
+    <None Include="Service References\SafeHomeAPIServices\configuration91.svcinfo" />
+    <None Include="Service References\SafeHomeAPIServices\SafeHomeAPI.disco" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SensorEmulator\SensorEmulator.csproj">
-      <Project>{47608b47-fe4a-4745-be3a-10c2afa1e12a}</Project>
-      <Name>SensorEmulator</Name>
-    </ProjectReference>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SafeHomeAPIServices\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

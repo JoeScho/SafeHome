@@ -71,6 +71,7 @@
             this.comboRoomN = new System.Windows.Forms.ComboBox();
             this.lblRoomName = new System.Windows.Forms.Label();
             this.pnlViewRooms = new System.Windows.Forms.Panel();
+            this.lblRoomCount = new System.Windows.Forms.Label();
             this.lblAddRoomError = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblAddFloorError = new System.Windows.Forms.Label();
@@ -93,7 +94,6 @@
             this.pDC_SensorTableAdapter = new SafeHome.SafeHomeDataSetTableAdapters.PDC_SensorTableAdapter();
             this.pDCRoomBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pDC_RoomTableAdapter = new SafeHome.SafeHomeDataSetTableAdapters.PDC_RoomTableAdapter();
-            this.lblRoomCount = new System.Windows.Forms.Label();
             this.pnlLogin.SuspendLayout();
             this.gbRegister.SuspendLayout();
             this.gbLogin.SuspendLayout();
@@ -545,6 +545,15 @@
             this.pnlViewRooms.Size = new System.Drawing.Size(654, 218);
             this.pnlViewRooms.TabIndex = 7;
             // 
+            // lblRoomCount
+            // 
+            this.lblRoomCount.AutoSize = true;
+            this.lblRoomCount.Font = new System.Drawing.Font("Copperplate Gothic Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRoomCount.Location = new System.Drawing.Point(72, 8);
+            this.lblRoomCount.Name = "lblRoomCount";
+            this.lblRoomCount.Size = new System.Drawing.Size(0, 14);
+            this.lblRoomCount.TabIndex = 26;
+            // 
             // lblAddRoomError
             // 
             this.lblAddRoomError.AutoSize = true;
@@ -733,6 +742,7 @@
             this.btnLaunchEmulator.TabIndex = 9;
             this.btnLaunchEmulator.Text = "Launch Emulator";
             this.btnLaunchEmulator.UseVisualStyleBackColor = true;
+            this.btnLaunchEmulator.Visible = false;
             this.btnLaunchEmulator.Click += new System.EventHandler(this.btnLaunchEmulator_Click);
             // 
             // pDCSensorBindingSource
@@ -752,15 +762,6 @@
             // pDC_RoomTableAdapter
             // 
             this.pDC_RoomTableAdapter.ClearBeforeFill = true;
-            // 
-            // lblRoomCount
-            // 
-            this.lblRoomCount.AutoSize = true;
-            this.lblRoomCount.Font = new System.Drawing.Font("Copperplate Gothic Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoomCount.Location = new System.Drawing.Point(72, 8);
-            this.lblRoomCount.Name = "lblRoomCount";
-            this.lblRoomCount.Size = new System.Drawing.Size(0, 14);
-            this.lblRoomCount.TabIndex = 26;
             // 
             // Home
             // 

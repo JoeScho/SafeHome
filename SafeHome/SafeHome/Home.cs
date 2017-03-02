@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using SensorEmulator;
 
 namespace SafeHome
 {
@@ -203,7 +202,7 @@ namespace SafeHome
 
         private void btnLaunchEmulator_Click(object sender, EventArgs e)
         {
-            Form1 f = new Form1();
+            SensorEmulator f = new SensorEmulator(c);
             f.Show();
         }
 
@@ -232,6 +231,7 @@ namespace SafeHome
             txtRegisterPwd.Text = "";
             setAllPanelsInvisible();
             pnlLogin.Visible = true;
+            btnLaunchEmulator.Visible = false;
 
             // Reset variable values
             customerRooms = new List<Room>();
@@ -261,6 +261,7 @@ namespace SafeHome
             pnlViewRooms.Visible = true;
             btnSave.Visible = true;
             checkDoorE.Enabled = true;
+            btnLaunchEmulator.Visible = true;
         }
 
         public void loadAddPage()

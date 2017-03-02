@@ -8,6 +8,7 @@ namespace SafeHome
 {
     public class Sensor
     {
+        int SensorID;
         int SensorTypeID;
         int RoomID;
 
@@ -37,6 +38,19 @@ namespace SafeHome
             }
         }
 
+        public int SensorID1
+        {
+            get
+            {
+                return SensorID;
+            }
+
+            set
+            {
+                SensorID = value;
+            }
+        }
+
         public Sensor() { }
 
         public Sensor(int typeID, int rmID)
@@ -45,9 +59,11 @@ namespace SafeHome
             this.RoomID1 = rmID;
         }
 
-        public bool alert ()
+        public Sensor(int sID, int typeID, int rmID)
         {
-            return true;
+            this.SensorID1 = sID;
+            this.SensorTypeID1 = typeID;
+            this.RoomID1 = rmID;
         }
     }
 }
