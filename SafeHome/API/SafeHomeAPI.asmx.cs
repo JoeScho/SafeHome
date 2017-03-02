@@ -67,6 +67,7 @@ namespace API
             try
             {
                 DBConnection.SetSystemStatus(customerID, "Armed");
+                DBConnection.SetArmTime(customerID);
                 return "Successfully activated the system.";
             }
             catch (Exception e)
@@ -93,12 +94,21 @@ namespace API
         }
 
         [WebMethod]
-        public string SubmitReading(int sensorID, string detail)
+        public string SubmitReading(int customerID, int sensorID, string detail)
         {
             try
             {
-                DBConnection.submitSensorReading(sensorID, detail);
-                return "Reading submitted.";
+                string state = DBConnection.checkSystemStatus(customerID);
+                if (state != "Off")
+                {
+                    DBConnection.submitSensorReading(sensorID, detail);
+                    DBConnection.SetSystemStatus(customerID, "Alert");
+                    return "Reading submitted.";
+                }
+                else
+                {
+                    return "System is not activated.";
+                }                
             }
             catch (Exception e)
             {

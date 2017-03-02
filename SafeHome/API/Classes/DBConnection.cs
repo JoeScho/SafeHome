@@ -58,7 +58,8 @@ namespace API
                    + "INNER JOIN PDC_Sensor s ON se.SensorID = s.SensorID "
                    + "INNER JOIN PDC_Room r ON s.RoomID = r.RoomID "
                    + "INNER JOIN PDC_Customer c ON r.CustomerID = c.CustomerID "
-                   + "WHERE c.CustomerID = @paramID", myConnection);
+                   + "WHERE c.LastTimeArmed < se.EventTime "
+                   + "AND c.CustomerID = @paramID", myConnection);
             myCommand.Parameters.Add(paramID);
 
             SqlDataReader myReader = null;
@@ -99,6 +100,33 @@ namespace API
 
             SqlCommand myCommand = new SqlCommand(
                 "UPDATE PDC_Customer SET SystemState = '" + Action + "' WHERE CustomerID = @ParamID", myConnection);
+            myCommand.Parameters.Add(paramID);
+
+            try
+            {
+                myConnection.Open();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+        }
+
+        public static void SetArmTime(int CustomerID)
+        {
+            SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
+
+            // Parameterise input to avoid SQL Injection
+            SqlParameter paramID = new SqlParameter("@ParamID", SqlDbType.Int);
+            paramID.Value = CustomerID;
+
+            SqlCommand myCommand = new SqlCommand(
+                "UPDATE PDC_Customer SET LastTimeArmed = GETDATE() WHERE CustomerID = @ParamID", myConnection);
             myCommand.Parameters.Add(paramID);
 
             try

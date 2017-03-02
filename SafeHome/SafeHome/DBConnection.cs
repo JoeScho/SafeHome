@@ -8,11 +8,10 @@ using System.Data;
 
 namespace SafeHome
 {
-    class DBConnection
+    public class DBConnection
     {
         public static Customer db_Login(string username, string password)
-        {
-            Customer selectedCustomer = new Customer();
+        {            
             SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
 
             // Parameterise input to avoid SQL Injection
@@ -34,9 +33,11 @@ namespace SafeHome
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
+                    Customer selectedCustomer = new Customer();
                     selectedCustomer.CustomerID1 = (int)myReader["CustomerID"];
                     selectedCustomer.UserName1 = myReader["Username"].ToString();
-                }
+                    return selectedCustomer;
+                }                
             }
             catch (Exception e)
             {
@@ -46,7 +47,7 @@ namespace SafeHome
             {
                 myConnection.Close();
             }
-            return selectedCustomer;
+            return null;
         }
 
         public static bool db_Register(string username, string password)
@@ -128,6 +129,70 @@ namespace SafeHome
 
                     int rID = (int)myReader["RoomID"];
                     string name = myReader["RoomName"].ToString();
+                    bool drN = myReader.GetBoolean(myReader.GetOrdinal("DoorNorth"));
+                    bool drE = myReader.GetBoolean(myReader.GetOrdinal("DoorEast"));
+                    bool drS = myReader.GetBoolean(myReader.GetOrdinal("DoorSouth"));
+                    bool drW = myReader.GetBoolean(myReader.GetOrdinal("DoorWest"));
+                    Room r = new Room(rID, name, CustomerID, FloorID, n, drN, e, drE, s, drS, w, drW);
+                    rooms.Add(r);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return rooms;
+        }
+
+        public static List<Room> db_GetAllRooms(int CustomerID)
+        {
+            List<Room> rooms = new List<Room>();
+            SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
+
+            // Parameterise input to avoid SQL Injection
+            SqlParameter paramCID = new SqlParameter("@paramCID", SqlDbType.Int);
+            paramCID.Value = CustomerID;
+
+            SqlCommand myCommand = new SqlCommand(
+                "SELECT * FROM dbo.PDC_Room WHERE CustomerID = @paramCID", myConnection);
+            myCommand.Parameters.Add(paramCID);
+            SqlDataReader myReader = null;
+
+            try
+            {
+                myConnection.Open();
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    int n = 0;
+                    int e = 0;
+                    int s = 0;
+                    int w = 0;
+
+                    if (myReader["RoomIDNorth"] != DBNull.Value)
+                    {
+                        n = (int)myReader["RoomIDNorth"];
+                    }
+                    if (myReader["RoomIDEast"] != DBNull.Value)
+                    {
+                        e = (int)myReader["RoomIDEast"];
+                    }
+                    if (myReader["RoomIDSouth"] != DBNull.Value)
+                    {
+                        s = (int)myReader["RoomIDSouth"];
+                    }
+                    if (myReader["RoomIDWest"] != DBNull.Value)
+                    {
+                        w = (int)myReader["RoomIDWest"];
+                    }
+
+                    int rID = (int)myReader["RoomID"];
+                    string name = myReader["RoomName"].ToString();
+                    int FloorID = int.Parse(myReader["FloorID"].ToString());
                     bool drN = myReader.GetBoolean(myReader.GetOrdinal("DoorNorth"));
                     bool drE = myReader.GetBoolean(myReader.GetOrdinal("DoorEast"));
                     bool drS = myReader.GetBoolean(myReader.GetOrdinal("DoorSouth"));

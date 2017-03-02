@@ -13,12 +13,12 @@ C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\bin\roslyn\VBC
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\bin\API.dll.config
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\bin\API.dll
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\bin\API.pdb
+C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\bin\EntityFramework.dll
+C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\bin\EntityFramework.SqlServer.dll
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\bin\EntityFramework.xml
+C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\bin\EntityFramework.SqlServer.xml
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\obj\Debug\API.dll
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\obj\Debug\API.pdb
-C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\bin\EntityFramework.dll
-C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\bin\EntityFramework.SqlServer.dll
-C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\bin\EntityFramework.xml
-C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\bin\EntityFramework.SqlServer.xml
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\obj\Debug\API.csprojResolveAssemblyReference.cache

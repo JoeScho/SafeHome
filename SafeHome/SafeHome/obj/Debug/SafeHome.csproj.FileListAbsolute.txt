@@ -8,12 +8,12 @@ C:\Users\Joe\Documents\University\Year 4\PDC\SafeHome\SafeHome\SafeHome\obj\Debu
 C:\Users\Joe\Documents\University\Year 4\PDC\SafeHome\SafeHome\SafeHome\obj\Debug\SafeHome.pdb
 C:\Users\Joe\Documents\University\Year 4\PDC\SafeHome\SafeHome\SafeHome\obj\Debug\SafeHome.Home.resources
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\bin\Debug\SafeHome.exe.config
-C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\obj\Debug\SafeHome.exe
-C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\obj\Debug\SafeHome.pdb
-C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\bin\Debug\SafeHome.exe
-C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\bin\Debug\SafeHome.pdb
-C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\obj\Debug\SafeHome.csprojResolveAssemblyReference.cache
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\obj\Debug\SafeHome.Home.resources
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\obj\Debug\SafeHome.Properties.Resources.resources
-C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\obj\Debug\SafeHome.csproj.GenerateResource.Cache
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\obj\Debug\SafeHome.SensorEmulator.resources
+C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\obj\Debug\SafeHome.csproj.GenerateResource.Cache
+C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\bin\Debug\SafeHome.exe
+C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\bin\Debug\SafeHome.pdb
+C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\obj\Debug\SafeHome.exe
+C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\obj\Debug\SafeHome.pdb
+C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\obj\Debug\SafeHome.csprojResolveAssemblyReference.cache

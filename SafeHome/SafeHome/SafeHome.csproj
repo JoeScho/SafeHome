@@ -75,6 +75,7 @@
     <Compile Include="SensorEmulator.Designer.cs">
       <DependentUpon>SensorEmulator.cs</DependentUpon>
     </Compile>
+    <Compile Include="SensorEvent.cs" />
     <Compile Include="SensorType.cs" />
     <Compile Include="Service References\SafeHomeAPIServices\Reference.cs">
       <AutoGen>True</AutoGen>

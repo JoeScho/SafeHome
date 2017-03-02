@@ -514,15 +514,19 @@ namespace SafeHome.SafeHomeAPIServices {
     public partial class SubmitReadingRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int customerID;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
         public int sensorID;
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
         public string detail;
         
         public SubmitReadingRequestBody() {
         }
         
-        public SubmitReadingRequestBody(int sensorID, string detail) {
+        public SubmitReadingRequestBody(int customerID, int sensorID, string detail) {
+            this.customerID = customerID;
             this.sensorID = sensorID;
             this.detail = detail;
         }
@@ -719,9 +723,10 @@ namespace SafeHome.SafeHomeAPIServices {
             return base.Channel.SubmitReading(request);
         }
         
-        public string SubmitReading(int sensorID, string detail) {
+        public string SubmitReading(int customerID, int sensorID, string detail) {
             SafeHome.SafeHomeAPIServices.SubmitReadingRequest inValue = new SafeHome.SafeHomeAPIServices.SubmitReadingRequest();
             inValue.Body = new SafeHome.SafeHomeAPIServices.SubmitReadingRequestBody();
+            inValue.Body.customerID = customerID;
             inValue.Body.sensorID = sensorID;
             inValue.Body.detail = detail;
             SafeHome.SafeHomeAPIServices.SubmitReadingResponse retVal = ((SafeHome.SafeHomeAPIServices.SafeHomeAPISoap)(this)).SubmitReading(inValue);
@@ -733,9 +738,10 @@ namespace SafeHome.SafeHomeAPIServices {
             return base.Channel.SubmitReadingAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SafeHome.SafeHomeAPIServices.SubmitReadingResponse> SubmitReadingAsync(int sensorID, string detail) {
+        public System.Threading.Tasks.Task<SafeHome.SafeHomeAPIServices.SubmitReadingResponse> SubmitReadingAsync(int customerID, int sensorID, string detail) {
             SafeHome.SafeHomeAPIServices.SubmitReadingRequest inValue = new SafeHome.SafeHomeAPIServices.SubmitReadingRequest();
             inValue.Body = new SafeHome.SafeHomeAPIServices.SubmitReadingRequestBody();
+            inValue.Body.customerID = customerID;
             inValue.Body.sensorID = sensorID;
             inValue.Body.detail = detail;
             return ((SafeHome.SafeHomeAPIServices.SafeHomeAPISoap)(this)).SubmitReadingAsync(inValue);

@@ -89,7 +89,7 @@ namespace SafeHome
             if (selectedSensor != null)
             {
                 // Call API to submit sensor reading
-                lblSubmit.Text = service.SubmitReading(selectedSensor.SensorID1, detail);
+                lblSubmit.Text = service.SubmitReading(customer.CustomerID1, selectedSensor.SensorID1, detail);
             }
             else
             {
