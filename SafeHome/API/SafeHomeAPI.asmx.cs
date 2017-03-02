@@ -45,5 +45,66 @@ namespace API
                 return null;
             }
         }
+
+        [WebMethod]
+        public string DeactivateSystem(int customerID)
+        {
+            try
+            {
+                DBConnection.SetSystemStatus(customerID, "Off");
+                return "Successfully deactivated the system.";
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e);
+                return "Could not deactivate the system.";
+            }
+        }
+
+        [WebMethod]
+        public string ActivateSystem(int customerID)
+        {
+            try
+            {
+                DBConnection.SetSystemStatus(customerID, "Armed");
+                return "Successfully activated the system.";
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e);
+                return "Could not activate the system.";
+            }
+        }
+
+        [WebMethod]
+        public string RestartSystem(int customerID)
+        {
+            try
+            {
+                DeactivateSystem(customerID);
+                ActivateSystem(customerID);
+                return "Successfully restarted the system.";
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e);
+                return "Could not restart the system.";
+            }
+        }
+
+        [WebMethod]
+        public string SubmitReading(int sensorID, string detail)
+        {
+            try
+            {
+                DBConnection.submitSensorReading(sensorID, detail);
+                return "Reading submitted.";
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e);
+                return "Could not submit the reading.";
+            }
+        }
     }
 }

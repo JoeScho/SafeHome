@@ -88,5 +88,62 @@ namespace API
             }
             return null;
         }
+
+        public static void SetSystemStatus(int CustomerID, string Action)
+        {
+            SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
+
+            // Parameterise input to avoid SQL Injection
+            SqlParameter paramID = new SqlParameter("@ParamID", SqlDbType.Int);
+            paramID.Value = CustomerID;
+
+            SqlCommand myCommand = new SqlCommand(
+                "UPDATE PDC_Customer SET SystemState = '" + Action + "' WHERE CustomerID = @ParamID", myConnection);
+            myCommand.Parameters.Add(paramID);
+
+            try
+            {
+                myConnection.Open();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+        }
+
+        public static void submitSensorReading(int sensorID, string detail)
+        {
+            SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
+
+            // Parameterise input to avoid SQL Injection
+            SqlParameter paramSID = new SqlParameter("@paramSID", SqlDbType.Int);
+            paramSID.Value = sensorID;
+            SqlParameter paramDetail = new SqlParameter("@paramDetail", SqlDbType.VarChar);
+            paramDetail.Value = detail;
+
+            SqlCommand myCommand = new SqlCommand(
+                "INSERT INTO PDC_SensorEvent (SensorID,Detail) VALUES (@paramSID, @paramDetail)", myConnection);
+            myCommand.Parameters.Add(paramSID);
+            myCommand.Parameters.Add(paramDetail);
+
+            try
+            {
+                myConnection.Open();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+        }        
     }
 }
