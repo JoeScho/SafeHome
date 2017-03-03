@@ -57,10 +57,20 @@ namespace SafeHomeWebsite
 
         public void populateTable()
         {
-            SafeHomeAPIService.SensorEvent[] events = safehomeSystem.GetSensorEvents(c.CustomerID1);            
+            List<SafeHomeAPIService.SensorEvent> events = safehomeSystem.GetSensorEvents(c.CustomerID1).ToList();            
             if (events != null)
             {
-                List<SafeHomeAPIService.SensorEvent> tblEvents = events.ToList();
+                List<SensorEvent> tblEvents = new List<SensorEvent>();
+                foreach (SafeHomeAPIService.SensorEvent se in events)
+                {
+                    SensorEvent s = new SensorEvent();
+                    s.EventID = se.EventID1;
+                    s.EventTime = se.EventTime1;
+                    s.RoomName = se.RoomName1;
+                    s.SensorType = se.SensorType1;
+                    s.Detail = se.Detail1;
+                    tblEvents.Add(s);
+                }
                 gvEvents.DataSource = tblEvents;
                 gvEvents.DataBind();             
             }

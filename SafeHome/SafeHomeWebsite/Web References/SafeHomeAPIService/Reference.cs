@@ -304,11 +304,13 @@ namespace SafeHomeWebsite.SafeHomeAPIService {
         
         private int eventID1Field;
         
-        private int sensorID1Field;
+        private string roomName1Field;
         
-        private System.DateTime eventTime1Field;
+        private string sensorType1Field;
         
         private string detail1Field;
+        
+        private System.DateTime eventTime1Field;
         
         /// <remarks/>
         public int EventID1 {
@@ -321,22 +323,22 @@ namespace SafeHomeWebsite.SafeHomeAPIService {
         }
         
         /// <remarks/>
-        public int SensorID1 {
+        public string RoomName1 {
             get {
-                return this.sensorID1Field;
+                return this.roomName1Field;
             }
             set {
-                this.sensorID1Field = value;
+                this.roomName1Field = value;
             }
         }
         
         /// <remarks/>
-        public System.DateTime EventTime1 {
+        public string SensorType1 {
             get {
-                return this.eventTime1Field;
+                return this.sensorType1Field;
             }
             set {
-                this.eventTime1Field = value;
+                this.sensorType1Field = value;
             }
         }
         
@@ -347,6 +349,16 @@ namespace SafeHomeWebsite.SafeHomeAPIService {
             }
             set {
                 this.detail1Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime EventTime1 {
+            get {
+                return this.eventTime1Field;
+            }
+            set {
+                this.eventTime1Field = value;
             }
         }
     }

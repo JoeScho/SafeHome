@@ -246,9 +246,10 @@ namespace SafeHome
 
         public void loadViewPage()
         {
-            customerFloors = DBConnection.db_GetFloors(c.CustomerID1);
             listboxRooms.Items.Clear();
             comboSelectFloor.Items.Clear();
+            customerFloors = DBConnection.db_GetFloors(c.CustomerID1);
+            customerRooms = DBConnection.db_GetAllRooms(c.CustomerID1);          
             foreach (Room r in customerRooms)
             {
                 listboxRooms.Items.Add(r.RoomName1);
@@ -257,7 +258,10 @@ namespace SafeHome
             {
                 comboSelectFloor.Items.Add(f.FloorNum1);
             }
-            comboSelectFloor.SelectedIndex = 0;
+            if (comboSelectFloor.Items.Count > 0)
+            {
+                comboSelectFloor.SelectedIndex = 0;
+            }            
             lblAddRoomError.Text = "";
             lblAddFloorError.Text = "";
             setAllPanelsInvisible();

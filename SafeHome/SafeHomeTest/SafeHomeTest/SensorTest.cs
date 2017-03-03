@@ -6,11 +6,5 @@ namespace SafeHomeTest
     [TestClass]
     public class SensorTest
     {
-        [TestMethod]
-        public void _sensorAlarm()
-        {
-            Sensor s = new Sensor();
-            Assert.AreEqual(true, s.alert());
-        }
     }
 }

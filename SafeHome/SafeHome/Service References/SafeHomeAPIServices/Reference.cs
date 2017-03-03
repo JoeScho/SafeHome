@@ -24,9 +24,11 @@ namespace SafeHome.SafeHomeAPIServices {
         
         private int EventID1Field;
         
-        private int SensorID1Field;
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoomName1Field;
         
-        private System.DateTime EventTime1Field;
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SensorType1Field;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Detail1Field;
@@ -54,28 +56,28 @@ namespace SafeHome.SafeHomeAPIServices {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int SensorID1 {
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string RoomName1 {
             get {
-                return this.SensorID1Field;
+                return this.RoomName1Field;
             }
             set {
-                if ((this.SensorID1Field.Equals(value) != true)) {
-                    this.SensorID1Field = value;
-                    this.RaisePropertyChanged("SensorID1");
+                if ((object.ReferenceEquals(this.RoomName1Field, value) != true)) {
+                    this.RoomName1Field = value;
+                    this.RaisePropertyChanged("RoomName1");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
-        public System.DateTime EventTime1 {
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string SensorType1 {
             get {
-                return this.EventTime1Field;
+                return this.SensorType1Field;
             }
             set {
-                if ((this.EventTime1Field.Equals(value) != true)) {
-                    this.EventTime1Field = value;
-                    this.RaisePropertyChanged("EventTime1");
+                if ((object.ReferenceEquals(this.SensorType1Field, value) != true)) {
+                    this.SensorType1Field = value;
+                    this.RaisePropertyChanged("SensorType1");
                 }
             }
         }

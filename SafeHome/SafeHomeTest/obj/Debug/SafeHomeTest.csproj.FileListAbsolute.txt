@@ -5,5 +5,3 @@ C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHomeTest\bin\D
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHomeTest\obj\Debug\SafeHomeTest.csprojResolveAssemblyReference.cache
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHomeTest\obj\Debug\SafeHomeTest.dll
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHomeTest\obj\Debug\SafeHomeTest.pdb
-C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHomeTest\bin\Debug\SensorEmulator.exe
-C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHomeTest\bin\Debug\SensorEmulator.pdb
