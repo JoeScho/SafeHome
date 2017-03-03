@@ -1,6 +1,6 @@
 # SafeHome
 
-- Currently **Unfinished** (due date: 27/03/17)
+- Currently **In Progress** (due date: 27/03/17)
 
 ### SafeHome is a system composed of a Windows Forms Application (C#), a Web API (ASP.Net) and a Web Forms Application (ASP.Net). These connect to an SQL Server database. 
 
@@ -11,19 +11,19 @@
 - [ ] Visualise the entire floor of the house
 
 #### The Web API allows the user to:
-- [ ] Submit a data reading
-- [ ] Query current state and events
-- [ ] Reset the system
-- [ ] Switch the system off/on
+- [x] Submit a data reading
+- [x] Query current state and events
+- [x] Reset the system
+- [x] Switch the system off/on
 
 #### The Web application allows the user to:
-- [ ] Submit a data reading for a particular sensor
-- [ ] Query current state and events
-- [ ] Start / Stop / Reset the system
+- [x] Query current state and events
+- [x] Start / Stop / Reset the system
+- [ ] View events since system was last set
 
 #### There is a fourth application (Windows Form) which simulates one of the sensors and can:
-- [ ] Submit a data reading
-- [ ] Trigger an alarm
+- [x] Submit a data reading
+- [x] Trigger an alarm
 
 #### This repo will also contain:
 - Design documentation (i.e. UML)
