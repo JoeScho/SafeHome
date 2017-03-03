@@ -93,7 +93,7 @@ namespace SafeHome
                         List<Room> roomsOnFloor = new List<Room>();
                         foreach (Room r in customerRooms)
                         {
-                            if (r.Floor1 == floorNum)
+                            if (r.Floor1 == selectedFloor.FloorID1)
                             {
                                 comboRoomN.Items.Add(r.RoomName1);
                                 comboRoomE.Items.Add(r.RoomName1);
@@ -256,11 +256,6 @@ namespace SafeHome
             listboxRooms.Items.Clear();
             comboSelectFloor.Items.Clear();
             customerFloors = DBConnection.db_GetFloors(c.CustomerID1);
-            //customerRooms = DBConnection.db_GetAllRooms(c.CustomerID1);          
-            //foreach (Room r in customerRooms)
-            //{
-            //    listboxRooms.Items.Add(r.RoomName1);
-            //}
             foreach (Floor f in customerFloors)
             {
                 comboSelectFloor.Items.Add(f.FloorNum1);
