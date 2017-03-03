@@ -457,6 +457,7 @@
             this.comboRoomS.Name = "comboRoomS";
             this.comboRoomS.Size = new System.Drawing.Size(169, 20);
             this.comboRoomS.TabIndex = 6;
+            this.comboRoomS.SelectedIndexChanged += new System.EventHandler(this.comboRoomS_SelectedIndexChanged);
             // 
             // checkDoorE
             // 
@@ -477,6 +478,7 @@
             this.comboRoomE.Name = "comboRoomE";
             this.comboRoomE.Size = new System.Drawing.Size(169, 20);
             this.comboRoomE.TabIndex = 4;
+            this.comboRoomE.SelectedIndexChanged += new System.EventHandler(this.comboRoomE_SelectedIndexChanged);
             // 
             // checkDoorW
             // 
@@ -497,6 +499,7 @@
             this.comboRoomW.Name = "comboRoomW";
             this.comboRoomW.Size = new System.Drawing.Size(169, 20);
             this.comboRoomW.TabIndex = 2;
+            this.comboRoomW.SelectedIndexChanged += new System.EventHandler(this.comboRoomW_SelectedIndexChanged);
             // 
             // checkDoorN
             // 
@@ -517,6 +520,7 @@
             this.comboRoomN.Name = "comboRoomN";
             this.comboRoomN.Size = new System.Drawing.Size(169, 20);
             this.comboRoomN.TabIndex = 0;
+            this.comboRoomN.SelectedIndexChanged += new System.EventHandler(this.comboRoomN_SelectedIndexChanged);
             // 
             // lblRoomName
             // 

@@ -232,9 +232,11 @@ namespace SafeHome
             txtLoginPwd.Text = "";
             txtRegisterName.Text = "";
             txtRegisterPwd.Text = "";
+            lblRoomCount.Text = "";
             setAllPanelsInvisible();
             pnlLogin.Visible = true;
             btnLaunchEmulator.Visible = false;
+            btnLogout.Visible = false;
 
             // Reset variable values
             customerRooms = new List<Room>();
@@ -246,14 +248,19 @@ namespace SafeHome
 
         public void loadViewPage()
         {
+            lblAddRoomError.Text = "";
+            lblAddFloorError.Text = "";
+            comboSelectFloor.Text = "";
+            comboFloorNum.Text = "";
+            comboNoOfRooms.Text = "";
             listboxRooms.Items.Clear();
             comboSelectFloor.Items.Clear();
             customerFloors = DBConnection.db_GetFloors(c.CustomerID1);
-            customerRooms = DBConnection.db_GetAllRooms(c.CustomerID1);          
-            foreach (Room r in customerRooms)
-            {
-                listboxRooms.Items.Add(r.RoomName1);
-            }
+            //customerRooms = DBConnection.db_GetAllRooms(c.CustomerID1);          
+            //foreach (Room r in customerRooms)
+            //{
+            //    listboxRooms.Items.Add(r.RoomName1);
+            //}
             foreach (Floor f in customerFloors)
             {
                 comboSelectFloor.Items.Add(f.FloorNum1);
@@ -261,14 +268,12 @@ namespace SafeHome
             if (comboSelectFloor.Items.Count > 0)
             {
                 comboSelectFloor.SelectedIndex = 0;
-            }            
-            lblAddRoomError.Text = "";
-            lblAddFloorError.Text = "";
+            }                        
             setAllPanelsInvisible();
             pnlViewRooms.Visible = true;
             btnSave.Visible = true;
-            checkDoorE.Enabled = true;
             btnLaunchEmulator.Visible = true;
+            btnLogout.Visible = true;
         }
 
         public void loadAddPage()
@@ -286,6 +291,10 @@ namespace SafeHome
             checkDoorE.Checked = false;
             checkDoorS.Checked = false;
             checkDoorW.Checked = false;
+            checkDoorN.Enabled = false;
+            checkDoorE.Enabled = false;
+            checkDoorS.Enabled = false;
+            checkDoorW.Enabled = false;
             lbSensors.Items.Clear();          
             setAllPanelsInvisible();
             pnlAddRoom.Visible = true;
@@ -364,10 +373,6 @@ namespace SafeHome
             lblAddSensor.Text = "Add a sensor";
             lbSensors.Enabled = true;
             txtRoomName.Enabled = true;
-            checkDoorN.Enabled = true;
-            checkDoorE.Enabled = true;
-            checkDoorS.Enabled = true;
-            checkDoorW.Enabled = true;
             comboRoomN.Enabled = true;
             comboRoomE.Enabled = true;
             comboRoomS.Enabled = true;
@@ -410,13 +415,48 @@ namespace SafeHome
             if(int.Parse(comboSelectFloor.SelectedItem.ToString()) != 0)
             {                
                 int floornum = int.Parse(comboSelectFloor.SelectedItem.ToString());
+                int floorid = (from fl in customerFloors
+                               where fl.FloorNum1 == floornum
+                               select fl.FloorID1).First();
                 Floor f = Floor.getFloorByName(floornum, customerFloors);
-                customerRooms = DBConnection.db_GetRooms(c.CustomerID1, floornum);
+                customerRooms = DBConnection.db_GetRooms(c.CustomerID1, floorid);
                 foreach (Room r in customerRooms)
                 {
                     listboxRooms.Items.Add(r.RoomName1);
                 }
                 lblRoomCount.Text = "( " + customerRooms.Count + " / " + f.NoOfRooms1 + " )";
+            }
+        }
+
+        private void comboRoomN_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboRoomN.SelectedItem != null)
+            {
+                checkDoorN.Enabled = true;
+            }
+        }
+
+        private void comboRoomE_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboRoomE.SelectedItem != null)
+            {
+                checkDoorE.Enabled = true;
+            }
+        }
+
+        private void comboRoomS_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboRoomS.SelectedItem != null)
+            {
+                checkDoorS.Enabled = true;
+            }
+        }
+
+        private void comboRoomW_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboRoomN.SelectedItem != null)
+            {
+                checkDoorW.Enabled = true;
             }
         }
     }
