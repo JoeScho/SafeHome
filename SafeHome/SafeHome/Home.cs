@@ -24,6 +24,9 @@ namespace SafeHome
         public Home()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
         }
 
         private void Home_Load(object sender, EventArgs e)

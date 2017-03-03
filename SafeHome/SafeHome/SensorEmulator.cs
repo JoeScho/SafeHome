@@ -23,6 +23,9 @@ namespace SafeHome
 
         public SensorEmulator(Customer c)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             InitializeComponent();
             customer = c;
             sensorTypes = DBConnection.getSensorTypes();
@@ -36,7 +39,9 @@ namespace SafeHome
         private void comboFloor_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboRoom.Items.Clear();
+            comboRoom.Text = "";
             comboSensor.Items.Clear();
+            comboSensor.Text = "";
             selectedSensor = null;
 
             int floornum = int.Parse(comboFloor.SelectedItem.ToString());
@@ -53,6 +58,7 @@ namespace SafeHome
         private void comboRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboSensor.Items.Clear();
+            comboSensor.Text = "";
             selectedSensor = null;
 
             string roomname = comboRoom.SelectedItem.ToString();

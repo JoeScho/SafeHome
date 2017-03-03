@@ -8,20 +8,13 @@
     </div>
 
     <div class="form-centered">
-
-        <br />
-
         <asp:TextBox ID="txtUserName" placeholder="Enter your username" class="input-xlarge logintxt" runat="server"></asp:TextBox>
         <br /><br />
         <asp:TextBox ID="txtPwd" type="password" placeholder="Enter your password" class="input-xlarge logintxt" runat="server"></asp:TextBox>
         <br /><br />
         <asp:Button ID="btnLogin" class="btn btn-success btnwidth" runat="server" Text="Login" OnClick="btnLogin_Click" />
-
         <br />
         <asp:Label ID="lblLogin" runat="server"></asp:Label>
-
-        <br />
-
     </div>
 
 </asp:Content>

@@ -7,70 +7,21 @@ namespace API
 {
     public class SensorEvent
     {
-        int EventID;
-        int SensorID;
         DateTime EventTime;
+        int EventID;        
+        string RoomName;
+        string SensorType;        
         string Detail;
 
         public SensorEvent() { }
 
-        public SensorEvent(int sID, DateTime time, string details)
+        public SensorEvent(DateTime time, int EvID, string rmName, string snsType, string details)
         {
-            this.SensorID = sID;
             this.EventTime = time;
+            this.EventID = EvID;            
+            this.RoomName = rmName;
+            this.SensorType = snsType;
             this.Detail = details;
-        }
-
-        public int EventID1
-        {
-            get
-            {
-                return EventID;
-            }
-
-            set
-            {
-                EventID = value;
-            }
-        }
-
-        public int SensorID1
-        {
-            get
-            {
-                return SensorID;
-            }
-
-            set
-            {
-                SensorID = value;
-            }
-        }
-
-        public DateTime EventTime1
-        {
-            get
-            {
-                return EventTime;
-            }
-
-            set
-            {
-                EventTime = value;
-            }
-        }
-
-        public string Detail1
-        {
-            get
-            {
-                return Detail;
-            }
-
-            set
-            {
-                Detail = value;
-            }
         }
     }
 }

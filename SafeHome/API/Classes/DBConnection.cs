@@ -54,14 +54,15 @@ namespace API
             paramID.Value = CustomerID;
 
             SqlCommand myCommand = new SqlCommand(
-                "select se.SensorID, se.EventTime, se.Detail from PDC_SensorEvent se "
+                "SELECT se.EventTime, se.EventID, r.RoomName, st.SensorName, se.Detail FROM PDC_SensorEvent se "
                    + "INNER JOIN PDC_Sensor s ON se.SensorID = s.SensorID "
+                   + "INNER JOIN PDC_SensorType st ON st.SensorTypeID = s.SensorTypeID "
                    + "INNER JOIN PDC_Room r ON s.RoomID = r.RoomID "
                    + "INNER JOIN PDC_Customer c ON r.CustomerID = c.CustomerID "
                    + "WHERE c.LastTimeArmed < se.EventTime "
                    + "AND c.CustomerID = @paramID", myConnection);
-            myCommand.Parameters.Add(paramID);
 
+            myCommand.Parameters.Add(paramID);
             SqlDataReader myReader = null;
 
             try
@@ -70,11 +71,13 @@ namespace API
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
-                    int sID = int.Parse(myReader["SensorID"].ToString());
                     DateTime date1;
                     DateTime.TryParse(myReader["EventTime"].ToString(), out date1);
+                    int evID = int.Parse(myReader["EventID"].ToString());
+                    string roomName = myReader["RoomName"].ToString();
+                    string sensorName = myReader["SensorName"].ToString();
                     string detail = myReader["Detail"].ToString();
-                    SensorEvent se = new SensorEvent(sID, date1, detail);
+                    SensorEvent se = new SensorEvent(date1, evID, roomName, sensorName, detail);
                     events.Add(se);
                 }
                 return events;

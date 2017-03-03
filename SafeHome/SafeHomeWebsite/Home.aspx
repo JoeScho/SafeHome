@@ -14,12 +14,13 @@
         &nbsp;
         <asp:Button ID="btnReset" runat="server" CssClass="btn btn-warning btnwidth" Text="Reset System" OnClick="btnReset_Click" />
         <br />
-        <asp:GridView ID="gvEvents" runat="server">
-        </asp:GridView>
         <br />
+        <div class="tbl-centered">
+            <asp:GridView ID="gvEvents" class="tbl-centered" runat="server">
+            </asp:GridView> 
+        </div>            
+        <asp:Label ID="lblNoEvents" class="strong" runat="server" Text=""></asp:Label>        
         <br />
-        <br />
-        <asp:Button ID="btnLogout" runat="server" CssClass="btn btn-info btnwidth" Text="Logout" OnClick="btnReset_Click" />
-
+        <asp:Button ID="btnLogout" runat="server" CssClass="btn btn-info btnwidth" Text="Logout" OnClick="btnLogout_Click" />
     </div>
 </asp:Content>
