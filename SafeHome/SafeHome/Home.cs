@@ -17,9 +17,10 @@ namespace SafeHome
         List<Room> customerRooms = new List<Room>();
         List<Sensor> roomSensors = new List<Sensor>();
         List<Floor> customerFloors = new List<Floor>();
-        List<SensorType> sensorTypes = DBConnection.getSensorTypes();        
+        List<SensorType> sensorTypes = DBConnection.getSensorTypes();
         Customer c = new Customer();
         Floor selectedFloor;
+        string layoutErrString;
 
         public Home()
         {
@@ -30,7 +31,7 @@ namespace SafeHome
         }
 
         private void Home_Load(object sender, EventArgs e)
-        {         
+        {
             foreach (SensorType s in sensorTypes)
             {
                 comboAddSensor.Items.Add(s.SensorName1);
@@ -40,22 +41,21 @@ namespace SafeHome
             listPanels.Add(pnlViewRooms);
             listPanels.Add(pnlAddRoom);
             loadLoginPage();
-            comboFloorNum.SelectedIndex = 0;
             comboNoOfRooms.SelectedIndex = 0;
         }
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            if(txtLoginName.Text != "" && txtLoginPwd.Text != "")
+            if (txtLoginName.Text != "" && txtLoginPwd.Text != "")
             {
                 c = DBConnection.db_Login(txtLoginName.Text, txtLoginPwd.Text);
-                if (c.UserName1 != "")
+                if (c != null)
                 {
                     loadViewPage();
                 }
                 else
                 {
-                    lblLoginErr.Text = "Error logging in.";
+                    lblLoginErr.Text = "Error logging in";
                 }
             }
             else
@@ -78,15 +78,15 @@ namespace SafeHome
         }
 
         private void btnAddRoom_Click(object sender, EventArgs e)
-        {            
+        {
             try
             {
                 int floorNum = int.Parse(comboSelectFloor.SelectedItem.ToString());
                 // Get ID of current floor
-                selectedFloor = Floor.getFloorByName(floorNum, customerFloors); 
+                selectedFloor = Floor.getFloorByName(floorNum, customerFloors);
                 if (selectedFloor != null)
                 {
-                    if(customerRooms.Count < selectedFloor.NoOfRooms1)
+                    if (customerRooms.Count < selectedFloor.NoOfRooms1)
                     {
                         loadAddPage();
                         makeAddEditable();
@@ -104,17 +104,17 @@ namespace SafeHome
                     }
                     else
                     {
-                        lblAddRoomError.Text = "Floor has all rooms created.";
+                        lblAddRoomError.Text = "Floor has all rooms created";
                     }
                 }
                 else
                 {
-                    lblAddRoomError.Text = "Error selecting floor.";
-                }                
+                    lblAddRoomError.Text = "Error selecting floor";
+                }
             }
             catch (Exception)
             {
-                lblAddRoomError.Text = "Please select a Floor no.";
+                lblAddRoomError.Text = "Select a Floor no";
             }
         }
 
@@ -122,73 +122,106 @@ namespace SafeHome
         {
             if (Room.getRoomByName(txtRoomName.Text, customerRooms) == null && txtRoomName.Text != "")
             {
-                try
+                // Check if room is feasible
+                Room r = new Room();
+                if (comboRoomN.SelectedItem != null)
+                {
+                    r.RoomIDNorth1 = (from room in customerRooms
+                                      where room.RoomName1 == comboRoomN.SelectedItem.ToString()
+                                      select room.RoomID1).First();
+                }
+                if (comboRoomE.SelectedItem != null)
+                {
+                    r.RoomIDEast1 = (from room in customerRooms
+                                     where room.RoomName1 == comboRoomE.SelectedItem.ToString()
+                                     select room.RoomID1).First();
+                }
+                if (comboRoomS.SelectedItem != null)
+                {
+                    r.RoomIDSouth1 = (from room in customerRooms
+                                      where room.RoomName1 == comboRoomS.SelectedItem.ToString()
+                                      select room.RoomID1).First();
+                }
+                if (comboRoomW.SelectedItem != null)
+                {
+                    r.RoomIDWest1 = (from room in customerRooms
+                                     where room.RoomName1 == comboRoomW.SelectedItem.ToString()
+                                     select room.RoomID1).First();
+                }
+                if (layoutIsFeasible(r, customerRooms))
                 {
                     // Add room to DB
-                    int rmID = DBConnection.db_AddRoom(
-                        txtRoomName.Text,
-                        c.CustomerID1,
-                        selectedFloor.FloorID1
-                        );
                     try
                     {
-                        // If adjacent rooms have been specified, update room details (includes updating other room)
-                        if (comboRoomN.SelectedItem != null)
-                        {
-                            Room cbRoom = Room.getRoomByName(comboRoomN.SelectedItem.ToString(), customerRooms);
-                            DBConnection.updateRoomN(rmID, cbRoom.RoomID1, checkDoorN.Checked);
-                        }
-                        if (comboRoomE.SelectedItem != null)
-                        {
-                            Room cbRoom = Room.getRoomByName(comboRoomE.SelectedItem.ToString(), customerRooms);
-                            DBConnection.updateRoomE(rmID, cbRoom.RoomID1, checkDoorE.Checked);
-                        }
-                        if (comboRoomS.SelectedItem != null)
-                        {
-                            Room cbRoom = Room.getRoomByName(comboRoomS.SelectedItem.ToString(), customerRooms);
-                            DBConnection.updateRoomS(rmID, cbRoom.RoomID1, checkDoorS.Checked);
-                        }
-                        if (comboRoomW.SelectedItem != null)
-                        {
-                            Room cbRoom = Room.getRoomByName(comboRoomW.SelectedItem.ToString(), customerRooms);
-                            DBConnection.updateRoomW(rmID, cbRoom.RoomID1, checkDoorW.Checked);
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        lblSaveRoomError.Text = "Error assigning adjacent rooms.";
-                    }
-
-                    List<Sensor> sensorsToAdd = new List<Sensor>();
-                    foreach (var sensor in lbSensors.Items)
-                    {
-                        int sensorTypeID = SensorType.getSensorTypeIDByName(sensor.ToString(), sensorTypes);
-                        Sensor s = new Sensor(sensorTypeID, rmID);
-                        sensorsToAdd.Add(s);
-                    }
-
-                    // Add sensors to DB
-                    foreach (Sensor s in sensorsToAdd)
-                    {
+                        int rmID = DBConnection.db_AddRoom(
+                            txtRoomName.Text,
+                            c.CustomerID1,
+                            selectedFloor.FloorID1
+                            );
                         try
                         {
-                            DBConnection.db_AddSensor(s.SensorTypeID1, rmID);
+                            // If adjacent rooms have been specified, update room details (includes updating other room)
+                            if (comboRoomN.SelectedItem != null)
+                            {
+                                Room cbRoom = Room.getRoomByName(comboRoomN.SelectedItem.ToString(), customerRooms);
+                                DBConnection.updateRoomN(rmID, cbRoom.RoomID1, checkDoorN.Checked);
+                            }
+                            if (comboRoomE.SelectedItem != null)
+                            {
+                                Room cbRoom = Room.getRoomByName(comboRoomE.SelectedItem.ToString(), customerRooms);
+                                DBConnection.updateRoomE(rmID, cbRoom.RoomID1, checkDoorE.Checked);
+                            }
+                            if (comboRoomS.SelectedItem != null)
+                            {
+                                Room cbRoom = Room.getRoomByName(comboRoomS.SelectedItem.ToString(), customerRooms);
+                                DBConnection.updateRoomS(rmID, cbRoom.RoomID1, checkDoorS.Checked);
+                            }
+                            if (comboRoomW.SelectedItem != null)
+                            {
+                                Room cbRoom = Room.getRoomByName(comboRoomW.SelectedItem.ToString(), customerRooms);
+                                DBConnection.updateRoomW(rmID, cbRoom.RoomID1, checkDoorW.Checked);
+                            }
                         }
                         catch (Exception)
                         {
-                            lblSaveRoomError.Text = "Added room but error adding sensor(s).";
+                            lblSaveRoomError.Text = "Error assigning adjacent rooms";
                         }
+
+                        List<Sensor> sensorsToAdd = new List<Sensor>();
+                        foreach (var sensor in lbSensors.Items)
+                        {
+                            int sensorTypeID = SensorType.getSensorTypeIDByName(sensor.ToString(), sensorTypes);
+                            Sensor s = new Sensor(sensorTypeID, rmID);
+                            sensorsToAdd.Add(s);
+                        }
+
+                        // Add sensors to DB
+                        foreach (Sensor s in sensorsToAdd)
+                        {
+                            try
+                            {
+                                DBConnection.db_AddSensor(s.SensorTypeID1, rmID);
+                            }
+                            catch (Exception)
+                            {
+                                lblSaveRoomError.Text = "Added room but error adding sensor(s)";
+                            }
+                        }
+                        loadViewPage();
                     }
-                    loadViewPage();
+                    catch (Exception)
+                    {
+                        lblSaveRoomError.Text = "Error adding room";
+                    }
                 }
-                catch (Exception)
+                else
                 {
-                    lblSaveRoomError.Text = "Error adding room.";
+                    lblSaveRoomError.Text = "Layout is not feasible. " + layoutErrString;
                 }
             }
             else
             {
-                lblSaveRoomError.Text = "Please ensure room name is unique.";
+                lblSaveRoomError.Text = "Room name is not unique";
             }
         }
 
@@ -199,7 +232,7 @@ namespace SafeHome
         }
 
         private void btnDeleteSensor_Click(object sender, EventArgs e)
-        {         
+        {
             lbSensors.Items.Remove(lbSensors.SelectedItem);
         }
 
@@ -211,15 +244,28 @@ namespace SafeHome
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            if(DBConnection.db_Register(txtRegisterName.Text, txtRegisterPwd.Text))
+            if (txtRegisterName.Text != "" && txtRegisterPwd.Text != "")
             {
-                txtRegisterName.Text = "";
-                txtRegisterPwd.Text = "";
-                lblRegisterError.Text = "Successfully registered.";
+                if (IsValidEmail(txtRegisterName.Text)) {
+                    if (DBConnection.db_Register(txtRegisterName.Text, txtRegisterPwd.Text))
+                    {
+                        txtRegisterName.Text = "";
+                        txtRegisterPwd.Text = "";
+                        lblRegisterError.Text = "Successfully registered";
+                    }
+                    else
+                    {
+                        lblRegisterError.Text = "Error during registration";
+                    }
+                }
+                else
+                {
+                    lblRegisterError.Text = "Email is not valid";
+                }
             }
             else
             {
-                lblRegisterError.Text = "Error during registration.";
+                lblRegisterError.Text = "Please enter your email and password";
             }
         }
 
@@ -251,7 +297,6 @@ namespace SafeHome
             lblAddRoomError.Text = "";
             lblAddFloorError.Text = "";
             comboSelectFloor.Text = "";
-            comboFloorNum.Text = "";
             comboNoOfRooms.Text = "";
             listboxRooms.Items.Clear();
             comboSelectFloor.Items.Clear();
@@ -263,7 +308,7 @@ namespace SafeHome
             if (comboSelectFloor.Items.Count > 0)
             {
                 comboSelectFloor.SelectedIndex = 0;
-            }                        
+            }
             setAllPanelsInvisible();
             pnlViewRooms.Visible = true;
             btnSave.Visible = true;
@@ -290,13 +335,13 @@ namespace SafeHome
             checkDoorE.Enabled = false;
             checkDoorS.Enabled = false;
             checkDoorW.Enabled = false;
-            lbSensors.Items.Clear();          
+            lbSensors.Items.Clear();
             setAllPanelsInvisible();
             pnlAddRoom.Visible = true;
         }
 
         private void btnViewRoom_Click(object sender, EventArgs e)
-        {            
+        {
             if (listboxRooms.SelectedItems.Count == 1)
             {
                 loadAddPage();
@@ -332,12 +377,12 @@ namespace SafeHome
                     lbSensors.Items.Add(SensorType.getSensorNameByID(s.SensorTypeID1, sensorTypes));
                 }
             }
-            lblAddRoomError.Text = "Please select a room.";                       
+            lblAddRoomError.Text = "Select a room";
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            loadViewPage();            
+            loadViewPage();
         }
 
         public void makeAddViewOnly()
@@ -376,39 +421,28 @@ namespace SafeHome
 
         private void btnAddFloor_Click(object sender, EventArgs e)
         {
-            if (comboFloorNum.SelectedItem != null && comboNoOfRooms.SelectedItem != null)
+            if (comboNoOfRooms.Text != "")
             {
-                bool isUnique = true;
-                int floorNum = int.Parse(comboFloorNum.SelectedItem.ToString());
-                int noOfRooms = int.Parse(comboNoOfRooms.SelectedItem.ToString());
-                foreach (Floor f in customerFloors)
+                int floorNum = 1;
+                if (customerFloors.Count != 0)
                 {
-                    if(f.FloorNum1 == floorNum)
-                    {
-                        isUnique = false;
-                    }
-                }
-                if (isUnique)
-                {                    
-                    DBConnection.db_AddFloor(c.CustomerID1, floorNum, noOfRooms);
-                    loadViewPage();
-                }
-                else
-                {
-                    lblAddFloorError.Text = "Floor already exists.";
+                    floorNum = customerFloors.Max(x => x.FloorNum1) + 1;
                 }                
+                int noOfRooms = int.Parse(comboNoOfRooms.SelectedItem.ToString());
+                DBConnection.db_AddFloor(c.CustomerID1, floorNum, noOfRooms);
+                loadViewPage();
             }
             else
             {
-                lblAddFloorError.Text = "Please select values!";
+                lblAddFloorError.Text = "Select number of rooms";
             }
         }
 
         private void comboSelectFloor_SelectedIndexChanged(object sender, EventArgs e)
         {
             listboxRooms.Items.Clear();
-            if(int.Parse(comboSelectFloor.SelectedItem.ToString()) != 0)
-            {                
+            if (int.Parse(comboSelectFloor.SelectedItem.ToString()) != 0)
+            {
                 int floornum = int.Parse(comboSelectFloor.SelectedItem.ToString());
                 int floorid = (from fl in customerFloors
                                where fl.FloorNum1 == floornum
@@ -425,7 +459,7 @@ namespace SafeHome
 
         private void comboRoomN_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(comboRoomN.SelectedItem != null)
+            if (comboRoomN.SelectedItem != null)
             {
                 checkDoorN.Enabled = true;
             }
@@ -452,6 +486,76 @@ namespace SafeHome
             if (comboRoomN.SelectedItem != null)
             {
                 checkDoorW.Enabled = true;
+            }
+        }
+
+        public bool layoutIsFeasible(Room newRoom, List<Room> currentRooms)
+        {
+            if (newRoom.RoomIDNorth1 != 0)
+            {
+                //Check if that room is already referenced as a RoomIDNorth in any other rooms
+                foreach (Room r in currentRooms)
+                {
+                    if (newRoom.RoomIDNorth1 == r.RoomIDNorth1)
+                    {
+                        // Room is already referenced as a north room
+                        layoutErrString = "The room '" + r.RoomName1 + "' already exists in this location";
+                        return false;
+                    }
+                }
+            }
+            if (newRoom.RoomIDEast1 != 0)
+            {
+                //Check if that room is already referenced as a RoomIDEast in any other rooms
+                foreach (Room r in currentRooms)
+                {
+                    if (newRoom.RoomIDEast1 == r.RoomIDEast1)
+                    {
+                        // Room is already referenced as a north room
+                        layoutErrString = "The room '" + r.RoomName1 + "' already exists in this location";
+                        return false;
+                    }
+                }
+            }
+            if (newRoom.RoomIDSouth1 != 0)
+            {
+                //Check if that room is already referenced as a RoomIDSouth in any other rooms
+                foreach (Room r in currentRooms)
+                {
+                    if (newRoom.RoomIDSouth1 == r.RoomIDSouth1)
+                    {
+                        // Room is already referenced as a north room
+                        layoutErrString = "The room '" + r.RoomName1 + "' already exists in this location";
+                        return false;
+                    }
+                }
+            }
+            if (newRoom.RoomIDWest1 != 0)
+            {
+                //Check if that room is already referenced as a RoomIDWest in any other rooms
+                foreach (Room r in currentRooms)
+                {
+                    if (newRoom.RoomIDWest1 == r.RoomIDWest1)
+                    {
+                        // Room is already referenced as a north room
+                        layoutErrString = "The room '" + r.RoomName1 + "' already exists in this location";
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

@@ -21,6 +21,8 @@ namespace SafeHome
         int RoomIDWest;
         bool DoorWest;
 
+        public Room() { }
+
         public Room(int id, string name, int cID, int floor, int roomN, bool doorN, int roomE, bool doorE, int roomS, bool doorS, int roomW, bool doorW)
         {
             this.RoomID1 = id;

@@ -76,9 +76,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblAddFloorError = new System.Windows.Forms.Label();
             this.btnAddFloor = new System.Windows.Forms.Button();
-            this.comboFloorNum = new System.Windows.Forms.ComboBox();
             this.comboNoOfRooms = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.btnAddRoom = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -321,7 +319,7 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("American Typewriter", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(372, 161);
+            this.btnCancel.Location = new System.Drawing.Point(372, 171);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(270, 39);
             this.btnCancel.TabIndex = 19;
@@ -333,7 +331,7 @@
             // 
             this.lblSaveRoomError.AutoSize = true;
             this.lblSaveRoomError.Font = new System.Drawing.Font("Copperplate Gothic Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSaveRoomError.Location = new System.Drawing.Point(18, 146);
+            this.lblSaveRoomError.Location = new System.Drawing.Point(18, 153);
             this.lblSaveRoomError.Name = "lblSaveRoomError";
             this.lblSaveRoomError.Size = new System.Drawing.Size(0, 12);
             this.lblSaveRoomError.TabIndex = 18;
@@ -422,7 +420,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("American Typewriter", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(14, 161);
+            this.btnSave.Location = new System.Drawing.Point(14, 171);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(307, 39);
             this.btnSave.TabIndex = 9;
@@ -571,14 +569,12 @@
             // 
             this.groupBox1.Controls.Add(this.lblAddFloorError);
             this.groupBox1.Controls.Add(this.btnAddFloor);
-            this.groupBox1.Controls.Add(this.comboFloorNum);
             this.groupBox1.Controls.Add(this.comboNoOfRooms);
-            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Font = new System.Drawing.Font("Copperplate Gothic Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(442, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 140);
+            this.groupBox1.Size = new System.Drawing.Size(200, 130);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add a Floor";
@@ -587,7 +583,7 @@
             // 
             this.lblAddFloorError.AutoSize = true;
             this.lblAddFloorError.Font = new System.Drawing.Font("Copperplate Gothic Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddFloorError.Location = new System.Drawing.Point(3, 119);
+            this.lblAddFloorError.Location = new System.Drawing.Point(5, 103);
             this.lblAddFloorError.Name = "lblAddFloorError";
             this.lblAddFloorError.Size = new System.Drawing.Size(0, 14);
             this.lblAddFloorError.TabIndex = 26;
@@ -595,27 +591,13 @@
             // btnAddFloor
             // 
             this.btnAddFloor.Font = new System.Drawing.Font("American Typewriter", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddFloor.Location = new System.Drawing.Point(6, 77);
+            this.btnAddFloor.Location = new System.Drawing.Point(6, 56);
             this.btnAddFloor.Name = "btnAddFloor";
             this.btnAddFloor.Size = new System.Drawing.Size(187, 39);
             this.btnAddFloor.TabIndex = 24;
             this.btnAddFloor.Text = "+";
             this.btnAddFloor.UseVisualStyleBackColor = true;
             this.btnAddFloor.Click += new System.EventHandler(this.btnAddFloor_Click);
-            // 
-            // comboFloorNum
-            // 
-            this.comboFloorNum.FormattingEnabled = true;
-            this.comboFloorNum.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
-            this.comboFloorNum.Location = new System.Drawing.Point(118, 23);
-            this.comboFloorNum.Name = "comboFloorNum";
-            this.comboFloorNum.Size = new System.Drawing.Size(75, 20);
-            this.comboFloorNum.TabIndex = 18;
             // 
             // comboNoOfRooms
             // 
@@ -631,26 +613,16 @@
             "8",
             "9",
             "10"});
-            this.comboNoOfRooms.Location = new System.Drawing.Point(118, 50);
+            this.comboNoOfRooms.Location = new System.Drawing.Point(118, 24);
             this.comboNoOfRooms.Name = "comboNoOfRooms";
             this.comboNoOfRooms.Size = new System.Drawing.Size(75, 20);
             this.comboNoOfRooms.TabIndex = 21;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Copperplate Gothic Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(6, 26);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(106, 14);
-            this.label10.TabIndex = 22;
-            this.label10.Text = "Floor number";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Copperplate Gothic Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(7, 53);
+            this.label11.Location = new System.Drawing.Point(7, 27);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(104, 14);
             this.label11.TabIndex = 23;
@@ -859,12 +831,10 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.ListBox lbSensors;
         private System.Windows.Forms.Label lblFloor;
-        private System.Windows.Forms.ComboBox comboFloorNum;
         private System.Windows.Forms.ComboBox comboSelectFloor;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnAddFloor;
         private System.Windows.Forms.ComboBox comboNoOfRooms;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lblAddRoomError;
         private System.Windows.Forms.Label lblAddFloorError;
