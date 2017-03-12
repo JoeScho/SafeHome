@@ -7,8 +7,8 @@
 #### The Windows application allows the user to:
 - [x] Design their house
 - [x] Mark the location and type of sensors (i.e. Fire alarm, Window alarm, etc.). 
-- [ ] Ensures that the house designed is physically feasible (i.e. the bathroom beneath the kitchen if the kitchen is already set to beneath the bathroom)
-- [ ] Visualise the entire floor of the house
+- [x] Ensures that the house designed is physically feasible (i.e. the bathroom beneath the kitchen if the kitchen is already set to beneath the bathroom)
+- [x] Visualise the entire floor of the house
 
 #### The Web API allows the user to:
 - [x] Submit a data reading
