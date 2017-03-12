@@ -19,7 +19,7 @@
 #### The Web application allows the user to:
 - [x] Query current state and events
 - [x] Start / Stop / Reset the system
-- [ ] View events since system was last set
+- [x] View events since system was last set
 
 #### There is a fourth application (Windows Form) which simulates one of the sensors and can:
 - [x] Submit a data reading
