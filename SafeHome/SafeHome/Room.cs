@@ -21,6 +21,9 @@ namespace SafeHome
         int RoomIDWest;
         bool DoorWest;
 
+        // For visualisation
+        bool hasBeenDrawn = false; 
+
         public Room() { }
 
         public Room(int id, string name, int cID, int floor, int roomN, bool doorN, int roomE, bool doorE, int roomS, bool doorS, int roomW, bool doorW)
@@ -207,6 +210,19 @@ namespace SafeHome
             set
             {
                 RoomID = value;
+            }
+        }
+
+        public bool HasBeenDrawn
+        {
+            get
+            {
+                return hasBeenDrawn;
+            }
+
+            set
+            {
+                hasBeenDrawn = value;
             }
         }
 

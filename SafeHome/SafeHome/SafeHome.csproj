@@ -82,6 +82,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Visualisation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visualisation.Designer.cs">
+      <DependentUpon>Visualisation.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,6 +102,9 @@
     </Compile>
     <EmbeddedResource Include="SensorEmulator.resx">
       <DependentUpon>SensorEmulator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visualisation.resx">
+      <DependentUpon>Visualisation.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

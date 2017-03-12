@@ -283,6 +283,7 @@ namespace SafeHome
             pnlLogin.Visible = true;
             btnLaunchEmulator.Visible = false;
             btnLogout.Visible = false;
+            btnVisualise.Visible = false;
 
             // Reset variable values
             customerRooms = new List<Room>();
@@ -314,6 +315,7 @@ namespace SafeHome
             btnSave.Visible = true;
             btnLaunchEmulator.Visible = true;
             btnLogout.Visible = true;
+            btnVisualise.Visible = true;
         }
 
         public void loadAddPage()
@@ -557,6 +559,12 @@ namespace SafeHome
             {
                 return false;
             }
+        }
+
+        private void btnVisualise_Click(object sender, EventArgs e)
+        {
+            Visualisation v = new Visualisation(c);
+            v.Show();
         }
     }
 }

@@ -92,6 +92,7 @@
             this.pDC_SensorTableAdapter = new SafeHome.SafeHomeDataSetTableAdapters.PDC_SensorTableAdapter();
             this.pDCRoomBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pDC_RoomTableAdapter = new SafeHome.SafeHomeDataSetTableAdapters.PDC_RoomTableAdapter();
+            this.btnVisualise = new System.Windows.Forms.Button();
             this.pnlLogin.SuspendLayout();
             this.gbRegister.SuspendLayout();
             this.gbLogin.SuspendLayout();
@@ -739,12 +740,25 @@
             // 
             this.pDC_RoomTableAdapter.ClearBeforeFill = true;
             // 
+            // btnVisualise
+            // 
+            this.btnVisualise.Font = new System.Drawing.Font("American Typewriter", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVisualise.Location = new System.Drawing.Point(291, 9);
+            this.btnVisualise.Name = "btnVisualise";
+            this.btnVisualise.Size = new System.Drawing.Size(96, 39);
+            this.btnVisualise.TabIndex = 10;
+            this.btnVisualise.Text = "Visualise";
+            this.btnVisualise.UseVisualStyleBackColor = true;
+            this.btnVisualise.Visible = false;
+            this.btnVisualise.Click += new System.EventHandler(this.btnVisualise_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(690, 287);
+            this.Controls.Add(this.btnVisualise);
             this.Controls.Add(this.btnLaunchEmulator);
             this.Controls.Add(this.pnlAddRoom);
             this.Controls.Add(this.pnlViewRooms);
@@ -839,5 +853,6 @@
         private System.Windows.Forms.Label lblAddRoomError;
         private System.Windows.Forms.Label lblAddFloorError;
         private System.Windows.Forms.Label lblRoomCount;
+        private System.Windows.Forms.Button btnVisualise;
     }
 }

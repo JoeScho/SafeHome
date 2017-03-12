@@ -19,6 +19,6 @@ C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\bin\Microsoft.
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\bin\EntityFramework.xml
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\bin\EntityFramework.SqlServer.xml
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\obj\Debug\API.csprojResolveAssemblyReference.cache
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\obj\Debug\API.dll
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\obj\Debug\API.pdb
-C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\API\obj\Debug\API.csprojResolveAssemblyReference.cache
