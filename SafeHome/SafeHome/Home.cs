@@ -485,7 +485,7 @@ namespace SafeHome
 
         private void comboRoomW_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboRoomN.SelectedItem != null)
+            if (comboRoomW.SelectedItem != null)
             {
                 checkDoorW.Enabled = true;
             }
