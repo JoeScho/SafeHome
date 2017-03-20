@@ -25,6 +25,9 @@ namespace SafeHome
         {
             c = customer;
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             floors = DBConnection.db_GetFloors(c.CustomerID1);
             types = DBConnection.getSensorTypes();
             foreach (Floor f in floors)
