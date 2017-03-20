@@ -17,3 +17,4 @@ C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\obj\Debug
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\obj\Debug\SafeHome.csproj.GenerateResource.Cache
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\obj\Debug\SafeHome.exe
 C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\obj\Debug\SafeHome.pdb
+C:\Users\Joe\Documents\University\Year4\PDC\SafeHome\SafeHome\SafeHome\obj\Debug\SafeHome.csprojResolveAssemblyReference.cache

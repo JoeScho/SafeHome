@@ -14,29 +14,36 @@ namespace SafeHome
     {
         List<Floor> floors = new List<Floor>();
         List<Room> rooms = new List<Room>();
+        List<SensorType> types = new List<SensorType>();
         Customer c;
         int xLocation = 300;
         int yLocation = 300;
-        int roomSize = 80;
+        int roomSize = 150;
+        System.Drawing.Graphics graphics;
 
         public Visualisation(Customer customer)
         {
             c = customer;
             InitializeComponent();
             floors = DBConnection.db_GetFloors(c.CustomerID1);
+            types = DBConnection.getSensorTypes();
             foreach (Floor f in floors)
             {
                 comboFloors.Items.Add(f.FloorNum1);
             }
             xLocation = this.Width / 2;
             yLocation = this.Height / 2;
-            roomSize = this.Height / 10;
+            roomSize = this.Height / 4;
+            graphics = panel1.CreateGraphics();
+
+            ScrollBar vScrollBar1 = new VScrollBar();
+            vScrollBar1.Dock = DockStyle.Right;
+            vScrollBar1.Scroll += (sender, e) => { panel1.VerticalScroll.Value = vScrollBar1.Value; };
+            panel1.Controls.Add(vScrollBar1);
         }
 
         private void DrawRoom(Room r)
         {
-            System.Drawing.Graphics graphics = this.CreateGraphics();
-
             // Draw room
             System.Drawing.Rectangle rectangle = new System.Drawing.Rectangle(
                 xLocation, yLocation, roomSize, roomSize);
@@ -45,18 +52,53 @@ namespace SafeHome
 
             // Draw room name            
             string drawString = r.RoomName1;
-            System.Drawing.Font drawFont = new System.Drawing.Font("Arial", 16);
+            System.Drawing.Font drawFont = new System.Drawing.Font("Arial", 12);
             System.Drawing.SolidBrush drawBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
             graphics.DrawString(drawString, drawFont, drawBrush, xLocation, yLocation);
-            // Display sensors
 
+            // Display sensors
+            List<Sensor> roomSensors = DBConnection.db_getRoomSensors(r.RoomID1);
+            int currentYLocation = yLocation;
+            foreach (Sensor s in roomSensors)
+            {
+                currentYLocation += 20;
+                string type = (from t in types
+                               where t.SensorTypeID1 == s.SensorTypeID1
+                               select t.SensorName1).First();
+                System.Drawing.Font sensorDrawFont = new System.Drawing.Font("Arial", 8);
+                graphics.DrawString(type, sensorDrawFont, drawBrush, xLocation, currentYLocation);
+            }
 
             // Display doorways
-
+            if(r.DoorNorth1)
+            {
+                System.Drawing.Pen myPen;
+                myPen = new System.Drawing.Pen(System.Drawing.Color.White);
+                graphics.DrawLine(myPen, xLocation + (roomSize / 3), yLocation, xLocation + (2 * (roomSize / 3)), yLocation);
+            }
+            if (r.DoorEast1)
+            {
+                System.Drawing.Pen myPen;
+                myPen = new System.Drawing.Pen(System.Drawing.Color.White);
+                graphics.DrawLine(myPen, xLocation + roomSize, yLocation + (roomSize / 3), xLocation + roomSize, yLocation + (2 * (roomSize / 3)));
+            }
+            if (r.DoorSouth1)
+            {
+                System.Drawing.Pen myPen;
+                myPen = new System.Drawing.Pen(System.Drawing.Color.White);
+                graphics.DrawLine(myPen, xLocation + (roomSize / 3), yLocation + roomSize, xLocation + (2 * (roomSize / 3)), yLocation + roomSize);
+            }
+            if (r.DoorWest1)
+            {
+                System.Drawing.Pen myPen;
+                myPen = new System.Drawing.Pen(System.Drawing.Color.White);
+                graphics.DrawLine(myPen, xLocation, yLocation + (roomSize / 3), xLocation, yLocation + (2 * (roomSize / 3)));
+            }
         }
 
         private void comboFloors_SelectedIndexChanged(object sender, EventArgs e)
         {
+            graphics.Clear(System.Drawing.Color.White);
             lblNoRooms.Text = "";
             int floornum = int.Parse(comboFloors.SelectedItem.ToString());
             Floor selectedFloor = (from f in floors

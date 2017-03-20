@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Visualisation));
             this.comboFloors = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblNoRooms = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // comboFloors
@@ -62,14 +64,24 @@
             this.lblNoRooms.Size = new System.Drawing.Size(0, 17);
             this.lblNoRooms.TabIndex = 3;
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(13, 49);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(559, 500);
+            this.panel1.TabIndex = 4;
+            // 
             // Visualisation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblNoRooms);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboFloors);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Visualisation";
             this.Text = "Visualisation";
             this.ResumeLayout(false);
@@ -81,5 +93,6 @@
         private System.Windows.Forms.ComboBox comboFloors;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblNoRooms;
+        private System.Windows.Forms.Panel panel1;
     }
 }

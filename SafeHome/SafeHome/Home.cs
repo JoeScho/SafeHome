@@ -548,7 +548,7 @@ namespace SafeHome
             return true;
         }
 
-        bool IsValidEmail(string email)
+        public bool IsValidEmail(string email)
         {
             try
             {
