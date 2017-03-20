@@ -1,6 +1,6 @@
 # SafeHome
 
-- Currently **In Progress** (due date: 27/03/17)
+- Currently **Complete** (due date: 27/03/17)
 
 ### SafeHome is a system composed of a Windows Forms Application (C#), a Web API (ASP.Net) and a Web Forms Application (ASP.Net). These connect to an SQL Server database. 
 
