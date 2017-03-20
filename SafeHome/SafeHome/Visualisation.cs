@@ -75,24 +75,36 @@ namespace SafeHome
                 System.Drawing.Pen myPen;
                 myPen = new System.Drawing.Pen(System.Drawing.Color.White);
                 graphics.DrawLine(myPen, xLocation + (roomSize / 3), yLocation, xLocation + (2 * (roomSize / 3)), yLocation);
+                System.Drawing.Pen blackPen;
+                blackPen = new System.Drawing.Pen(System.Drawing.Color.Black);
+                graphics.DrawLine(blackPen, xLocation + (roomSize / 3), yLocation, xLocation + (2 * (roomSize / 3)), yLocation - 25);
             }
             if (r.DoorEast1)
             {
                 System.Drawing.Pen myPen;
                 myPen = new System.Drawing.Pen(System.Drawing.Color.White);
                 graphics.DrawLine(myPen, xLocation + roomSize, yLocation + (roomSize / 3), xLocation + roomSize, yLocation + (2 * (roomSize / 3)));
+                System.Drawing.Pen blackPen;
+                blackPen = new System.Drawing.Pen(System.Drawing.Color.Black);
+                graphics.DrawLine(blackPen, xLocation + roomSize, yLocation + (roomSize / 3), xLocation + roomSize - 25, yLocation + (2 * (roomSize / 3)));
             }
             if (r.DoorSouth1)
             {
                 System.Drawing.Pen myPen;
                 myPen = new System.Drawing.Pen(System.Drawing.Color.White);
                 graphics.DrawLine(myPen, xLocation + (roomSize / 3), yLocation + roomSize, xLocation + (2 * (roomSize / 3)), yLocation + roomSize);
+                System.Drawing.Pen blackPen;
+                blackPen = new System.Drawing.Pen(System.Drawing.Color.Black);
+                graphics.DrawLine(blackPen, xLocation + (roomSize / 3), yLocation + roomSize, xLocation + (2 * (roomSize / 3)), yLocation + roomSize - 25);
             }
             if (r.DoorWest1)
             {
                 System.Drawing.Pen myPen;
                 myPen = new System.Drawing.Pen(System.Drawing.Color.White);
                 graphics.DrawLine(myPen, xLocation, yLocation + (roomSize / 3), xLocation, yLocation + (2 * (roomSize / 3)));
+                System.Drawing.Pen blackPen;
+                blackPen = new System.Drawing.Pen(System.Drawing.Color.Black);
+                graphics.DrawLine(blackPen, xLocation, yLocation + (roomSize / 3), xLocation - 25, yLocation + (2 * (roomSize / 3)));
             }
         }
 
