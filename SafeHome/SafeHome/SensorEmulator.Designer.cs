@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SensorEmulator));
             this.btnSubmit = new System.Windows.Forms.Button();
             this.comboRoom = new System.Windows.Forms.ComboBox();
             this.lblSensorEmulator = new System.Windows.Forms.Label();
             this.comboSensor = new System.Windows.Forms.ComboBox();
             this.safeHomeDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pDCSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label4 = new System.Windows.Forms.Label();
             this.txtDetail = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,7 +43,6 @@
             this.comboFloor = new System.Windows.Forms.ComboBox();
             this.lblSubmit = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.safeHomeDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pDCSensorBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSubmit
@@ -86,11 +85,6 @@
             this.comboSensor.Size = new System.Drawing.Size(210, 24);
             this.comboSensor.TabIndex = 12;
             this.comboSensor.SelectedIndexChanged += new System.EventHandler(this.comboSensor_SelectedIndexChanged);
-            // 
-            // pDCSensorBindingSource
-            // 
-            this.pDCSensorBindingSource.DataMember = "PDC_Sensor";
-            this.pDCSensorBindingSource.DataSource = this.safeHomeDataSetBindingSource;
             // 
             // label4
             // 
@@ -163,6 +157,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(284, 252);
             this.Controls.Add(this.lblSubmit);
             this.Controls.Add(this.btnSubmit);
@@ -175,6 +170,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboFloor);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SensorEmulator";
             this.Text = "SensorEmulator";
             ((System.ComponentModel.ISupportInitialize)(this.safeHomeDataSetBindingSource)).EndInit();
@@ -190,7 +186,6 @@
         private System.Windows.Forms.Label lblSensorEmulator;
         private System.Windows.Forms.ComboBox comboSensor;
         private System.Windows.Forms.BindingSource safeHomeDataSetBindingSource;
-        private System.Windows.Forms.BindingSource pDCSensorBindingSource;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtDetail;
         private System.Windows.Forms.Label label3;

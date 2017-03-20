@@ -5,9 +5,8 @@
         <asp:Label ID="lblWelcome" runat="server" Text="Welcome"></asp:Label>
     </div>
     <div class="form-centered">
-        System Status: <asp:Label ID="lblSystemStatus" class="strong" runat="server" Text=""></asp:Label>
-
-        <br /><br />
+        <h2>System Status: <asp:Label ID="lblSystemStatus" class="strong" runat="server" Text=""></asp:Label></h2>
+        <br />
         <asp:Button ID="btnDisarm" runat="server" CssClass="btn btn-danger btnwidth" Text="Disarm System" OnClick="btnDisarm_Click" />
         &nbsp;
         <asp:Button ID="btnArm" runat="server" CssClass="btn btn-success btnwidth" Text="Arm System" OnClick="btnArm_Click" />
