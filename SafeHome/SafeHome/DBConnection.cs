@@ -10,6 +10,7 @@ namespace SafeHome
 {
     public class DBConnection
     {
+        // Login 
         public static Customer db_Login(string username, string password)
         {            
             SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
@@ -50,6 +51,7 @@ namespace SafeHome
             return null;
         }
 
+        // Register
         public static bool db_Register(string username, string password)
         {
             SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
@@ -82,6 +84,7 @@ namespace SafeHome
             return false;
         }
 
+        // Get customer's rooms for the current floor
         public static List<Room> db_GetRooms(int CustomerID, int FloorID)
         {
             List<Room> rooms = new List<Room>();
@@ -148,70 +151,7 @@ namespace SafeHome
             return rooms;
         }
 
-        public static List<Room> db_GetAllRooms(int CustomerID)
-        {
-            List<Room> rooms = new List<Room>();
-            SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
-
-            // Parameterise input to avoid SQL Injection
-            SqlParameter paramCID = new SqlParameter("@paramCID", SqlDbType.Int);
-            paramCID.Value = CustomerID;
-
-            SqlCommand myCommand = new SqlCommand(
-                "SELECT * FROM dbo.PDC_Room WHERE CustomerID = @paramCID", myConnection);
-            myCommand.Parameters.Add(paramCID);
-            SqlDataReader myReader = null;
-
-            try
-            {
-                myConnection.Open();
-                myReader = myCommand.ExecuteReader();
-                while (myReader.Read())
-                {
-                    int n = 0;
-                    int e = 0;
-                    int s = 0;
-                    int w = 0;
-
-                    if (myReader["RoomIDNorth"] != DBNull.Value)
-                    {
-                        n = (int)myReader["RoomIDNorth"];
-                    }
-                    if (myReader["RoomIDEast"] != DBNull.Value)
-                    {
-                        e = (int)myReader["RoomIDEast"];
-                    }
-                    if (myReader["RoomIDSouth"] != DBNull.Value)
-                    {
-                        s = (int)myReader["RoomIDSouth"];
-                    }
-                    if (myReader["RoomIDWest"] != DBNull.Value)
-                    {
-                        w = (int)myReader["RoomIDWest"];
-                    }
-
-                    int rID = (int)myReader["RoomID"];
-                    string name = myReader["RoomName"].ToString();
-                    int FloorID = int.Parse(myReader["FloorID"].ToString());
-                    bool drN = myReader.GetBoolean(myReader.GetOrdinal("DoorNorth"));
-                    bool drE = myReader.GetBoolean(myReader.GetOrdinal("DoorEast"));
-                    bool drS = myReader.GetBoolean(myReader.GetOrdinal("DoorSouth"));
-                    bool drW = myReader.GetBoolean(myReader.GetOrdinal("DoorWest"));
-                    Room r = new Room(rID, name, CustomerID, FloorID, n, drN, e, drE, s, drS, w, drW);
-                    rooms.Add(r);
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
-            finally
-            {
-                myConnection.Close();
-            }
-            return rooms;
-        }
-
+        // Get all types of sensor
         public static List<SensorType> getSensorTypes()
         {
             List<SensorType> sensorTypes = new List<SensorType>();
@@ -245,6 +185,7 @@ namespace SafeHome
             return sensorTypes;
         }
 
+        // Add a room
         public static int db_AddRoom(string rmName, int cID, int flrID)
         {
             SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
@@ -281,6 +222,8 @@ namespace SafeHome
             return -1;
         }
 
+        // The following four methods update the current room with it's adjacent rooms, 
+        // and update the adjacent room with the current room
         public static void updateRoomN(int roomID, int roomIDN, bool drN)
         {
             SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
@@ -417,6 +360,7 @@ namespace SafeHome
             }
         }
 
+        // Get all sensors for a room
         public static List<Sensor> db_getRoomSensors(int roomID)
         {
             List<Sensor> sensors = new List<Sensor>();
@@ -456,6 +400,7 @@ namespace SafeHome
             return sensors;
         }
 
+        // Add a sensor to a room
         public static bool db_AddSensor(int typeID, int roomID)
         {
             SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
@@ -488,6 +433,7 @@ namespace SafeHome
             return false;
         }
 
+        // Add a floor to the customer's house
         public static int db_AddFloor(int cID, int flr, int noOfRooms)
         {
             SqlConnection myConnection = new SqlConnection(Properties.Settings.Default.SafeHomeConnectionString);
@@ -524,6 +470,7 @@ namespace SafeHome
             return -1;
         }
 
+        // Get a list of all the floor's the customer has created
         public static List<Floor> db_GetFloors(int CustomerID)
         {
             List<Floor> floors = new List<Floor>();

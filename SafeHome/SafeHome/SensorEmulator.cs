@@ -23,6 +23,7 @@ namespace SafeHome
 
         public SensorEmulator(Customer c)
         {
+            // Window size fixed
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -36,6 +37,7 @@ namespace SafeHome
             }
         }
 
+        // When the selected floor is changed, populate room ddl with new floor's rooms
         private void comboFloor_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboRoom.Items.Clear();
@@ -55,6 +57,7 @@ namespace SafeHome
             }
         }
 
+        // When the selected room is changed, populate sensor ddl with room's sensors
         private void comboRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboSensor.Items.Clear();
@@ -75,6 +78,7 @@ namespace SafeHome
             }
         }
 
+        // When the sensortype is selected, find that sensor from the room's sensors
         private void comboSensor_SelectedIndexChanged(object sender, EventArgs e)
         {
             SensorType selectedtype = (from st in sensorTypes
@@ -85,6 +89,7 @@ namespace SafeHome
                               select s).First();
         }
 
+        // Submit the reading to the db
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             string detail = "";

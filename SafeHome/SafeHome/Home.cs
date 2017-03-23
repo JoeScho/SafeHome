@@ -44,6 +44,7 @@ namespace SafeHome
             comboNoOfRooms.SelectedIndex = 0;
         }
 
+        // Sign in user
         private void btnSignIn_Click(object sender, EventArgs e)
         {
             if (txtLoginName.Text != "" && txtLoginPwd.Text != "")
@@ -64,11 +65,13 @@ namespace SafeHome
             }
         }
 
+        // Log out user
         private void btnLogout_Click(object sender, EventArgs e)
         {
             loadLoginPage();
         }
 
+        // Clear all panels from the screen
         private void setAllPanelsInvisible()
         {
             foreach (Panel p in listPanels)
@@ -77,6 +80,7 @@ namespace SafeHome
             }
         }
 
+        // Add a room
         private void btnAddRoom_Click(object sender, EventArgs e)
         {
             try
@@ -118,6 +122,7 @@ namespace SafeHome
             }
         }
 
+        // Save new room
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (Room.getRoomByName(txtRoomName.Text, customerRooms) == null && txtRoomName.Text != "")
@@ -225,23 +230,27 @@ namespace SafeHome
             }
         }
 
+        // Add a sensor to the new room
         private void btnAddSensor_Click(object sender, EventArgs e)
         {
             string s = comboAddSensor.Text;
             lbSensors.Items.Add(s);
         }
 
+        // Remove the sensor from the new room
         private void btnDeleteSensor_Click(object sender, EventArgs e)
         {
             lbSensors.Items.Remove(lbSensors.SelectedItem);
         }
 
+        // Launch the sensor emulator
         private void btnLaunchEmulator_Click(object sender, EventArgs e)
         {
             SensorEmulator f = new SensorEmulator(c);
             f.Show();
         }
 
+        // Register a new user
         private void btnRegister_Click(object sender, EventArgs e)
         {
             if (txtRegisterName.Text != "" && txtRegisterPwd.Text != "")
@@ -269,6 +278,7 @@ namespace SafeHome
             }
         }
 
+        // Load the login panel
         public void loadLoginPage()
         {
             // Reset screen
@@ -293,6 +303,7 @@ namespace SafeHome
             selectedFloor = new Floor();
         }
 
+        // Load the home panel
         public void loadViewPage()
         {
             lblAddRoomError.Text = "";
@@ -318,6 +329,7 @@ namespace SafeHome
             btnVisualise.Visible = true;
         }
 
+        // Load the add room page
         public void loadAddPage()
         {
             comboRoomN.Items.Clear();
@@ -342,6 +354,7 @@ namespace SafeHome
             pnlAddRoom.Visible = true;
         }
 
+        // View a room from the listbox
         private void btnViewRoom_Click(object sender, EventArgs e)
         {
             if (listboxRooms.SelectedItems.Count == 1)
@@ -382,11 +395,13 @@ namespace SafeHome
             lblAddRoomError.Text = "Select a room";
         }
 
+        // Cancel adding a room
         private void btnCancel_Click(object sender, EventArgs e)
         {
             loadViewPage();
         }
 
+        // Make the add room page view only (for viewing a room)
         public void makeAddViewOnly()
         {
             btnSave.Visible = false;
@@ -406,6 +421,7 @@ namespace SafeHome
             comboRoomW.Enabled = false;
         }
 
+        // Make the add room page editable (for adding a room)
         public void makeAddEditable()
         {
             btnSave.Visible = true;
@@ -421,6 +437,7 @@ namespace SafeHome
             comboRoomW.Enabled = true;
         }
 
+        // Add a floor to the house
         private void btnAddFloor_Click(object sender, EventArgs e)
         {
             if (comboNoOfRooms.Text != "")
@@ -440,6 +457,7 @@ namespace SafeHome
             }
         }
 
+        // Load the selected floor's rooms 
         private void comboSelectFloor_SelectedIndexChanged(object sender, EventArgs e)
         {
             listboxRooms.Items.Clear();
@@ -459,6 +477,7 @@ namespace SafeHome
             }
         }
 
+        // The following four methods let the user add a doorway when adding adjacent rooms
         private void comboRoomN_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboRoomN.SelectedItem != null)
@@ -491,6 +510,7 @@ namespace SafeHome
             }
         }
 
+        // Check if the layout is possible when adding a room
         public bool layoutIsFeasible(Room newRoom, List<Room> currentRooms)
         {
             if (newRoom.RoomIDNorth1 != 0)
@@ -548,6 +568,7 @@ namespace SafeHome
             return true;
         }
 
+        // Ensure the user's email is a valid email when registering
         public bool IsValidEmail(string email)
         {
             try
@@ -561,6 +582,7 @@ namespace SafeHome
             }
         }
 
+        // Open the visualisation form
         private void btnVisualise_Click(object sender, EventArgs e)
         {
             Visualisation v = new Visualisation(c);

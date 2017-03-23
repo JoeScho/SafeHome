@@ -16,8 +16,10 @@ namespace SafeHome
         List<Room> rooms = new List<Room>();
         List<SensorType> types = new List<SensorType>();
         Customer c;
+        // Default location for drawing on the page
         int xLocation = 300;
         int yLocation = 300;
+        // Length of each wall in a room
         int roomSize = 150;
         System.Drawing.Graphics graphics;
 
@@ -25,17 +27,21 @@ namespace SafeHome
         {
             c = customer;
             InitializeComponent();
+            // Set the window to not be resizeable
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            // Populate floor ddl with customer's floors
             floors = DBConnection.db_GetFloors(c.CustomerID1);
             types = DBConnection.getSensorTypes();
             foreach (Floor f in floors)
             {
                 comboFloors.Items.Add(f.FloorNum1);
             }
+            // Update drawing location to centre of the window
             xLocation = this.Width / 2;
             yLocation = this.Height / 2;
+            // Update room size to a quarter of the window size
             roomSize = this.Height / 4;
             graphics = panel1.CreateGraphics();
 
@@ -111,18 +117,24 @@ namespace SafeHome
             }
         }
 
+        // 
         private void comboFloors_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Clear all drawings
             graphics.Clear(System.Drawing.Color.White);
             lblNoRooms.Text = "";
             int floornum = int.Parse(comboFloors.SelectedItem.ToString());
             Floor selectedFloor = (from f in floors
                                    where f.FloorNum1 == floornum
                                    select f).First();
+            // Get rooms from current floor
             rooms = DBConnection.db_GetRooms(c.CustomerID1, selectedFloor.FloorID1);
+            // Check if there are rooms on the floor
             if (rooms.Count > 0)
             {
+                // Draw the first room
                 DrawRoom(rooms[0]);
+                // Draw the rest of the rooms
                 drawAdjacentRooms(rooms[0]);
             }
             else
@@ -131,6 +143,7 @@ namespace SafeHome
             }            
         }
 
+        // Recursive method which draws each room's adjacent rooms
         public void drawAdjacentRooms(Room r)
         {
             if (r.RoomIDNorth1 != 0)
