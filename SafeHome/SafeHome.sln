@@ -9,6 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeHome", "SafeHome\SafeHo
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeHomeTest", "SafeHomeTest\SafeHomeTest.csproj", "{0EF5C985-D388-4555-AB75-9DC87541AA95}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4E6AFA36-5C77-4505-A895-E3CC3556EE0D} = {4E6AFA36-5C77-4505-A895-E3CC3556EE0D}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{4E6AFA36-5C77-4505-A895-E3CC3556EE0D}"
 EndProject

@@ -79,14 +79,5 @@ namespace SafeHome
         }
 
         public SensorEvent() { }
-
-        public SensorEvent(DateTime time, int EvID, string rmName, string snsType, string details)
-        {
-            this.EventTime = time;
-            this.EventID = EvID;
-            this.RoomName = rmName;
-            this.SensorType = snsType;
-            this.Detail = details;
-        }
     }
 }

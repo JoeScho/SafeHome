@@ -15,7 +15,7 @@ namespace SafeHomeTest
         Floor f5 = new Floor(5, 5, 5, 1);
 
         [TestMethod]
-        public void _getFloorByName()
+        public void _getFloorByName_Pass()
         {
             rooms.Add(f1);
             rooms.Add(f2);
@@ -23,6 +23,17 @@ namespace SafeHomeTest
             rooms.Add(f4);
             rooms.Add(f5);
             Assert.AreEqual(f4, Floor.getFloorByName(4, rooms));
+        }
+
+        [TestMethod]
+        public void _getFloorByName_Fail()
+        {
+            rooms.Add(f1);
+            rooms.Add(f2);
+            rooms.Add(f3);
+            rooms.Add(f4);
+            rooms.Add(f5);
+            Assert.AreNotEqual(f3, Floor.getFloorByName(4, rooms));
         }
     }
 }

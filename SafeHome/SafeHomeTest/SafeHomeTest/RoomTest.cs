@@ -15,7 +15,7 @@ namespace SafeHomeTest
         Room r5 = new Room(5, "room5", 1, 1, 0, true, 1, true, 0, true, 0, true);
 
         [TestMethod]
-        public void _getRoomByName()
+        public void _getRoomByName_Pass()
         {
             rooms.Add(r1);
             rooms.Add(r2);
@@ -26,7 +26,18 @@ namespace SafeHomeTest
         }
 
         [TestMethod]
-        public void _getRoomByID()
+        public void _getRoomByName_Fail()
+        {
+            rooms.Add(r1);
+            rooms.Add(r2);
+            rooms.Add(r3);
+            rooms.Add(r4);
+            rooms.Add(r5);
+            Assert.AreNotEqual(r3, Room.getRoomByName("room4", rooms));
+        }
+
+        [TestMethod]
+        public void _getRoomByID_Pass()
         {
             rooms.Add(r1);
             rooms.Add(r2);
@@ -34,6 +45,17 @@ namespace SafeHomeTest
             rooms.Add(r4);
             rooms.Add(r5);
             Assert.AreEqual(r4, Room.getRoomByID(4, rooms));
+        }
+
+        [TestMethod]
+        public void _getRoomByID_Fail()
+        {
+            rooms.Add(r1);
+            rooms.Add(r2);
+            rooms.Add(r3);
+            rooms.Add(r4);
+            rooms.Add(r5);
+            Assert.AreNotEqual(r3, Room.getRoomByID(4, rooms));
         }
     }
 }

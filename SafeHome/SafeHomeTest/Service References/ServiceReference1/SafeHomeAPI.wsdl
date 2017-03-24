@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.safehome-gre.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.safehome-gre.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.safehome-gre.com/">
+      <s:element name="GetSystemState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="customerID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSystemStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSystemStateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSensorEvents">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="customerID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSensorEventsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSensorEventsResult" type="tns:ArrayOfSensorEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSensorEvent">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SensorEvent" nillable="true" type="tns:SensorEvent" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SensorEvent">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EventID1" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoomName1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SensorType1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Detail1" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EventTime1" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeactivateSystem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="customerID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeactivateSystemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeactivateSystemResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActivateSystem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="customerID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActivateSystemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ActivateSystemResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RestartSystem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="customerID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RestartSystemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RestartSystemResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitReading">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="customerID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sensorID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="detail" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitReadingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubmitReadingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetSystemStateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSystemState" />
+  </wsdl:message>
+  <wsdl:message name="GetSystemStateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSystemStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSensorEventsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSensorEvents" />
+  </wsdl:message>
+  <wsdl:message name="GetSensorEventsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSensorEventsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeactivateSystemSoapIn">
+    <wsdl:part name="parameters" element="tns:DeactivateSystem" />
+  </wsdl:message>
+  <wsdl:message name="DeactivateSystemSoapOut">
+    <wsdl:part name="parameters" element="tns:DeactivateSystemResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActivateSystemSoapIn">
+    <wsdl:part name="parameters" element="tns:ActivateSystem" />
+  </wsdl:message>
+  <wsdl:message name="ActivateSystemSoapOut">
+    <wsdl:part name="parameters" element="tns:ActivateSystemResponse" />
+  </wsdl:message>
+  <wsdl:message name="RestartSystemSoapIn">
+    <wsdl:part name="parameters" element="tns:RestartSystem" />
+  </wsdl:message>
+  <wsdl:message name="RestartSystemSoapOut">
+    <wsdl:part name="parameters" element="tns:RestartSystemResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubmitReadingSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitReading" />
+  </wsdl:message>
+  <wsdl:message name="SubmitReadingSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitReadingResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SafeHomeAPISoap">
+    <wsdl:operation name="GetSystemState">
+      <wsdl:input message="tns:GetSystemStateSoapIn" />
+      <wsdl:output message="tns:GetSystemStateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSensorEvents">
+      <wsdl:input message="tns:GetSensorEventsSoapIn" />
+      <wsdl:output message="tns:GetSensorEventsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeactivateSystem">
+      <wsdl:input message="tns:DeactivateSystemSoapIn" />
+      <wsdl:output message="tns:DeactivateSystemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActivateSystem">
+      <wsdl:input message="tns:ActivateSystemSoapIn" />
+      <wsdl:output message="tns:ActivateSystemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RestartSystem">
+      <wsdl:input message="tns:RestartSystemSoapIn" />
+      <wsdl:output message="tns:RestartSystemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitReading">
+      <wsdl:input message="tns:SubmitReadingSoapIn" />
+      <wsdl:output message="tns:SubmitReadingSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SafeHomeAPISoap" type="tns:SafeHomeAPISoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSystemState">
+      <soap:operation soapAction="http://www.safehome-gre.com/GetSystemState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSensorEvents">
+      <soap:operation soapAction="http://www.safehome-gre.com/GetSensorEvents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeactivateSystem">
+      <soap:operation soapAction="http://www.safehome-gre.com/DeactivateSystem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActivateSystem">
+      <soap:operation soapAction="http://www.safehome-gre.com/ActivateSystem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RestartSystem">
+      <soap:operation soapAction="http://www.safehome-gre.com/RestartSystem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitReading">
+      <soap:operation soapAction="http://www.safehome-gre.com/SubmitReading" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SafeHomeAPISoap12" type="tns:SafeHomeAPISoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSystemState">
+      <soap12:operation soapAction="http://www.safehome-gre.com/GetSystemState" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSensorEvents">
+      <soap12:operation soapAction="http://www.safehome-gre.com/GetSensorEvents" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeactivateSystem">
+      <soap12:operation soapAction="http://www.safehome-gre.com/DeactivateSystem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActivateSystem">
+      <soap12:operation soapAction="http://www.safehome-gre.com/ActivateSystem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RestartSystem">
+      <soap12:operation soapAction="http://www.safehome-gre.com/RestartSystem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitReading">
+      <soap12:operation soapAction="http://www.safehome-gre.com/SubmitReading" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SafeHomeAPI">
+    <wsdl:port name="SafeHomeAPISoap" binding="tns:SafeHomeAPISoap">
+      <soap:address location="http://localhost:4805/SafeHomeAPI.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SafeHomeAPISoap12" binding="tns:SafeHomeAPISoap12">
+      <soap12:address location="http://localhost:4805/SafeHomeAPI.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

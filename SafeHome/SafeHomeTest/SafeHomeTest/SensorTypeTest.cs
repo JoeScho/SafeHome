@@ -15,15 +15,27 @@ namespace SafeHomeTest
         };
 
         [TestMethod]
-        public void _getSensorNameByID()
+        public void _getSensorNameByID_Pass()
         {
             Assert.AreEqual("sensor3", SensorType.getSensorNameByID(3, sensors));
         }
 
         [TestMethod]
-        public void _getSensorTypeIDByName()
+        public void _getSensorNameByID_Fail()
+        {
+            Assert.AreNotEqual("sensor4", SensorType.getSensorNameByID(3, sensors));
+        }
+
+        [TestMethod]
+        public void _getSensorTypeIDByName_Pass()
         {
             Assert.AreEqual(3, SensorType.getSensorTypeIDByName("sensor3", sensors));
+        }
+
+        [TestMethod]
+        public void _getSensorTypeIDByName_Fail()
+        {
+            Assert.AreNotEqual(4, SensorType.getSensorTypeIDByName("sensor3", sensors));
         }
     }
 }
